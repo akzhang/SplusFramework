@@ -7,82 +7,50 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E2E42CB7194844B000A894ED /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2E42CB6194844B000A894ED /* Foundation.framework */; };
-		E2E42CBC194844B000A894ED /* SplusFramework.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E2E42CBB194844B000A894ED /* SplusFramework.h */; };
-		E2E42CBE194844B000A894ED /* SplusFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E42CBD194844B000A894ED /* SplusFramework.m */; };
-		E2E42CC5194844B000A894ED /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2E42CC4194844B000A894ED /* XCTest.framework */; };
-		E2E42CC6194844B000A894ED /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2E42CB6194844B000A894ED /* Foundation.framework */; };
-		E2E42CC8194844B000A894ED /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2E42CC7194844B000A894ED /* UIKit.framework */; };
-		E2E42CCB194844B000A894ED /* libSplusFramework.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E2E42CB3194844B000A894ED /* libSplusFramework.a */; };
-		E2E42CD1194844B000A894ED /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E2E42CCF194844B000A894ED /* InfoPlist.strings */; };
-		E2E42CD3194844B000A894ED /* SplusFrameworkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E42CD2194844B000A894ED /* SplusFrameworkTests.m */; };
+		E2E42CE21948456B00A894ED /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2E42CE11948456B00A894ED /* CoreFoundation.framework */; };
+		E2E42CE81948456B00A894ED /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E2E42CE61948456B00A894ED /* InfoPlist.strings */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		E2E42CC9194844B000A894ED /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E2E42CAB194844B000A894ED /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E2E42CB2194844B000A894ED;
-			remoteInfo = SplusFramework;
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		E2E42CB1194844B000A894ED /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "include/$(PRODUCT_NAME)";
-			dstSubfolderSpec = 16;
-			files = (
-				E2E42CBC194844B000A894ED /* SplusFramework.h in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
-		E2E42CB3194844B000A894ED /* libSplusFramework.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSplusFramework.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2E42CB6194844B000A894ED /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		E2E42CBA194844B000A894ED /* SplusFramework-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SplusFramework-Prefix.pch"; sourceTree = "<group>"; };
-		E2E42CBB194844B000A894ED /* SplusFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SplusFramework.h; sourceTree = "<group>"; };
-		E2E42CBD194844B000A894ED /* SplusFramework.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SplusFramework.m; sourceTree = "<group>"; };
-		E2E42CC3194844B000A894ED /* SplusFrameworkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SplusFrameworkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E2E42CC4194844B000A894ED /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		E2E42CC7194844B000A894ED /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		E2E42CCE194844B000A894ED /* SplusFrameworkTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SplusFrameworkTests-Info.plist"; sourceTree = "<group>"; };
-		E2E42CD0194844B000A894ED /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		E2E42CD2194844B000A894ED /* SplusFrameworkTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SplusFrameworkTests.m; sourceTree = "<group>"; };
+		E2E42CE01948456B00A894ED /* SplusIosSdk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SplusIosSdk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E2E42CE11948456B00A894ED /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		E2E42CE51948456B00A894ED /* SplusIosSdk-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SplusIosSdk-Info.plist"; sourceTree = "<group>"; };
+		E2E42CE71948456B00A894ED /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E2E42CE91948456B00A894ED /* SplusIosSdk-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SplusIosSdk-Prefix.pch"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		E2E42CB0194844B000A894ED /* Frameworks */ = {
+		E2E42CDD1948456B00A894ED /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E2E42CB7194844B000A894ED /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E2E42CC0194844B000A894ED /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E2E42CC5194844B000A894ED /* XCTest.framework in Frameworks */,
-				E2E42CC8194844B000A894ED /* UIKit.framework in Frameworks */,
-				E2E42CCB194844B000A894ED /* libSplusFramework.a in Frameworks */,
-				E2E42CC6194844B000A894ED /* Foundation.framework in Frameworks */,
+				E2E42CE21948456B00A894ED /* CoreFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E23A96F9194934DE00790FDF /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				E23A96FA194934DE00790FDF /* tool */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		E23A96FA194934DE00790FDF /* tool */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = tool;
+			sourceTree = "<group>";
+		};
 		E2E42CAA194844B000A894ED = {
 			isa = PBXGroup;
 			children = (
-				E2E42CB8194844B000A894ED /* SplusFramework */,
-				E2E42CCC194844B000A894ED /* SplusFrameworkTests */,
+				E2E42CE31948456B00A894ED /* SplusIosSdk */,
 				E2E42CB5194844B000A894ED /* Frameworks */,
 				E2E42CB4194844B000A894ED /* Products */,
 			);
@@ -91,8 +59,7 @@
 		E2E42CB4194844B000A894ED /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E2E42CB3194844B000A894ED /* libSplusFramework.a */,
-				E2E42CC3194844B000A894ED /* SplusFrameworkTests.xctest */,
+				E2E42CE01948456B00A894ED /* SplusIosSdk.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -101,85 +68,60 @@
 			isa = PBXGroup;
 			children = (
 				E2E42CB6194844B000A894ED /* Foundation.framework */,
-				E2E42CC4194844B000A894ED /* XCTest.framework */,
-				E2E42CC7194844B000A894ED /* UIKit.framework */,
+				E2E42CE11948456B00A894ED /* CoreFoundation.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		E2E42CB8194844B000A894ED /* SplusFramework */ = {
+		E2E42CE31948456B00A894ED /* SplusIosSdk */ = {
 			isa = PBXGroup;
 			children = (
-				E2E42CBB194844B000A894ED /* SplusFramework.h */,
-				E2E42CBD194844B000A894ED /* SplusFramework.m */,
-				E2E42CB9194844B000A894ED /* Supporting Files */,
+				E23A96F9194934DE00790FDF /* Classes */,
+				E2E42CE41948456B00A894ED /* Supporting Files */,
 			);
-			path = SplusFramework;
+			path = SplusIosSdk;
 			sourceTree = "<group>";
 		};
-		E2E42CB9194844B000A894ED /* Supporting Files */ = {
+		E2E42CE41948456B00A894ED /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				E2E42CBA194844B000A894ED /* SplusFramework-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		E2E42CCC194844B000A894ED /* SplusFrameworkTests */ = {
-			isa = PBXGroup;
-			children = (
-				E2E42CD2194844B000A894ED /* SplusFrameworkTests.m */,
-				E2E42CCD194844B000A894ED /* Supporting Files */,
-			);
-			path = SplusFrameworkTests;
-			sourceTree = "<group>";
-		};
-		E2E42CCD194844B000A894ED /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				E2E42CCE194844B000A894ED /* SplusFrameworkTests-Info.plist */,
-				E2E42CCF194844B000A894ED /* InfoPlist.strings */,
+				E2E42CE51948456B00A894ED /* SplusIosSdk-Info.plist */,
+				E2E42CE61948456B00A894ED /* InfoPlist.strings */,
+				E2E42CE91948456B00A894ED /* SplusIosSdk-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
-/* Begin PBXNativeTarget section */
-		E2E42CB2194844B000A894ED /* SplusFramework */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E2E42CD6194844B000A894ED /* Build configuration list for PBXNativeTarget "SplusFramework" */;
-			buildPhases = (
-				E2E42CAF194844B000A894ED /* Sources */,
-				E2E42CB0194844B000A894ED /* Frameworks */,
-				E2E42CB1194844B000A894ED /* CopyFiles */,
+/* Begin PBXHeadersBuildPhase section */
+		E2E42CED1948467B00A894ED /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = SplusFramework;
-			productName = SplusFramework;
-			productReference = E2E42CB3194844B000A894ED /* libSplusFramework.a */;
-			productType = "com.apple.product-type.library.static";
+			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E2E42CC2194844B000A894ED /* SplusFrameworkTests */ = {
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		E2E42CDF1948456B00A894ED /* SplusIosSdk */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E2E42CD9194844B000A894ED /* Build configuration list for PBXNativeTarget "SplusFrameworkTests" */;
+			buildConfigurationList = E2E42CEA1948456B00A894ED /* Build configuration list for PBXNativeTarget "SplusIosSdk" */;
 			buildPhases = (
-				E2E42CBF194844B000A894ED /* Sources */,
-				E2E42CC0194844B000A894ED /* Frameworks */,
-				E2E42CC1194844B000A894ED /* Resources */,
+				E2E42CDC1948456B00A894ED /* Sources */,
+				E2E42CDD1948456B00A894ED /* Frameworks */,
+				E2E42CDE1948456B00A894ED /* Resources */,
+				E2E42CED1948467B00A894ED /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				E2E42CCA194844B000A894ED /* PBXTargetDependency */,
 			);
-			name = SplusFrameworkTests;
-			productName = SplusFrameworkTests;
-			productReference = E2E42CC3194844B000A894ED /* SplusFrameworkTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
+			name = SplusIosSdk;
+			productName = SplusIosSdk;
+			productReference = E2E42CE01948456B00A894ED /* SplusIosSdk.framework */;
+			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
 
@@ -202,55 +144,37 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E2E42CB2194844B000A894ED /* SplusFramework */,
-				E2E42CC2194844B000A894ED /* SplusFrameworkTests */,
+				E2E42CDF1948456B00A894ED /* SplusIosSdk */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		E2E42CC1194844B000A894ED /* Resources */ = {
+		E2E42CDE1948456B00A894ED /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E2E42CD1194844B000A894ED /* InfoPlist.strings in Resources */,
+				E2E42CE81948456B00A894ED /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		E2E42CAF194844B000A894ED /* Sources */ = {
+		E2E42CDC1948456B00A894ED /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E2E42CBE194844B000A894ED /* SplusFramework.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E2E42CBF194844B000A894ED /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E2E42CD3194844B000A894ED /* SplusFrameworkTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		E2E42CCA194844B000A894ED /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E2E42CB2194844B000A894ED /* SplusFramework */;
-			targetProxy = E2E42CC9194844B000A894ED /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin PBXVariantGroup section */
-		E2E42CCF194844B000A894ED /* InfoPlist.strings */ = {
+		E2E42CE61948456B00A894ED /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				E2E42CD0194844B000A894ED /* en */,
+				E2E42CE71948456B00A894ED /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -326,63 +250,48 @@
 			};
 			name = Release;
 		};
-		E2E42CD7194844B000A894ED /* Debug */ = {
+		E2E42CEB1948456B00A894ED /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DSTROOT = /tmp/SplusFramework.dst;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SplusFramework/SplusFramework-Prefix.pch";
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		E2E42CD8194844B000A894ED /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DSTROOT = /tmp/SplusFramework.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SplusFramework/SplusFramework-Prefix.pch";
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		E2E42CDA194844B000A894ED /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SplusFramework/SplusFramework-Prefix.pch";
+				GCC_PREFIX_HEADER = "SplusIosSdk/SplusIosSdk-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "SplusFrameworkTests/SplusFrameworkTests-Info.plist";
+				INFOPLIST_FILE = "SplusIosSdk/SplusIosSdk-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				LINK_WITH_STANDARD_LIBRARIES = NO;
+				MACH_O_TYPE = mh_object;
+				MACOSX_DEPLOYMENT_TARGET = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = xctest;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = framework;
 			};
 			name = Debug;
 		};
-		E2E42CDB194844B000A894ED /* Release */ = {
+		E2E42CEC1948456B00A894ED /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
+				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SplusFramework/SplusFramework-Prefix.pch";
-				INFOPLIST_FILE = "SplusFrameworkTests/SplusFrameworkTests-Info.plist";
+				GCC_PREFIX_HEADER = "SplusIosSdk/SplusIosSdk-Prefix.pch";
+				INFOPLIST_FILE = "SplusIosSdk/SplusIosSdk-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				LINK_WITH_STANDARD_LIBRARIES = NO;
+				MACH_O_TYPE = mh_object;
+				MACOSX_DEPLOYMENT_TARGET = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = xctest;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = framework;
 			};
 			name = Release;
 		};
@@ -398,21 +307,14 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E2E42CD6194844B000A894ED /* Build configuration list for PBXNativeTarget "SplusFramework" */ = {
+		E2E42CEA1948456B00A894ED /* Build configuration list for PBXNativeTarget "SplusIosSdk" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E2E42CD7194844B000A894ED /* Debug */,
-				E2E42CD8194844B000A894ED /* Release */,
+				E2E42CEB1948456B00A894ED /* Debug */,
+				E2E42CEC1948456B00A894ED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-		};
-		E2E42CD9194844B000A894ED /* Build configuration list for PBXNativeTarget "SplusFrameworkTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E2E42CDA194844B000A894ED /* Debug */,
-				E2E42CDB194844B000A894ED /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
