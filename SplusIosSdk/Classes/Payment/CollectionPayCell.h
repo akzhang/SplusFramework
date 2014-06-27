@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PSTCollectionView.h"
 
-@interface CollectionPayCell : UICollectionViewCell
+@interface CollectionPayCell:PSUICollectionViewCell
 
 @property(nonatomic, strong)UIButton *cellButton;
 

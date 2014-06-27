@@ -16,9 +16,16 @@
     if (self) {
         // Initialization code
         _cellButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+        _cellButton.userInteractionEnabled = NO;
         [self addSubview:_cellButton];
     }
     return self;
+}
+
+- (void)setHighlighted:(BOOL)highlighted
+{
+    [super setHighlighted:highlighted];
+    _cellButton.highlighted = highlighted;
 }
 
 /*

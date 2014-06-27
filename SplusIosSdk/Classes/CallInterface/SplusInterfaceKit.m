@@ -10,6 +10,7 @@
 #import "AppInfo.h"
 #import "Activate.h"
 #import "Login.h"
+#import "PayHome.h"
 
 @implementation SplusInterfaceKit
 
@@ -99,17 +100,17 @@ __strong static SplusInterfaceKit *singleton = nil;
  */
 -(void)splusPay
 {
-    if ([ActivateInfo sharedSingleton].deviceno == nil) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"请先激活" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
-        [alert show];
-        return;
-    }
+//    if ([ActivateInfo sharedSingleton].deviceno == nil) {
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"请先激活" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+//        [alert show];
+//        return;
+//    }
     
-    Login *login = [[Login alloc] init];
-    login.delegate = _delegate;
+    PayHome *pay = [[PayHome alloc] init];
+    pay.delegate = _delegate;
     UIViewController *rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;
     rootViewController.modalPresentationStyle = UIModalPresentationCurrentContext;
-    [rootViewController presentModalViewController:login animated:YES ];
+    [rootViewController presentModalViewController:pay animated:YES ];
     
 }
 

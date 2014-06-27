@@ -13,6 +13,36 @@
 		E207ED6E195957F50060A584 /* PayHome.m in Sources */ = {isa = PBXBuildFile; fileRef = E207ED6C195957F50060A584 /* PayHome.m */; };
 		E207ED7119595D080060A584 /* CollectionPayCell.h in Headers */ = {isa = PBXBuildFile; fileRef = E207ED6F19595D080060A584 /* CollectionPayCell.h */; };
 		E207ED7219595D080060A584 /* CollectionPayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E207ED7019595D080060A584 /* CollectionPayCell.m */; };
+		E2086F69195A65B200523F0E /* NSIndexPath+PSTCollectionViewAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E2086F4D195A65B200523F0E /* NSIndexPath+PSTCollectionViewAdditions.h */; };
+		E2086F6A195A65B200523F0E /* NSIndexPath+PSTCollectionViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E2086F4E195A65B200523F0E /* NSIndexPath+PSTCollectionViewAdditions.m */; };
+		E2086F6B195A65B200523F0E /* PSTCollectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = E2086F4F195A65B200523F0E /* PSTCollectionView.h */; };
+		E2086F6C195A65B200523F0E /* PSTCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = E2086F50195A65B200523F0E /* PSTCollectionView.m */; };
+		E2086F6D195A65B200523F0E /* PSTCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = E2086F51195A65B200523F0E /* PSTCollectionViewCell.h */; };
+		E2086F6E195A65B200523F0E /* PSTCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E2086F52195A65B200523F0E /* PSTCollectionViewCell.m */; };
+		E2086F6F195A65B200523F0E /* PSTCollectionViewCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = E2086F53195A65B200523F0E /* PSTCollectionViewCommon.h */; };
+		E2086F70195A65B200523F0E /* PSTCollectionViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = E2086F54195A65B200523F0E /* PSTCollectionViewController.h */; };
+		E2086F71195A65B200523F0E /* PSTCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2086F55195A65B200523F0E /* PSTCollectionViewController.m */; };
+		E2086F72195A65B200523F0E /* PSTCollectionViewData.h in Headers */ = {isa = PBXBuildFile; fileRef = E2086F56195A65B200523F0E /* PSTCollectionViewData.h */; };
+		E2086F73195A65B200523F0E /* PSTCollectionViewData.m in Sources */ = {isa = PBXBuildFile; fileRef = E2086F57195A65B200523F0E /* PSTCollectionViewData.m */; };
+		E2086F74195A65B200523F0E /* PSTCollectionViewFlowLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = E2086F58195A65B200523F0E /* PSTCollectionViewFlowLayout.h */; };
+		E2086F75195A65B200523F0E /* PSTCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = E2086F59195A65B200523F0E /* PSTCollectionViewFlowLayout.m */; };
+		E2086F76195A65B200523F0E /* PSTCollectionViewItemKey.h in Headers */ = {isa = PBXBuildFile; fileRef = E2086F5A195A65B200523F0E /* PSTCollectionViewItemKey.h */; };
+		E2086F77195A65B200523F0E /* PSTCollectionViewItemKey.m in Sources */ = {isa = PBXBuildFile; fileRef = E2086F5B195A65B200523F0E /* PSTCollectionViewItemKey.m */; };
+		E2086F78195A65B200523F0E /* PSTCollectionViewLayout+Internals.h in Headers */ = {isa = PBXBuildFile; fileRef = E2086F5C195A65B200523F0E /* PSTCollectionViewLayout+Internals.h */; };
+		E2086F79195A65B200523F0E /* PSTCollectionViewLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = E2086F5D195A65B200523F0E /* PSTCollectionViewLayout.h */; };
+		E2086F7A195A65B200523F0E /* PSTCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = E2086F5E195A65B200523F0E /* PSTCollectionViewLayout.m */; };
+		E2086F7B195A65B200523F0E /* PSTCollectionViewUpdateItem.h in Headers */ = {isa = PBXBuildFile; fileRef = E2086F5F195A65B200523F0E /* PSTCollectionViewUpdateItem.h */; };
+		E2086F7C195A65B200523F0E /* PSTCollectionViewUpdateItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E2086F60195A65B200523F0E /* PSTCollectionViewUpdateItem.m */; };
+		E2086F7D195A65B200523F0E /* PSTGridLayoutInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = E2086F61195A65B200523F0E /* PSTGridLayoutInfo.h */; };
+		E2086F7E195A65B200523F0E /* PSTGridLayoutInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = E2086F62195A65B200523F0E /* PSTGridLayoutInfo.m */; };
+		E2086F7F195A65B200523F0E /* PSTGridLayoutItem.h in Headers */ = {isa = PBXBuildFile; fileRef = E2086F63195A65B200523F0E /* PSTGridLayoutItem.h */; };
+		E2086F80195A65B200523F0E /* PSTGridLayoutItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E2086F64195A65B200523F0E /* PSTGridLayoutItem.m */; };
+		E2086F81195A65B200523F0E /* PSTGridLayoutRow.h in Headers */ = {isa = PBXBuildFile; fileRef = E2086F65195A65B200523F0E /* PSTGridLayoutRow.h */; };
+		E2086F82195A65B200523F0E /* PSTGridLayoutRow.m in Sources */ = {isa = PBXBuildFile; fileRef = E2086F66195A65B200523F0E /* PSTGridLayoutRow.m */; };
+		E2086F83195A65B200523F0E /* PSTGridLayoutSection.h in Headers */ = {isa = PBXBuildFile; fileRef = E2086F67195A65B200523F0E /* PSTGridLayoutSection.h */; };
+		E2086F84195A65B200523F0E /* PSTGridLayoutSection.m in Sources */ = {isa = PBXBuildFile; fileRef = E2086F68195A65B200523F0E /* PSTGridLayoutSection.m */; };
+		E2086F87195AC39300523F0E /* PayCreditCard.h in Headers */ = {isa = PBXBuildFile; fileRef = E2086F85195AC39300523F0E /* PayCreditCard.h */; };
+		E2086F88195AC39300523F0E /* PayCreditCard.m in Sources */ = {isa = PBXBuildFile; fileRef = E2086F86195AC39300523F0E /* PayCreditCard.m */; };
 		E237B4011952C434007E7103 /* Register.h in Headers */ = {isa = PBXBuildFile; fileRef = E237B3FF1952C434007E7103 /* Register.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		E23C202B19515E7200EC4F37 /* Activate.h in Headers */ = {isa = PBXBuildFile; fileRef = E23C1FD819515E7100EC4F37 /* Activate.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		E23C202C19515E7200EC4F37 /* Activate.m in Sources */ = {isa = PBXBuildFile; fileRef = E23C1FD919515E7100EC4F37 /* Activate.m */; };
@@ -75,6 +105,8 @@
 		E29F82971958303700933607 /* Register.m in Sources */ = {isa = PBXBuildFile; fileRef = E237B4001952C434007E7103 /* Register.m */; };
 		E2E42CE21948456B00A894ED /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2E42CE11948456B00A894ED /* CoreFoundation.framework */; };
 		E2E42CE81948456B00A894ED /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E2E42CE61948456B00A894ED /* InfoPlist.strings */; };
+		E2FEC3A3195BFF7200112989 /* PayOneCard.h in Headers */ = {isa = PBXBuildFile; fileRef = E2FEC3A1195BFF7200112989 /* PayOneCard.h */; };
+		E2FEC3A4195BFF7200112989 /* PayOneCard.m in Sources */ = {isa = PBXBuildFile; fileRef = E2FEC3A2195BFF7200112989 /* PayOneCard.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +116,36 @@
 		E207ED6C195957F50060A584 /* PayHome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayHome.m; sourceTree = "<group>"; };
 		E207ED6F19595D080060A584 /* CollectionPayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionPayCell.h; sourceTree = "<group>"; };
 		E207ED7019595D080060A584 /* CollectionPayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionPayCell.m; sourceTree = "<group>"; };
+		E2086F4D195A65B200523F0E /* NSIndexPath+PSTCollectionViewAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSIndexPath+PSTCollectionViewAdditions.h"; sourceTree = "<group>"; };
+		E2086F4E195A65B200523F0E /* NSIndexPath+PSTCollectionViewAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSIndexPath+PSTCollectionViewAdditions.m"; sourceTree = "<group>"; };
+		E2086F4F195A65B200523F0E /* PSTCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSTCollectionView.h; sourceTree = "<group>"; };
+		E2086F50195A65B200523F0E /* PSTCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSTCollectionView.m; sourceTree = "<group>"; };
+		E2086F51195A65B200523F0E /* PSTCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSTCollectionViewCell.h; sourceTree = "<group>"; };
+		E2086F52195A65B200523F0E /* PSTCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSTCollectionViewCell.m; sourceTree = "<group>"; };
+		E2086F53195A65B200523F0E /* PSTCollectionViewCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSTCollectionViewCommon.h; sourceTree = "<group>"; };
+		E2086F54195A65B200523F0E /* PSTCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSTCollectionViewController.h; sourceTree = "<group>"; };
+		E2086F55195A65B200523F0E /* PSTCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSTCollectionViewController.m; sourceTree = "<group>"; };
+		E2086F56195A65B200523F0E /* PSTCollectionViewData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSTCollectionViewData.h; sourceTree = "<group>"; };
+		E2086F57195A65B200523F0E /* PSTCollectionViewData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSTCollectionViewData.m; sourceTree = "<group>"; };
+		E2086F58195A65B200523F0E /* PSTCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSTCollectionViewFlowLayout.h; sourceTree = "<group>"; };
+		E2086F59195A65B200523F0E /* PSTCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSTCollectionViewFlowLayout.m; sourceTree = "<group>"; };
+		E2086F5A195A65B200523F0E /* PSTCollectionViewItemKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSTCollectionViewItemKey.h; sourceTree = "<group>"; };
+		E2086F5B195A65B200523F0E /* PSTCollectionViewItemKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSTCollectionViewItemKey.m; sourceTree = "<group>"; };
+		E2086F5C195A65B200523F0E /* PSTCollectionViewLayout+Internals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PSTCollectionViewLayout+Internals.h"; sourceTree = "<group>"; };
+		E2086F5D195A65B200523F0E /* PSTCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSTCollectionViewLayout.h; sourceTree = "<group>"; };
+		E2086F5E195A65B200523F0E /* PSTCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSTCollectionViewLayout.m; sourceTree = "<group>"; };
+		E2086F5F195A65B200523F0E /* PSTCollectionViewUpdateItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSTCollectionViewUpdateItem.h; sourceTree = "<group>"; };
+		E2086F60195A65B200523F0E /* PSTCollectionViewUpdateItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSTCollectionViewUpdateItem.m; sourceTree = "<group>"; };
+		E2086F61195A65B200523F0E /* PSTGridLayoutInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSTGridLayoutInfo.h; sourceTree = "<group>"; };
+		E2086F62195A65B200523F0E /* PSTGridLayoutInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSTGridLayoutInfo.m; sourceTree = "<group>"; };
+		E2086F63195A65B200523F0E /* PSTGridLayoutItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSTGridLayoutItem.h; sourceTree = "<group>"; };
+		E2086F64195A65B200523F0E /* PSTGridLayoutItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSTGridLayoutItem.m; sourceTree = "<group>"; };
+		E2086F65195A65B200523F0E /* PSTGridLayoutRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSTGridLayoutRow.h; sourceTree = "<group>"; };
+		E2086F66195A65B200523F0E /* PSTGridLayoutRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSTGridLayoutRow.m; sourceTree = "<group>"; };
+		E2086F67195A65B200523F0E /* PSTGridLayoutSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSTGridLayoutSection.h; sourceTree = "<group>"; };
+		E2086F68195A65B200523F0E /* PSTGridLayoutSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSTGridLayoutSection.m; sourceTree = "<group>"; };
+		E2086F85195AC39300523F0E /* PayCreditCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayCreditCard.h; sourceTree = "<group>"; };
+		E2086F86195AC39300523F0E /* PayCreditCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayCreditCard.m; sourceTree = "<group>"; };
 		E237B3FF1952C434007E7103 /* Register.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Register.h; sourceTree = "<group>"; };
 		E237B4001952C434007E7103 /* Register.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Register.m; sourceTree = "<group>"; };
 		E23C1FD819515E7100EC4F37 /* Activate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Activate.h; sourceTree = "<group>"; };
@@ -150,6 +212,8 @@
 		E2E42CE51948456B00A894ED /* SplusIosSdk-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SplusIosSdk-Info.plist"; sourceTree = "<group>"; };
 		E2E42CE71948456B00A894ED /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E2E42CE91948456B00A894ED /* SplusIosSdk-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SplusIosSdk-Prefix.pch"; sourceTree = "<group>"; };
+		E2FEC3A1195BFF7200112989 /* PayOneCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayOneCard.h; sourceTree = "<group>"; };
+		E2FEC3A2195BFF7200112989 /* PayOneCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayOneCard.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,13 +231,54 @@
 		E207ED6A195957D90060A584 /* Payment */ = {
 			isa = PBXGroup;
 			children = (
+				E2086F4C195A65B200523F0E /* PSTCollectionView */,
 				E207ED6B195957F50060A584 /* PayHome.h */,
 				E207ED6C195957F50060A584 /* PayHome.m */,
 				E207ED6F19595D080060A584 /* CollectionPayCell.h */,
 				E207ED7019595D080060A584 /* CollectionPayCell.m */,
+				E2086F85195AC39300523F0E /* PayCreditCard.h */,
+				E2086F86195AC39300523F0E /* PayCreditCard.m */,
+				E2FEC3A1195BFF7200112989 /* PayOneCard.h */,
+				E2FEC3A2195BFF7200112989 /* PayOneCard.m */,
 			);
 			path = Payment;
 			sourceTree = "<group>";
+		};
+		E2086F4C195A65B200523F0E /* PSTCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				E2086F4D195A65B200523F0E /* NSIndexPath+PSTCollectionViewAdditions.h */,
+				E2086F4E195A65B200523F0E /* NSIndexPath+PSTCollectionViewAdditions.m */,
+				E2086F4F195A65B200523F0E /* PSTCollectionView.h */,
+				E2086F50195A65B200523F0E /* PSTCollectionView.m */,
+				E2086F51195A65B200523F0E /* PSTCollectionViewCell.h */,
+				E2086F52195A65B200523F0E /* PSTCollectionViewCell.m */,
+				E2086F53195A65B200523F0E /* PSTCollectionViewCommon.h */,
+				E2086F54195A65B200523F0E /* PSTCollectionViewController.h */,
+				E2086F55195A65B200523F0E /* PSTCollectionViewController.m */,
+				E2086F56195A65B200523F0E /* PSTCollectionViewData.h */,
+				E2086F57195A65B200523F0E /* PSTCollectionViewData.m */,
+				E2086F58195A65B200523F0E /* PSTCollectionViewFlowLayout.h */,
+				E2086F59195A65B200523F0E /* PSTCollectionViewFlowLayout.m */,
+				E2086F5A195A65B200523F0E /* PSTCollectionViewItemKey.h */,
+				E2086F5B195A65B200523F0E /* PSTCollectionViewItemKey.m */,
+				E2086F5C195A65B200523F0E /* PSTCollectionViewLayout+Internals.h */,
+				E2086F5D195A65B200523F0E /* PSTCollectionViewLayout.h */,
+				E2086F5E195A65B200523F0E /* PSTCollectionViewLayout.m */,
+				E2086F5F195A65B200523F0E /* PSTCollectionViewUpdateItem.h */,
+				E2086F60195A65B200523F0E /* PSTCollectionViewUpdateItem.m */,
+				E2086F61195A65B200523F0E /* PSTGridLayoutInfo.h */,
+				E2086F62195A65B200523F0E /* PSTGridLayoutInfo.m */,
+				E2086F63195A65B200523F0E /* PSTGridLayoutItem.h */,
+				E2086F64195A65B200523F0E /* PSTGridLayoutItem.m */,
+				E2086F65195A65B200523F0E /* PSTGridLayoutRow.h */,
+				E2086F66195A65B200523F0E /* PSTGridLayoutRow.m */,
+				E2086F67195A65B200523F0E /* PSTGridLayoutSection.h */,
+				E2086F68195A65B200523F0E /* PSTGridLayoutSection.m */,
+			);
+			name = PSTCollectionView;
+			path = SplusIosSdk/Classes/PSTCollectionView;
+			sourceTree = SOURCE_ROOT;
 		};
 		E237B3FE1952C416007E7103 /* Register */ = {
 			isa = PBXGroup;
@@ -419,15 +524,22 @@
 			files = (
 				E202B79919580A14003C70B9 /* SplusUser.h in Headers */,
 				E23C203119515E7200EC4F37 /* SplusInterfaceKit.h in Headers */,
+				E2086F6F195A65B200523F0E /* PSTCollectionViewCommon.h in Headers */,
+				E2086F7F195A65B200523F0E /* PSTGridLayoutItem.h in Headers */,
 				E23C205019515E7200EC4F37 /* SplusCallback.h in Headers */,
+				E2086F78195A65B200523F0E /* PSTCollectionViewLayout+Internals.h in Headers */,
 				E23C204419515E7200EC4F37 /* SBJsonStreamWriter.h in Headers */,
+				E2086F69195A65B200523F0E /* NSIndexPath+PSTCollectionViewAdditions.h in Headers */,
+				E2086F7B195A65B200523F0E /* PSTCollectionViewUpdateItem.h in Headers */,
 				E23C204019515E7200EC4F37 /* SBJsonBase.h in Headers */,
 				E23C203519515E7200EC4F37 /* qqMac.h in Headers */,
 				E23C203319515E7200EC4F37 /* checkWifi.h in Headers */,
 				E23C202F19515E7200EC4F37 /* AppInfo.h in Headers */,
 				E23C203E19515E7200EC4F37 /* NSString+SBJSON.h in Headers */,
 				E23C206F19515E7200EC4F37 /* UserData.h in Headers */,
+				E2086F81195A65B200523F0E /* PSTGridLayoutRow.h in Headers */,
 				E23C204B19515E7200EC4F37 /* Login.h in Headers */,
+				E2086F87195AC39300523F0E /* PayCreditCard.h in Headers */,
 				E23C204619515E7200EC4F37 /* SBJsonWriter.h in Headers */,
 				E23C206B19515E7200EC4F37 /* NSDictionary+QueryBuilder.h in Headers */,
 				E23C204219515E7200EC4F37 /* SBJsonParser.h in Headers */,
@@ -436,22 +548,32 @@
 				E23C205F19515E7200EC4F37 /* NSData+hexRepresentationWithSpaces_AS.h in Headers */,
 				E23C202E19515E7200EC4F37 /* HttpUrl.h in Headers */,
 				E23C203C19515E7200EC4F37 /* NSObject+SBJSON.h in Headers */,
+				E2086F7D195A65B200523F0E /* PSTGridLayoutInfo.h in Headers */,
+				E2086F83195A65B200523F0E /* PSTGridLayoutSection.h in Headers */,
+				E2086F70195A65B200523F0E /* PSTCollectionViewController.h in Headers */,
 				E23C205919515E7200EC4F37 /* NSData+ASE128.h in Headers */,
 				E23C204E19515E7200EC4F37 /* MyMD5.h in Headers */,
+				E2086F6B195A65B200523F0E /* PSTCollectionView.h in Headers */,
 				E23C202B19515E7200EC4F37 /* Activate.h in Headers */,
+				E2086F72195A65B200523F0E /* PSTCollectionViewData.h in Headers */,
 				E23C206119515E7200EC4F37 /* NSString+dataFromHexString.h in Headers */,
 				E23C20861951AA9700EC4F37 /* DropCell.h in Headers */,
 				E25EB1C319541DB000CDBEC8 /* ActivateInfo.h in Headers */,
 				E237B4011952C434007E7103 /* Register.h in Headers */,
 				E23C207819516E8500EC4F37 /* GetImage.h in Headers */,
 				E23C20821951A86900EC4F37 /* DropListView.h in Headers */,
+				E2086F76195A65B200523F0E /* PSTCollectionViewItemKey.h in Headers */,
+				E2086F79195A65B200523F0E /* PSTCollectionViewLayout.h in Headers */,
 				E207ED6D195957F50060A584 /* PayHome.h in Headers */,
 				E23C206719515E7200EC4F37 /* QCheckBox.h in Headers */,
+				E2FEC3A3195BFF7200112989 /* PayOneCard.h in Headers */,
 				E23C203919515E7200EC4F37 /* JSON.h in Headers */,
 				E207ED7119595D080060A584 /* CollectionPayCell.h in Headers */,
 				E23C204819515E7200EC4F37 /* SBProxyForJson.h in Headers */,
 				E23C206919515E7200EC4F37 /* httpRequest.h in Headers */,
 				E23C203719515E7200EC4F37 /* Reachability.h in Headers */,
+				E2086F6D195A65B200523F0E /* PSTCollectionViewCell.h in Headers */,
+				E2086F74195A65B200523F0E /* PSTCollectionViewFlowLayout.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -518,37 +640,52 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2086F82195A65B200523F0E /* PSTGridLayoutRow.m in Sources */,
+				E2086F80195A65B200523F0E /* PSTGridLayoutItem.m in Sources */,
 				E23C207919516E8500EC4F37 /* GetImage.m in Sources */,
+				E2086F88195AC39300523F0E /* PayCreditCard.m in Sources */,
 				E23C206019515E7200EC4F37 /* NSData+hexRepresentationWithSpaces_AS.m in Sources */,
+				E2086F73195A65B200523F0E /* PSTCollectionViewData.m in Sources */,
+				E2086F84195A65B200523F0E /* PSTGridLayoutSection.m in Sources */,
 				E202B79A19580A14003C70B9 /* SplusUser.m in Sources */,
+				E2086F75195A65B200523F0E /* PSTCollectionViewFlowLayout.m in Sources */,
 				E207ED6E195957F50060A584 /* PayHome.m in Sources */,
 				E23C204C19515E7200EC4F37 /* Login.m in Sources */,
 				E23C203219515E7200EC4F37 /* SplusInterfaceKit.m in Sources */,
 				E23C204719515E7200EC4F37 /* SBJsonWriter.m in Sources */,
 				E23C203F19515E7200EC4F37 /* NSString+SBJSON.m in Sources */,
+				E2086F7E195A65B200523F0E /* PSTGridLayoutInfo.m in Sources */,
 				E23C202C19515E7200EC4F37 /* Activate.m in Sources */,
+				E2086F7A195A65B200523F0E /* PSTCollectionViewLayout.m in Sources */,
 				E23C20831951A86900EC4F37 /* DropListView.m in Sources */,
 				E23C203619515E7200EC4F37 /* qqMac.m in Sources */,
 				E25EB1C419541DB000CDBEC8 /* ActivateInfo.m in Sources */,
+				E2086F6E195A65B200523F0E /* PSTCollectionViewCell.m in Sources */,
 				E23C205A19515E7200EC4F37 /* NSData+ASE128.m in Sources */,
 				E23C206E19515E7200EC4F37 /* SplusImage.m in Sources */,
 				E23C204319515E7200EC4F37 /* SBJsonParser.m in Sources */,
 				E23C206819515E7200EC4F37 /* QCheckBox.m in Sources */,
 				E23C207019515E7200EC4F37 /* UserData.m in Sources */,
+				E2086F6A195A65B200523F0E /* NSIndexPath+PSTCollectionViewAdditions.m in Sources */,
 				E23C206219515E7200EC4F37 /* NSString+dataFromHexString.m in Sources */,
 				E23C203019515E7200EC4F37 /* AppInfo.m in Sources */,
+				E2086F7C195A65B200523F0E /* PSTCollectionViewUpdateItem.m in Sources */,
 				E23C206C19515E7200EC4F37 /* NSDictionary+QueryBuilder.m in Sources */,
 				E23C206A19515E7200EC4F37 /* httpRequest.m in Sources */,
 				E23C203819515E7200EC4F37 /* Reachability.m in Sources */,
 				E29F82971958303700933607 /* Register.m in Sources */,
 				E23C204519515E7200EC4F37 /* SBJsonStreamWriter.m in Sources */,
+				E2086F71195A65B200523F0E /* PSTCollectionViewController.m in Sources */,
 				E23C203419515E7200EC4F37 /* checkWifi.m in Sources */,
 				E23C204119515E7200EC4F37 /* SBJsonBase.m in Sources */,
 				E23C20871951AA9700EC4F37 /* DropCell.m in Sources */,
+				E2FEC3A4195BFF7200112989 /* PayOneCard.m in Sources */,
+				E2086F6C195A65B200523F0E /* PSTCollectionView.m in Sources */,
 				E23C203D19515E7200EC4F37 /* NSObject+SBJSON.m in Sources */,
 				E23C204F19515E7200EC4F37 /* MyMD5.m in Sources */,
 				E23C204A19515E7200EC4F37 /* MBProgressHUD.m in Sources */,
 				E207ED7219595D080060A584 /* CollectionPayCell.m in Sources */,
+				E2086F77195A65B200523F0E /* PSTCollectionViewItemKey.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
