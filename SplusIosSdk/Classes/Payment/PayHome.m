@@ -149,9 +149,15 @@
 - (void)collectionView:(PSTCollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"hello,wolrd =%@",indexPath);
-    if ([indexPath row] > 4) {
+    NSLog(@"hello index =%d",[indexPath row]);
+    if ([indexPath row] > 4 && [indexPath row] < 7) {
         PayOneCard *oneCard = [[PayOneCard alloc] init];
         [self presentModalViewController:oneCard animated:YES];
+    }
+    else if([indexPath row] == 7)
+    {
+        PayManual *manual = [[PayManual alloc] init];
+        [self presentModalViewController:manual animated:YES];
     }
     else
     {

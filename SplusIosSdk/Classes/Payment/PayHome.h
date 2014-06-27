@@ -14,6 +14,7 @@
 #import "PSTCollectionView.h"
 #import "PayCreditCard.h"
 #import "PayOneCard.h"
+#import "PayManual.h"
 
 //,UICollectionViewDataSource, UICollectionViewDelegate
 @interface PayHome : UIViewController<PSTCollectionViewDelegate,PSTCollectionViewDataSource>

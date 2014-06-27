@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		E202B79919580A14003C70B9 /* SplusUser.h in Headers */ = {isa = PBXBuildFile; fileRef = E202B79719580A14003C70B9 /* SplusUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E202B79A19580A14003C70B9 /* SplusUser.m in Sources */ = {isa = PBXBuildFile; fileRef = E202B79819580A14003C70B9 /* SplusUser.m */; };
+		E2072E1B195D04B6001FA06C /* PayManual.h in Headers */ = {isa = PBXBuildFile; fileRef = E2072E19195D04B6001FA06C /* PayManual.h */; };
+		E2072E1C195D04B6001FA06C /* PayManual.m in Sources */ = {isa = PBXBuildFile; fileRef = E2072E1A195D04B6001FA06C /* PayManual.m */; };
 		E207ED6D195957F50060A584 /* PayHome.h in Headers */ = {isa = PBXBuildFile; fileRef = E207ED6B195957F50060A584 /* PayHome.h */; };
 		E207ED6E195957F50060A584 /* PayHome.m in Sources */ = {isa = PBXBuildFile; fileRef = E207ED6C195957F50060A584 /* PayHome.m */; };
 		E207ED7119595D080060A584 /* CollectionPayCell.h in Headers */ = {isa = PBXBuildFile; fileRef = E207ED6F19595D080060A584 /* CollectionPayCell.h */; };
@@ -112,6 +114,8 @@
 /* Begin PBXFileReference section */
 		E202B79719580A14003C70B9 /* SplusUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplusUser.h; sourceTree = "<group>"; };
 		E202B79819580A14003C70B9 /* SplusUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplusUser.m; sourceTree = "<group>"; };
+		E2072E19195D04B6001FA06C /* PayManual.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayManual.h; sourceTree = "<group>"; };
+		E2072E1A195D04B6001FA06C /* PayManual.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayManual.m; sourceTree = "<group>"; };
 		E207ED6B195957F50060A584 /* PayHome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayHome.h; sourceTree = "<group>"; };
 		E207ED6C195957F50060A584 /* PayHome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayHome.m; sourceTree = "<group>"; };
 		E207ED6F19595D080060A584 /* CollectionPayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionPayCell.h; sourceTree = "<group>"; };
@@ -240,6 +244,8 @@
 				E2086F86195AC39300523F0E /* PayCreditCard.m */,
 				E2FEC3A1195BFF7200112989 /* PayOneCard.h */,
 				E2FEC3A2195BFF7200112989 /* PayOneCard.m */,
+				E2072E19195D04B6001FA06C /* PayManual.h */,
+				E2072E1A195D04B6001FA06C /* PayManual.m */,
 			);
 			path = Payment;
 			sourceTree = "<group>";
@@ -552,6 +558,7 @@
 				E2086F83195A65B200523F0E /* PSTGridLayoutSection.h in Headers */,
 				E2086F70195A65B200523F0E /* PSTCollectionViewController.h in Headers */,
 				E23C205919515E7200EC4F37 /* NSData+ASE128.h in Headers */,
+				E2072E1B195D04B6001FA06C /* PayManual.h in Headers */,
 				E23C204E19515E7200EC4F37 /* MyMD5.h in Headers */,
 				E2086F6B195A65B200523F0E /* PSTCollectionView.h in Headers */,
 				E23C202B19515E7200EC4F37 /* Activate.h in Headers */,
@@ -682,6 +689,7 @@
 				E2FEC3A4195BFF7200112989 /* PayOneCard.m in Sources */,
 				E2086F6C195A65B200523F0E /* PSTCollectionView.m in Sources */,
 				E23C203D19515E7200EC4F37 /* NSObject+SBJSON.m in Sources */,
+				E2072E1C195D04B6001FA06C /* PayManual.m in Sources */,
 				E23C204F19515E7200EC4F37 /* MyMD5.m in Sources */,
 				E23C204A19515E7200EC4F37 /* MBProgressHUD.m in Sources */,
 				E207ED7219595D080060A584 /* CollectionPayCell.m in Sources */,
