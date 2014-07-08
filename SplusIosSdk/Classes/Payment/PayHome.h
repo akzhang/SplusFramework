@@ -15,6 +15,11 @@
 #import "PayCreditCard.h"
 #import "PayOneCard.h"
 #import "PayManual.h"
+#import "MBProgressHUD.h"
+#import "CoinRatio.h"
+#import "AppInfo.h"
+#import "ActivateInfo.h"
+#import "MyMD5.h"
 
 //,UICollectionViewDataSource, UICollectionViewDelegate
 @interface PayHome : UIViewController<PSTCollectionViewDelegate,PSTCollectionViewDataSource>

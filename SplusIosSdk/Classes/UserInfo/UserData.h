@@ -7,10 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "JSON.h"
 #import "NSData+ASE128.h"
 #import "NSData+hexRepresentationWithSpaces_AS.h"
 #import "NSString+dataFromHexString.h"
+#import "JSON.h"
 
 @interface UserData : NSObject
 

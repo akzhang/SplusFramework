@@ -84,9 +84,12 @@
 -(void)active_callback:(NSString*)result
 {
     NSLog(@"result = %@", result);
-    NSError *error = nil;
+//    NSError *error = nil;
     SBJsonParser *parser = [[SBJsonParser alloc] init];
-    NSDictionary *rootDic = [parser objectWithString:result error:&error];
+    NSDictionary *rootDic = [parser objectWithString:result];
+    
+//    NSDictionary *rootDic = [parser objectWithString:result error:&error];
+    
     NSDictionary *deviceDic = [rootDic objectForKey:@"data"];
     NSString *deviceno = [deviceDic objectForKey:@"deviceno"];
     NSLog(@"deviceno = %@", deviceno);

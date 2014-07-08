@@ -65,7 +65,9 @@
     [self.view addSubview:_splusWelText];
     
     _splusUserName = [[UILabel alloc] initWithFrame:CGRectMake(SCREENWIDTH/2, 60, 80, 50)];
-    _splusUserName.text = @"斗破苍穹";
+    
+    _splusUserName.text = [SplusUser sharedSingleton].username;
+    
     _splusUserName.font = [UIFont systemFontOfSize:18.0];
     _splusUserName.textColor = UIColorFromRGB(0xff6600);
     [self.view addSubview:_splusUserName];
@@ -148,23 +150,26 @@
 
 - (void)collectionView:(PSTCollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"hello,wolrd =%@",indexPath);
-    NSLog(@"hello index =%d",[indexPath row]);
-    if ([indexPath row] > 4 && [indexPath row] < 7) {
+    if ([indexPath row] >= 4 && [indexPath row] < 7) {
         PayOneCard *oneCard = [[PayOneCard alloc] init];
+        oneCard.payway = [indexPath row];
         [self presentModalViewController:oneCard animated:YES];
     }
     else if([indexPath row] == 7)
     {
         PayManual *manual = [[PayManual alloc] init];
+        manual.payway = [indexPath row];
         [self presentModalViewController:manual animated:YES];
     }
     else
     {
         PayCreditCard *value = [[PayCreditCard alloc] init];
+        value.payway = [indexPath row];
         [self presentModalViewController:value animated:YES];
     }
 }
+
+
 
 
 //iOS 6.0以下旋屏

@@ -14,8 +14,8 @@
 #import "qqMac.h"
 #import "httpRequest.h"
 #import "MyMD5.h"
-#import "JSON.h"
 #import "ActivateInfo.h"
+#import "SBJsonParser.h"
 
 @interface Activate : UIViewController
 

@@ -58,7 +58,11 @@
 
 @property(nonatomic, strong)UIButton *splusTibPayBt;
 
+@property(nonatomic, strong)UIButton *FlastSelectbutton;//是否是最后一次选中
+
 //方向
 @property(nonatomic, assign)UIInterfaceOrientation orientation;
+
+@property(nonatomic, assign)int payway;
 
 @end

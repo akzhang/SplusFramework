@@ -99,6 +99,7 @@
     
     _splusForgetPwd = [[UILabel alloc] initWithFrame:CGRectMake(240, 180, 80, 40)];
     _splusForgetPwd.text = @"忘记密码?";
+    _splusForgetPwd.backgroundColor = [UIColor clearColor];
     _splusForgetPwd.font = [UIFont systemFontOfSize:12.0];
     _splusForgetPwd.textColor = [UIColor blueColor];
     [_splusLoginBgView addSubview:_splusForgetPwd];
@@ -200,9 +201,8 @@
     
     NSLog(@"login info result = %@", result);//登录信息
     
-    NSError *error = nil;
     SBJsonParser *parser = [[SBJsonParser alloc] init];
-    NSDictionary *rootDic = [parser objectWithString:result error:&error];
+    NSDictionary *rootDic = [parser objectWithString:result];
     NSString *code = [rootDic objectForKey:@"code"];
     NSDictionary *data = [rootDic objectForKey:@"data"];
     NSString *uid = [data objectForKey:@"uid"];

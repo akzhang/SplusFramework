@@ -214,9 +214,8 @@
     
     NSLog(@"login info result = %@", result);//登录信息
     
-    NSError *error = nil;
     SBJsonParser *parser = [[SBJsonParser alloc] init];
-    NSDictionary *rootDic = [parser objectWithString:result error:&error];
+    NSDictionary *rootDic = [parser objectWithString:result];
     NSString *code = [rootDic objectForKey:@"code"];
     NSDictionary *data = [rootDic objectForKey:@"data"];
     NSString *uid = [data objectForKey:@"uid"];

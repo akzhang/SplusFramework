@@ -42,6 +42,7 @@
  */
 -(void)activate;
 
+
 /**
  *  登录接口
  *
@@ -50,10 +51,43 @@
 -(void)splusLogin;
 
 /**
- *  支付
+ *  个人中心
  */
--(void)splusPay;
+-(void)splusAcountManage;
 
 
+/**
+ *  非定额支付
+ *
+ *  @param serverid   服务id
+ *  @param serverName 游戏区
+ *  @param roleld     游戏角色id
+ *  @param roleName   游戏角色名
+ *  @param outOrderid 外部订单号ID
+ *  @param pext       扩展信息
+ *  @param type       0//0 表示非定额支付，1表示定额支付
+ */
+-(void)splusPay:(NSString*) serverid ServerName:(NSString*)serverName Roleld:(NSString*)roleld RoleName:(NSString*)roleName OutOrderid:(NSString*)outOrderid Ext:(NSString*)pext Type:(NSString*)type;
+
+/**
+ *  支付宝
+ *
+ *  @param paramURL 支付宝请求url
+ */
+- (void)alixPayResult:(NSURL *)paramURL;
+
+/**
+ *  定额支付
+ *
+ *  @param serverid   服务id
+ *  @param serverName 游戏区
+ *  @param roleld     游戏角色id
+ *  @param roleName   游戏角色名
+ *  @param outOrderid 外部订单号ID
+ *  @param pext       扩展信息
+ *  @param type       0//0 表示非定额支付，1表示定额支付
+ *  @param money      充值金额
+ */
+-(void)splusQuotaPay:(NSString*) serverid ServerName:(NSString*)serverName Roleld:(NSString*)roleld RoleName:(NSString*)roleName OutOrderid:(NSString*)outOrderid Ext:(NSString*)pext Type:(NSString*)type Money:(NSString*)money;
 
 @end

@@ -19,7 +19,62 @@
 static const NSString *API_URL_ACTIVATE = @"http://api.splusgame.com/sdk/active.php";
 static const NSString *API_URL_LOGIN = @"http://api.splusgame.com/sdk/login.php";
 static const NSString *API_URL_REGISTER = @"http://api.splusgame.com/sdk/reg.php";
+static const NSString *API_URL_COIN = @"http://api.splusgame.com/sdk/pay_way_ratio.php";
+
+//支付宝快捷支付
+static const  NSString *ALIPAY_FAST_PAYWAY = @"alipay_fast";
+
+//支付宝网页
+static const  NSString *ALIPAY_WAP_PAYWAY = @"alipay_way";
+
+//银联
+static const  NSString *ALIPAY_DEPOSIT_PAYWAY = @"alipay_deposit";
+
+//信用卡
+static const  NSString *ALIPAY_CREDIT_PAYWAY = @"alipay_credit";
+
+//银联
+static const  NSString *UNION_PAYWAY = @"union_pay";
+
+//神州行
+static const  NSString *CHAIN_CMM_PAYWAY = @"szx";
+
+//联通
+static const  NSString *CHAIN_UNC_PAYWAY = @"unicom";
+
+//盛大
+static const  NSString *CHAIN_SD_PAYWAY = @"sndacard";
+
+//人工
+static const  NSString *PERSON_PAYWAY = @"";
+
+//支付URL
+static const NSString *PAY_URL = @"http://api.splusgame.com/pay/";
+
+//支付
+static const NSString *HTMLWAPPAY_URL = @"http://sy.api.37wan.cn/htmlWapPay_test/payIndex.php";
+
+//http://api.splusgame.com/changepasswd.php
+
+//修改密码
+static const NSString *MODIFY_PWD = @"http://api.splusgame.com/changepasswd.php";
+
+//public static final String HTMLWAPPAY_URL = "http://sy.api.37wan.cn/htmlWapPay_test/payIndex.php";
+//
+//public static final String SQPAGE_URL = "http://api.splusgame.com/dest/feedback.php";
+//
+//public static final String FORUMPAGE_URL = "http://bbs.splusgame.com";
+//
+//public static final String ANNOUNCEMENTSPAGE_URL = "http://api.splusgame.com/dest/activity.php";
+//
+//public static final String BINDMOBILE_URL = "http://sy.api.37wan.cn/action/activebindmobile.php?";
+
+//web支付
+//支付URL
+static const NSString *PAY_URL_WEB = @"http://api.splusgame.com/sdk/payIndex.php";
 
 
-//http://api.splusgame.com/sdk/reg.php?referer=Splus&partner=1&passport=e324eb6209c54fd5fafb4f992733d923&gameid=1000001&fastreg=1&password=fbbbbbbbbbbb&debug=1&sign=3895c64d1742ec434c5b1799909783a5&time=1403510927&deviceno=99885041d422233b8aa12fb63f7e4d23
+
+
+
 #endif

@@ -49,11 +49,32 @@
 {
     _back = [[UIButton alloc] initWithFrame:CGRectMake(5, 5, 50, 30)];
     [_back setImage:[GetImage imagesNamedFromCustomBundle:@"splus_back"] forState:UIControlStateNormal];
-    [_back addTarget:self action:@selector(yyPayBackClick) forControlEvents: UIControlEventTouchUpInside];//处理点击
+    [_back addTarget:self action:@selector(yyPayBackClick:) forControlEvents: UIControlEventTouchUpInside];//处理点击
     [self.view addSubview:_back];
     
     _splusPayText = [[UILabel alloc] initWithFrame:CGRectMake(SCREENWIDTH/2 - 40, 3, 80, 30)];
-    _splusPayText.text = @"充值中心";
+
+    switch (_payway) {
+        case 4:
+            _splusPayText.text = @"移动卡";
+            _paySource = CHAIN_CMM_PAYWAY;
+            break;
+        case 5:
+            _splusPayText.text = @"联通卡";
+            _paySource = CHAIN_UNC_PAYWAY;
+            break;
+            
+        case 6:
+            _splusPayText.text = @"盛大卡";
+            _paySource = CHAIN_SD_PAYWAY;
+            break;
+            
+        default:
+            _splusPayText.text = @"储蓄卡";
+            _paySource = CHAIN_CMM_PAYWAY;
+            break;
+    }
+    
     _splusPayText.font = [UIFont systemFontOfSize:15.0];
     _splusPayText.textColor = UIColorFromRGB(0x222222);
     [self.view addSubview:_splusPayText];
@@ -97,7 +118,8 @@
     [_splusScrollView addSubview:_splusPayWayText];
     
     _splusPayValue = [[UILabel alloc] initWithFrame:CGRectMake(145, 0, 80, 30)];
-    _splusPayValue.text = @"支付宝";
+//    _splusPayValue.text = @"支付宝";
+    _splusPayValue.text = _headTitle;
     _splusPayValue.font = [UIFont systemFontOfSize:15.0];
     _splusPayValue.textColor = UIColorFromRGB(0x666666);
     [_splusScrollView addSubview:_splusPayValue];
@@ -164,8 +186,8 @@
     [_splusCommit setBackgroundImage:[GetImage getSmallRectImage:@"splus_login_bt"] forState:UIControlStateNormal];
     [_splusCommit setTitle:@"确定充值" forState:UIControlStateNormal];
     _splusCommit.titleLabel.font = [UIFont systemFontOfSize:14.0];
-    [_splusCommit addTarget:self action:@selector(splusLoginClick:) forControlEvents: UIControlEventTouchUpInside];//处理点击
-    _splusCommit.userInteractionEnabled = NO;
+    [_splusCommit addTarget:self action:@selector(splusCommitClick:) forControlEvents: UIControlEventTouchUpInside];//处理点击
+//    _splusCommit.userInteractionEnabled = NO;
     [_splusScrollView addSubview:_splusCommit];
 }
 
@@ -281,16 +303,187 @@
     }
 }
 
+//back
+-(void)yyPayBackClick
+{
+    [self dismissViewControllerAnimated:NO completion:nil];//支付取消callback
+}
+
 -(void)selectCashButton:(id)sender
 {
+    if (_FlastSelectbutton) {//是否最后一次选中
+        [_FlastSelectbutton setBackgroundImage:[GetImage getSmallRectImage:@"splus_cash_bg"] forState:UIControlStateNormal];
+    }
+    UIButton *AButton=sender;
+    [AButton setBackgroundImage:[GetImage getSmallRectImage:@"splus_pay_choose"] forState:UIControlStateNormal];
+    _FlastSelectbutton=AButton;
     
+    //兑换率
+    int mRatio = [CoinRatio sharedSingleton].ratio;
+    NSLog(@"mRatio = %d", mRatio);
+    NSString *btValue = [_cashArray objectAtIndex:_FlastSelectbutton.tag - 1];
+    NSString *cashValue = [[NSString alloc] initWithString:[NSString stringWithFormat:@"%@元可以兑换%d元宝", btValue, [btValue intValue]*mRatio]];
+    [_splusExchangeBt setTitle:cashValue forState:UIControlStateNormal];
 }
+
+//提交按钮
+-(void)splusCommitClick:(id)sender
+{
+    if (_splusCardNum.text.length == 0) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"卡号不能为空" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
+    
+    if(_splusCardNum.text.length > 25){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"卡号长度不能超过25" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
+    
+    if(_splusCardPwd.text.length > 25){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"密码长度不能超过25" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
+    
+    if(_splusCardPwd.text.length == 0){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"密码不能为空" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
+    
+    _aliPost = [[httpRequest alloc] init];
+    _aliPost.dlegate = self;
+    
+    switch (_payway) {
+        case 4:
+        {
+            _strPayWay = CHAIN_CMM_PAYWAY;
+            _payUrl = HTMLWAPPAY_URL;
+        }
+            break;
+            
+        case 5:
+        {
+            _strPayWay = CHAIN_UNC_PAYWAY;
+            _payUrl = HTMLWAPPAY_URL;
+        }
+            break;
+            
+        case 6:
+        {
+            _strPayWay = CHAIN_SD_PAYWAY;
+            _payUrl = HTMLWAPPAY_URL;
+            _aliPost.success = @selector(deposit_callback:);//payPostStr
+            
+        }
+            break;
+            
+        default:
+            _strPayWay = ALIPAY_CREDIT_PAYWAY;
+            _payUrl = HTMLWAPPAY_URL;
+            break;
+    }
+    
+    // 登录请求
+    NSDictionary *dictionaryBundle = [[NSBundle mainBundle] infoDictionary];
+    NSString *partner = [dictionaryBundle objectForKey:@"Partner"];
+    NSString *sign = @"";
+    NSString *mTime = [[AppInfo sharedSingleton] getData];
+    NSLog(@"deviceno = %@", [ActivateInfo sharedSingleton].deviceno);
+
+    _money = _FlastSelectbutton.titleLabel.text;
+
+    
+    sign = [sign stringByAppendingFormat:@"%@%@%@%@%@%@%@%@%@%@", [AppInfo sharedSingleton].gameID, [OrderInfo sharedSingleton].serverName ,[ActivateInfo sharedSingleton].deviceno,[AppInfo sharedSingleton].sourceID, partner, [SplusUser sharedSingleton].uid, _money, _strPayWay, mTime, [AppInfo sharedSingleton].gameKey];
+    
+    NSLog(@"Md5 sign = %@", [MyMD5 md5:sign]);
+    
+    NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:[AppInfo sharedSingleton].gameID, @"gameid",
+                                [ActivateInfo sharedSingleton].deviceno, @"deviceno",
+                                [AppInfo sharedSingleton].sourceID,@"referer",
+                                partner, @"partner",
+                                [SplusUser sharedSingleton].uid, @"uid",
+                                [SplusUser sharedSingleton].username, @"passport",//用户名
+                                [OrderInfo sharedSingleton].serverName, @"serverName",//游戏服名
+                                [OrderInfo sharedSingleton].roleName, @"roleName",//充值角色
+                                _money, @"money",
+                                [OrderInfo sharedSingleton].type, @"type",//充值方式0 非定额 1 定额
+                                _strPayWay, @"payway",
+                                mTime, @"time",
+                                [MyMD5 md5:sign], @"sign",
+                                @"1",@"debug",
+                                [OrderInfo sharedSingleton].pext, @"pext",nil];
+    
+    NSString *postData = [dictionary buildQueryString];
+    
+    NSLog(@"last post =%@", [_payUrl stringByAppendingFormat:@"%@%@", @"?", postData]);
+    _payDelegateUrl = [_payUrl stringByAppendingFormat:@"%@%@", @"?", postData];
+    
+    PayWebView *paywebHtml = [[PayWebView alloc] init];
+    paywebHtml.payway = _payway;
+    paywebHtml.webUrl = _payDelegateUrl;
+    [self presentModalViewController:paywebHtml animated:YES];
+
+}
+
+
 
 - (BOOL)prefersStatusBarHidden
 {
     return YES;//隐藏为YES，显示为NO
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    if (![CoinRatio sharedSingleton].ratio)
+    {
+        _HUD = [[MBProgressHUD alloc] initWithView:self.view];
+        [self.view addSubview:_HUD];
+        _HUD.removeFromSuperViewOnHide = YES;
+        _HUD.labelText = @"官人别走， 正在获取信息中...";
+        [_HUD show: YES];
+        
+        // 汇率信息
+        NSDictionary *dictionaryBundle = [[NSBundle mainBundle] infoDictionary];
+        
+        NSString *sign = @"";
+        sign = [sign stringByAppendingFormat:@"%@%@%@%@", [AppInfo sharedSingleton].gameID, _paySource, [[AppInfo sharedSingleton] getData], [AppInfo sharedSingleton].gameKey];
+        NSLog(@"sign = %@", sign);
+        NSLog(@"Md5 = %@", [MyMD5 md5:sign]);
+        
+        NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:[AppInfo sharedSingleton].gameID, @"gameid",
+                                    _paySource, @"payway",
+                                    [[AppInfo sharedSingleton] getData], @"time",
+                                    @"1",@"debug",
+                                    [MyMD5 md5:sign], @"sign",nil];
+        
+        NSString *postData = [dictionary buildQueryString];
+        NSLog(@"postData = %@", postData);
+        
+        httpRequest *_request = [[httpRequest alloc] init];
+        _request.dlegate = self;
+        _request.success = @selector(coin_callback:);
+        _request.error = @selector(coin_error);
+        [_request post:API_URL_COIN argData:postData];
+    }
+}
+
+-(void)coin_callback:(NSString*)result
+{
+    if (_HUD != NULL) {
+        [_HUD hide:YES];
+    }
+    NSLog(@"ratio =%@",result);
+    
+    SBJsonParser *parser = [[SBJsonParser alloc] init];
+    NSDictionary *rootDic = [parser objectWithString:result];
+    NSDictionary *data = [rootDic objectForKey:@"data"];
+    NSString *coin_name = [data objectForKey:@"coin_name"];
+    NSString *ratio = [data objectForKey:@"ratio"];
+    [[CoinRatio sharedSingleton] initWithType:coin_name Ratio:[ratio intValue]];
+}
 
 - (void)didReceiveMemoryWarning
 {

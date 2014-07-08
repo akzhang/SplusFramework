@@ -50,7 +50,7 @@
     [self.view addSubview:_back];
     
     _splusPayText = [[UILabel alloc] initWithFrame:CGRectMake(SCREENWIDTH/2 - 40, 3, 80, 30)];
-    _splusPayText.text = @"充值中心";
+    _splusPayText.text = @"人工充值";
     _splusPayText.font = [UIFont systemFontOfSize:15.0];
     _splusPayText.textColor = UIColorFromRGB(0x222222);
     [self.view addSubview:_splusPayText];
@@ -72,9 +72,11 @@
     
     _splusFrameView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 90, SCREENWIDTH - 20, 250)];
     [_splusFrameView setImage:[GetImage getSmallRectImage:@"splus_input_edit"]];
+    _splusFrameView.userInteractionEnabled = YES;
+    [_splusFrameView setClipsToBounds:YES];
     [self.view addSubview:_splusFrameView];
     
-    _splusUnderLine = [[UIImageView alloc] initWithFrame:CGRectMake(0, 35, SCREENWIDTH - 20, 1)];
+    _splusUnderLine = [[UIImageView alloc] initWithFrame:CGRectMake(0, 36, SCREENWIDTH - 20, 1)];
     _splusUnderLine.image = [GetImage imagesNamedFromCustomBundle:@"splus_split_line"];
     [_splusFrameView addSubview:_splusUnderLine];
     
@@ -82,42 +84,38 @@
     
     //工商银行
     _icbc = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH/4 - 5, 35)];
-//    [_icbc setBackgroundImage:[GetImage getSmallRectImage:@"splus_login_bt"] forState:UIControlStateNormal];
-//    [_icbc setBackgroundImage:[GetImage getSmallRectImage:@"splus_pay_choose"] forState:UIControlStateSelected];
     [_icbc setTitle:@"工商银行" forState:UIControlStateNormal];
-    [_icbc setTitleColor:[UIColor darkTextColor] forState:UIControlStateNormal];
     _icbc.titleLabel.font = [UIFont systemFontOfSize:14.0];
-    [_icbc addTarget:self action:@selector(splusLoginNowClick) forControlEvents: UIControlEventTouchUpInside];//处理点击
+    [_icbc setTitleColor:[UIColor darkTextColor] forState:UIControlStateNormal];
+    _icbc.tag = 1;
+    [_icbc addTarget:self action:@selector(splusBankClick:) forControlEvents: UIControlEventTouchUpInside];//处理点击
     [_splusFrameView addSubview:_icbc];
     
     //招商银行
     _cmbc = [[UIButton alloc] initWithFrame:CGRectMake(SCREENWIDTH/4 - 5, 0, SCREENWIDTH/4 - 5, 35)];
-//    [_cmbc setBackgroundImage:[GetImage getSmallRectImage:@"splus_login_bt"] forState:UIControlStateNormal];
-//    [_cmbc setBackgroundImage:[GetImage getSmallRectImage:@"splus_pay_choose"] forState:UIControlStateSelected];
-    [_cmbc setTitle:@"招商银行" forState:UIControlStateNormal];
     [_cmbc setTitleColor:[UIColor darkTextColor] forState:UIControlStateNormal];
+    [_cmbc setTitle:@"招商银行" forState:UIControlStateNormal];
     _cmbc.titleLabel.font = [UIFont systemFontOfSize:14.0];
-    [_cmbc addTarget:self action:@selector(splusLoginNowClick) forControlEvents: UIControlEventTouchUpInside];//处理点击
+    _cmbc.tag = 2;
+    [_cmbc addTarget:self action:@selector(splusBankClick:) forControlEvents: UIControlEventTouchUpInside];//处理点击
     [_splusFrameView addSubview:_cmbc];
     
     //建设银行
     _ccb = [[UIButton alloc] initWithFrame:CGRectMake(SCREENWIDTH/2 - 10, 0, SCREENWIDTH/4 - 5, 35)];
-//    [_ccb setBackgroundImage:[GetImage getSmallRectImage:@"splus_login_bt"] forState:UIControlStateNormal];
-//    [_ccb setBackgroundImage:[GetImage getSmallRectImage:@"splus_pay_choose"] forState:UIControlStateSelected];
     [_ccb setTitle:@"建设银行" forState:UIControlStateNormal];
-    [_ccb setTitleColor:[UIColor darkTextColor] forState:UIControlStateNormal];
     _ccb.titleLabel.font = [UIFont systemFontOfSize:14.0];
-    [_ccb addTarget:self action:@selector(splusLoginNowClick) forControlEvents: UIControlEventTouchUpInside];//处理点击
+    _ccb.tag = 3;
+    [_ccb setTitleColor:[UIColor darkTextColor] forState:UIControlStateNormal];
+    [_ccb addTarget:self action:@selector(splusBankClick:) forControlEvents: UIControlEventTouchUpInside];//处理点击
     [_splusFrameView addSubview:_ccb];
     
     //农业银行
     _abc = [[UIButton alloc] initWithFrame:CGRectMake(SCREENWIDTH*3/4 - 15, 0, SCREENWIDTH/4 - 5, 35)];
-//    [_abc setBackgroundImage:[GetImage getSmallRectImage:@"splus_login_bt"] forState:UIControlStateNormal];
-//    [_abc setBackgroundImage:[GetImage getSmallRectImage:@"splus_pay_choose"] forState:UIControlStateSelected];
     [_abc setTitle:@"农业银行" forState:UIControlStateNormal];
-    [_abc setTitleColor:[UIColor darkTextColor] forState:UIControlStateNormal];
     _abc.titleLabel.font = [UIFont systemFontOfSize:14.0];
-    [_abc addTarget:self action:@selector(splusLoginNowClick) forControlEvents: UIControlEventTouchUpInside];//处理点击
+    _abc.tag = 4;
+    [_abc setTitleColor:[UIColor darkTextColor] forState:UIControlStateNormal];
+    [_abc addTarget:self action:@selector(splusBankClick:) forControlEvents: UIControlEventTouchUpInside];//处理点击
     [_splusFrameView addSubview:_abc];
     
     _splusLocation = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2 - 130, 45, 260, 30)];
@@ -225,6 +223,42 @@
     [_splusCustomTime setFrame:CGRectMake(SCREENWIDTH/2, 290, 150, 20)];
 }
 
+-(void)splusBankClick:(id)sender
+{
+    if (_FlastSelectbutton) {//是否最后一次选中
+        
+    }
+    UIButton *AButton=sender;
+    [AButton setBackgroundImage:[GetImage getSmallRectImage:@"splus_pay_choose"] forState:UIControlStateNormal];
+    _FlastSelectbutton=AButton;
+    
+    switch (_FlastSelectbutton.tag) {
+        case 1:
+            _splusBankName.text = @"开户行: 工商银行广州工业园支行";
+            break;
+            
+        case 2:
+            _splusBankName.text = @"开户行: 招商银行广州工业园支行";
+            break;
+            
+        case 3:
+            _splusBankName.text = @"开户行: 建设银行广州工业园支行";
+            break;
+            
+        case 4:
+            _splusBankName.text = @"开户行: 农业银行广州工业园支行";
+            break;
+            
+        default:
+            break;
+    }
+}
+
+//back
+-(void)yyPayBackClick
+{
+    [self dismissViewControllerAnimated:NO completion:nil];//支付取消callback
+}
 
 - (BOOL)prefersStatusBarHidden
 {

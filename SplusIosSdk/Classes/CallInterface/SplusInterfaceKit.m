@@ -11,6 +11,9 @@
 #import "Activate.h"
 #import "Login.h"
 #import "PayHome.h"
+#import "QutoPayHome.h"
+#import "OrderInfo.h"
+#import "AcountHome.h"
 
 @implementation SplusInterfaceKit
 
@@ -95,16 +98,29 @@ __strong static SplusInterfaceKit *singleton = nil;
     
 }
 
+
+-(void)splusAcountManage
+{
+    AcountHome *acount = [[AcountHome alloc] init];
+    acount.delegate = _delegate;
+    UIViewController *rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;
+    rootViewController.modalPresentationStyle = UIModalPresentationCurrentContext;
+    [rootViewController presentModalViewController:acount animated:YES ];
+}
+
 /**
  *  支付
  */
--(void)splusPay
+-(void)splusPay:(NSString*) serverid ServerName:(NSString*)serverName Roleld:(NSString*)roleld RoleName:(NSString*)roleName OutOrderid:(NSString*)outOrderid Ext:(NSString*)pext Type:(NSString*)type
 {
 //    if ([ActivateInfo sharedSingleton].deviceno == nil) {
 //        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"请先激活" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
 //        [alert show];
 //        return;
 //    }
+    
+    //初始化订单信息
+    [[OrderInfo sharedSingleton] initWithType:serverid serverName:serverName RoleId:roleld RoleName:roleName OutOrderId:outOrderid Pext:pext Money:0 Type:type];
     
     PayHome *pay = [[PayHome alloc] init];
     pay.delegate = _delegate;
@@ -114,6 +130,28 @@ __strong static SplusInterfaceKit *singleton = nil;
     
 }
 
+/**
+ *  定额支付
+ *
+ *  @return 定额支付
+ */
+-(void)splusQuotaPay:(NSString*) serverid ServerName:(NSString*)serverName Roleld:(NSString*)roleld RoleName:(NSString*)roleName OutOrderid:(NSString*)outOrderid Ext:(NSString*)pext Type:(NSString*)type Money:(NSString*)money;
+{
+    //初始化订单信息
+    [[OrderInfo sharedSingleton] initWithType:serverid serverName:serverName RoleId:roleld RoleName:roleName OutOrderId:outOrderid Pext:pext Money:money Type:type];
+    
+    QutoPayHome *pay = [[QutoPayHome alloc] init];
+    pay.delegate = _delegate;
+    UIViewController *rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;
+    rootViewController.modalPresentationStyle = UIModalPresentationCurrentContext;
+    [rootViewController presentModalViewController:pay animated:YES ];
+}
 
+
+//支付宝
+- (void)alixPayResult:(NSURL *)paramURL{
+    NSLog(@"alipay back %@", paramURL);
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"finish" object:@"0"];
+};
 
 @end

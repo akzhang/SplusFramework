@@ -20,8 +20,8 @@
 #import "GetImage.h"
 #import "httpRequest.h"
 #import "MBProgressHUD.h"
-#import "JSON.h"
 #import "UserData.h"
+#import "JSON.h"
 
 @interface Login : UIViewController<QCheckBoxDelegate,UITextFieldDelegate,qqLoginPositionDelegate>
 
