@@ -99,8 +99,13 @@ __strong static SplusInterfaceKit *singleton = nil;
 }
 
 
--(void)splusAcountManage
+-(void)splusAcountManage:(NSString*) serverid ServerName:(NSString*)serverName Roleld:(NSString*)roleld RoleName:(NSString*)roleName
 {
+    [OrderInfo sharedSingleton].serverId = serverid;
+    [OrderInfo sharedSingleton].serverName = serverName;
+    [OrderInfo sharedSingleton].roleId = roleld;
+    [OrderInfo sharedSingleton].roleName = roleName;
+    
     AcountHome *acount = [[AcountHome alloc] init];
     acount.delegate = _delegate;
     UIViewController *rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;

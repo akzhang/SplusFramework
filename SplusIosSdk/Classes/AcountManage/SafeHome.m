@@ -155,6 +155,11 @@
     return YES;//隐藏为YES，显示为NO
 }
 
+-(void)yyAcountBackClick
+{
+    [self dismissModalViewControllerAnimated:YES];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

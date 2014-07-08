@@ -68,6 +68,8 @@
 		E2291866196A93AD00422926 /* BindPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = E2291864196A93AD00422926 /* BindPhone.m */; };
 		E2291869196AAB9100422926 /* ModifyPwd.h in Headers */ = {isa = PBXBuildFile; fileRef = E2291867196AAB9100422926 /* ModifyPwd.h */; };
 		E229186A196AAB9100422926 /* ModifyPwd.m in Sources */ = {isa = PBXBuildFile; fileRef = E2291868196AAB9100422926 /* ModifyPwd.m */; };
+		E22A90F1196BDE97006338C3 /* AcountWeb.h in Headers */ = {isa = PBXBuildFile; fileRef = E22A90EF196BDE97006338C3 /* AcountWeb.h */; };
+		E22A90F2196BDE97006338C3 /* AcountWeb.m in Sources */ = {isa = PBXBuildFile; fileRef = E22A90F0196BDE97006338C3 /* AcountWeb.m */; };
 		E237B4011952C434007E7103 /* Register.h in Headers */ = {isa = PBXBuildFile; fileRef = E237B3FF1952C434007E7103 /* Register.h */; };
 		E23C202B19515E7200EC4F37 /* Activate.h in Headers */ = {isa = PBXBuildFile; fileRef = E23C1FD819515E7100EC4F37 /* Activate.h */; };
 		E23C202C19515E7200EC4F37 /* Activate.m in Sources */ = {isa = PBXBuildFile; fileRef = E23C1FD919515E7100EC4F37 /* Activate.m */; };
@@ -201,6 +203,8 @@
 		E2291864196A93AD00422926 /* BindPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BindPhone.m; sourceTree = "<group>"; };
 		E2291867196AAB9100422926 /* ModifyPwd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModifyPwd.h; sourceTree = "<group>"; };
 		E2291868196AAB9100422926 /* ModifyPwd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModifyPwd.m; sourceTree = "<group>"; };
+		E22A90EF196BDE97006338C3 /* AcountWeb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcountWeb.h; sourceTree = "<group>"; };
+		E22A90F0196BDE97006338C3 /* AcountWeb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AcountWeb.m; sourceTree = "<group>"; };
 		E237B3FF1952C434007E7103 /* Register.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Register.h; sourceTree = "<group>"; };
 		E237B4001952C434007E7103 /* Register.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Register.m; sourceTree = "<group>"; };
 		E23C1FD819515E7100EC4F37 /* Activate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Activate.h; sourceTree = "<group>"; };
@@ -574,6 +578,8 @@
 				E2291864196A93AD00422926 /* BindPhone.m */,
 				E2291867196AAB9100422926 /* ModifyPwd.h */,
 				E2291868196AAB9100422926 /* ModifyPwd.m */,
+				E22A90EF196BDE97006338C3 /* AcountWeb.h */,
+				E22A90F0196BDE97006338C3 /* AcountWeb.m */,
 			);
 			path = AcountManage;
 			sourceTree = "<group>";
@@ -673,6 +679,7 @@
 				E220FD7A19625DD200A4CBE9 /* AlixPay.h in Headers */,
 				E2086F81195A65B200523F0E /* PSTGridLayoutRow.h in Headers */,
 				E205338D19652807007CB4CE /* PayWebView.h in Headers */,
+				E22A90F1196BDE97006338C3 /* AcountWeb.h in Headers */,
 				E2086F87195AC39300523F0E /* PayCreditCard.h in Headers */,
 				E2086F7D195A65B200523F0E /* PSTGridLayoutInfo.h in Headers */,
 				E2086F83195A65B200523F0E /* PSTGridLayoutSection.h in Headers */,
@@ -795,6 +802,7 @@
 				E23C206E19515E7200EC4F37 /* SplusImage.m in Sources */,
 				E23C206819515E7200EC4F37 /* QCheckBox.m in Sources */,
 				E23C207019515E7200EC4F37 /* UserData.m in Sources */,
+				E22A90F2196BDE97006338C3 /* AcountWeb.m in Sources */,
 				E2086F6A195A65B200523F0E /* NSIndexPath+PSTCollectionViewAdditions.m in Sources */,
 				E229185E196A3BC900422926 /* AcountHome.m in Sources */,
 				E2291862196A86FC00422926 /* SafeHome.m in Sources */,

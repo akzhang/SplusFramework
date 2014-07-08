@@ -53,7 +53,7 @@
     
     _close = [[UIButton alloc] initWithFrame:CGRectMake(bg_width - 60, 15, 45, 45)];
     [_close setImage:[GetImage imagesNamedFromCustomBundle:@"splus_close"] forState:UIControlStateNormal];
-    [_close addTarget:self action:@selector(splusRegisterClick) forControlEvents: UIControlEventTouchUpInside];//处理点击
+    [_close addTarget:self action:@selector(splusCloseClick) forControlEvents: UIControlEventTouchUpInside];//处理点击
     [_splusModifyBgView addSubview:_close];
     
     _splusSpliterLine = [[UIImageView alloc] initWithFrame:CGRectMake(14, 60, 292, 1)];
@@ -150,14 +150,14 @@
     NSString *mTime = [[AppInfo sharedSingleton] getData];
     NSLog(@"deviceno = %@", [ActivateInfo sharedSingleton].deviceno);
     
-    sign = [sign stringByAppendingFormat:@"%@%@%@%@%@%@%@%@%@%@%@", [AppInfo sharedSingleton].gameID,@"7", [ActivateInfo sharedSingleton].deviceno,[AppInfo sharedSingleton].sourceID, partner,[SplusUser sharedSingleton].uid, [SplusUser sharedSingleton].username, mTime, oldPwd, newPwd,[AppInfo sharedSingleton].gameKey];
+    sign = [sign stringByAppendingFormat:@"%@%@%@%@%@%@%@%@%@%@", [AppInfo sharedSingleton].gameID,[ActivateInfo sharedSingleton].deviceno,[AppInfo sharedSingleton].sourceID, partner,[SplusUser sharedSingleton].uid, [SplusUser sharedSingleton].username, mTime, oldPwd, newPwd,[AppInfo sharedSingleton].gameKey];
     
     NSLog(@"Md5 sign = %@", [MyMD5 md5:sign]);
     
     NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:
                                 [SplusUser sharedSingleton].uid, @"uid",
                                 @"1",@"debug",
-                                [OrderInfo sharedSingleton].serverName, @"serverName",//游戏服名
+//                                [OrderInfo sharedSingleton].serverName, @"serverName",//游戏服名
                                 [AppInfo sharedSingleton].gameID, @"gameid",
                                 [MyMD5 md5:sign], @"sign",
                                 mTime, @"time",
@@ -165,10 +165,13 @@
                                 partner, @"partner",
                                 [AppInfo sharedSingleton].sourceID,@"referer",
                                 [SplusUser sharedSingleton].username, @"passport",//用户名
-                                [OrderInfo sharedSingleton].roleName, @"oldp",//充值角色
-                                [OrderInfo sharedSingleton].money, @"newp",nil];
+                                oldPwd, @"oldp",//充值角色
+                                newPwd, @"newp",nil];
     
     NSString *postData = [dictionary buildQueryString];
+    
+    NSLog(@"postData modify=%@", [MODIFY_PWD stringByAppendingFormat:@"%@", postData]);
+    
     [_aliPost post:MODIFY_PWD argData:postData];
 
 }
@@ -201,6 +204,11 @@
     }
     
     [self showMessage:@"网络连接超时"];
+}
+
+-(void)splusCloseClick
+{
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 -(void)showMessage:(NSString*)msg

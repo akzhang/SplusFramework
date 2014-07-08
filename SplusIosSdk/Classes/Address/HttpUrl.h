@@ -57,23 +57,32 @@ static const NSString *HTMLWAPPAY_URL = @"http://sy.api.37wan.cn/htmlWapPay_test
 //http://api.splusgame.com/changepasswd.php
 
 //修改密码
-static const NSString *MODIFY_PWD = @"http://api.splusgame.com/changepasswd.php";
-
-//public static final String HTMLWAPPAY_URL = "http://sy.api.37wan.cn/htmlWapPay_test/payIndex.php";
-//
-//public static final String SQPAGE_URL = "http://api.splusgame.com/dest/feedback.php";
-//
-//public static final String FORUMPAGE_URL = "http://bbs.splusgame.com";
-//
-//public static final String ANNOUNCEMENTSPAGE_URL = "http://api.splusgame.com/dest/activity.php";
-//
-//public static final String BINDMOBILE_URL = "http://sy.api.37wan.cn/action/activebindmobile.php?";
+static const NSString *MODIFY_PWD = @"http://api.splusgame.com/sdk/changepasswd.php";
 
 //web支付
 //支付URL
 static const NSString *PAY_URL_WEB = @"http://api.splusgame.com/sdk/payIndex.php";
 
+//获取验证码
+static const NSString *GET_IDENT = @"http://sy.api.37wan.cn/action/bindmobile.php";
 
+//校验绑定手机
+static const NSString *BIND_PHONE = @"http://sy.api.37wan.cn/action/bindmobile.php";
+
+//public static final String SQPAGE_URL = "http://api.splusgame.com/dest/feedback.php";
+//
+//public static final String FORUMPAGE_URL = "http://bbs.splusgame.com";
+//
+//public static final String ANNOUNCEMENTSPAGE_URL = "http://api.splusgame.com/dest/activity.php";
+
+//客服中心
+static const NSString *QPAGE_URL = @"http://api.splusgame.com/dest/feedback.php";
+
+//论坛
+static const NSString *FORUMPAGE_URL = @"http://bbs.splusgame.com";
+
+//活动
+static const NSString *ANNOUNCEMENTSPAGE_URL = @"http://api.splusgame.com/dest/activity.php";
 
 
 

@@ -132,6 +132,38 @@
         }
             break;
             
+        case 1:
+        {
+            AcountWeb *acountWeb = [[AcountWeb alloc] init];
+            acountWeb.payway = 1;
+            [self presentModalViewController:acountWeb animated:YES];
+        }
+            break;
+            
+        case 2:
+        {
+            AcountWeb *acountWeb = [[AcountWeb alloc] init];
+            acountWeb.payway = 2;
+            [self presentModalViewController:acountWeb animated:YES];
+        }
+            break;
+            
+        case 3:
+        {
+            AcountWeb *acountWeb = [[AcountWeb alloc] init];
+            acountWeb.payway = 3;
+            [self presentModalViewController:acountWeb animated:YES];
+        }
+            break;
+            
+        case 4:
+        {
+            AcountWeb *acountWeb = [[AcountWeb alloc] init];
+            acountWeb.payway = 4;
+            [self presentModalViewController:acountWeb animated:YES];
+        }
+            break;
+            
         default:
             break;
     }

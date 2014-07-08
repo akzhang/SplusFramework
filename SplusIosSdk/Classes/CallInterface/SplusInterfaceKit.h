@@ -53,7 +53,7 @@
 /**
  *  个人中心
  */
--(void)splusAcountManage;
+-(void)splusAcountManage:(NSString*) serverid ServerName:(NSString*)serverName Roleld:(NSString*)roleld RoleName:(NSString*)roleName;
 
 
 /**

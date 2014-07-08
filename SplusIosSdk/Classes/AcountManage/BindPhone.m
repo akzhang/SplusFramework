@@ -14,6 +14,8 @@
 
 @implementation BindPhone
 
+NSInteger bindSeconds = 60;//60秒倒计时
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -104,7 +106,7 @@
     [_splusGetIdent setBackgroundImage:[GetImage getSmallRectImage:@"splus_login_bt"] forState:UIControlStateNormal];
     [_splusGetIdent setTitle:@"获取验证码" forState:UIControlStateNormal];
     _splusGetIdent.titleLabel.font = [UIFont systemFontOfSize:14.0];
-    [_splusGetIdent addTarget:self action:@selector(splusLoginNowClick) forControlEvents: UIControlEventTouchUpInside];//处理点击
+    [_splusGetIdent addTarget:self action:@selector(splusGetIdentClick:) forControlEvents: UIControlEventTouchUpInside];//处理点击
     [_splusBindBgView addSubview:_splusGetIdent];
     
     //提交
@@ -112,9 +114,174 @@
     [_splusCommit setBackgroundImage:[GetImage getSmallRectImage:@"splus_login_bt"] forState:UIControlStateNormal];
     [_splusCommit setTitle:@"提交" forState:UIControlStateNormal];
     _splusCommit.titleLabel.font = [UIFont systemFontOfSize:14.0];
-    [_splusCommit addTarget:self action:@selector(splusLoginNowClick) forControlEvents: UIControlEventTouchUpInside];//处理点击
+    [_splusCommit addTarget:self action:@selector(splusCommitClick:) forControlEvents: UIControlEventTouchUpInside];//处理点击
     [_splusBindBgView addSubview:_splusCommit];
     
+}
+
+//倒计时
+#pragma mark -Timer
+-(void)timeFireMethod{
+    bindSeconds--;
+    NSString *tempStr = [NSString stringWithFormat:@"%d", bindSeconds];
+    [_splusGetIdent setTitle:tempStr forState:UIControlStateNormal];
+    if(bindSeconds==0){
+        [_splusGetIdent setTitle:@"获取验证码" forState:UIControlStateNormal];
+        [_countDownTimer invalidate];
+        [_splusGetIdent setUserInteractionEnabled:YES];
+    }
+}
+
+//获取验证码
+-(void)splusGetIdentClick:(id)sender
+{
+    NSString *phone = _splusPhoneEdit.text;
+    if ([phone length] == 0)
+    {
+        [self showMessage:@"手机号不能为空"];
+    }
+    else if ([phone length] != 11)
+    {
+        [self showMessage:@"请输入正确的手机号码"];
+    }
+    else
+    {
+        _HUD = [[MBProgressHUD alloc] initWithView:self.view];
+        [self.view addSubview:_HUD];
+        _HUD.removeFromSuperViewOnHide = YES;
+        [_HUD show: YES];
+        
+        _aliPost = [[httpRequest alloc] init];
+        _aliPost.dlegate = self;
+        _aliPost.success = @selector(get_callback:);
+        _aliPost.error = @selector(get_error);
+        
+        // 登录请求
+        NSDictionary *dictionaryBundle = [[NSBundle mainBundle] infoDictionary];
+        NSString *partner = [dictionaryBundle objectForKey:@"Partner"];
+        NSString *sign = @"";
+        NSString *mTime = [[AppInfo sharedSingleton] getData];
+        NSLog(@"deviceno = %@", [ActivateInfo sharedSingleton].deviceno);
+        
+        sign = [sign stringByAppendingFormat:@"%@%@%@%@%@%@%@%@", [AppInfo sharedSingleton].gameID,[ActivateInfo sharedSingleton].deviceno,[AppInfo sharedSingleton].sourceID, partner,[SplusUser sharedSingleton].uid, [SplusUser sharedSingleton].username, mTime ,[AppInfo sharedSingleton].gameKey];
+        
+        NSLog(@"Md5 sign = %@", [MyMD5 md5:sign]);
+        
+        NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                    [SplusUser sharedSingleton].uid, @"uid",
+                                    @"1",@"debug",
+                                    [AppInfo sharedSingleton].gameID, @"gameid",
+                                    [MyMD5 md5:sign], @"sign",
+                                    mTime, @"time",
+                                    [ActivateInfo sharedSingleton].deviceno, @"deviceno",
+                                    partner, @"partner",
+                                    [AppInfo sharedSingleton].sourceID,@"referer",
+                                    [SplusUser sharedSingleton].username, @"passport",//用户名
+                                    phone,nil];
+        
+        NSString *postData = [dictionary buildQueryString];
+        
+        NSLog(@"postData modify=%@", [MODIFY_PWD stringByAppendingFormat:@"%@", postData]);
+        
+        [_aliPost post:GET_IDENT argData:postData];
+        
+        return;
+    }
+}
+
+-(void)get_callback:(NSString*)tempResult
+{
+    if (_HUD != NULL) {
+        [_HUD hide:YES];
+    }
+    
+    bindSeconds = 60;
+    [_splusGetIdent setUserInteractionEnabled:NO];
+    _countDownTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timeFireMethod) userInfo:nil repeats:YES];
+    return;
+}
+
+-(void)get_error
+{
+    [self showMessage:@"网络连接超时"];
+}
+
+//提交
+-(void)splusCommitClick:(id)sender
+{
+    NSString *phoneText = _splusPhoneEdit.text;
+    NSString *idenText = _splusIdentEdit.text;
+    if (phoneText.length == 0) {
+        [self showMessage:@"手机号不能为空"];
+    }else if(phoneText.length != 11){
+        [self showMessage:@"手机号为11位"];
+    }else if(idenText.length == 0){
+        [self showMessage:@"验证码不能为空"];
+    }else{
+        
+        _HUD = [[MBProgressHUD alloc] initWithView:self.view];
+        [self.view addSubview:_HUD];
+        //HUD.delegate = self;
+        _HUD.removeFromSuperViewOnHide = YES;
+        _HUD.dimBackground = YES;
+        //HUD.labelText = @"正在注册...";
+        [_HUD show: YES];
+        
+        httpRequest *post = [[httpRequest alloc] init];
+        post.dlegate = self;
+        post.success = @selector(bind_callback:);
+        post.error = @selector(bind_error);
+        
+        // 登录请求
+        NSDictionary *dictionaryBundle = [[NSBundle mainBundle] infoDictionary];
+        NSString *partner = [dictionaryBundle objectForKey:@"Partner"];
+        NSString *sign = @"";
+        NSString *mTime = [[AppInfo sharedSingleton] getData];
+        NSLog(@"deviceno = %@", [ActivateInfo sharedSingleton].deviceno);
+        
+        sign = [sign stringByAppendingFormat:@"%@%@%@%@%@%@%@%@", [AppInfo sharedSingleton].gameID,[ActivateInfo sharedSingleton].deviceno,[AppInfo sharedSingleton].sourceID, partner,[SplusUser sharedSingleton].uid, [SplusUser sharedSingleton].username, mTime ,[AppInfo sharedSingleton].gameKey];
+        
+        NSLog(@"Md5 sign = %@", [MyMD5 md5:sign]);
+        
+        NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                    [SplusUser sharedSingleton].uid, @"uid",
+                                    @"1",@"debug",
+                                    [AppInfo sharedSingleton].gameID, @"gameid",
+                                    [MyMD5 md5:sign], @"sign",
+                                    mTime, @"time",
+                                    [ActivateInfo sharedSingleton].deviceno, @"deviceno",
+                                    partner, @"partner",
+                                    [AppInfo sharedSingleton].sourceID,@"referer",
+                                    [SplusUser sharedSingleton].username, @"passport",//用户名
+                                
+                                    phoneText, @"phone",
+                                    idenText, @"code",
+                                    nil];
+        
+        NSString *postData = [dictionary buildQueryString];
+        
+        NSLog(@"postData modify=%@", [MODIFY_PWD stringByAppendingFormat:@"%@", postData]);
+        
+        [_aliPost post:BIND_PHONE argData:postData];
+        
+    }
+}
+
+#pragma mark -BindPhone
+-(void)bind_callback:(NSString*)tempResult
+{
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+-(void)bind_error
+{
+    
+}
+
+-(void)showMessage:(NSString*)msg
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:msg delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+    [alert show];
 }
 
 - (void)didReceiveMemoryWarning
