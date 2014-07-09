@@ -9,10 +9,32 @@
 #import "Login.h"
 
 @interface Login ()
+{
+    BOOL flag; //控制tabbar的显示与隐藏标志
+}
 
 @end
 
 @implementation Login
+
+int floatpositon = 0;
+
+//单例模式
++ (RCDraggableButton *)shareInstance{
+    static RCDraggableButton *flaotButton;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        UIInterfaceOrientation orientationFloat = [UIApplication sharedApplication].statusBarOrientation;
+        if (orientationFloat == UIInterfaceOrientationPortrait) {
+            flaotButton=[[RCDraggableButton alloc] initInKeyWindowWithFrame:CGRectMake(0, SCREENHEIGHT/2 - 30, 60, 60)];//40, 300, screenWidth - 120, 44
+        }else{
+            flaotButton=[[RCDraggableButton alloc] initInKeyWindowWithFrame:CGRectMake(0, SCREENWIDTH/2 - 30, 60, 60)];//40, 300, screenWidth - 120, 44
+        }
+        
+        [flaotButton setBackgroundImage:[GetImage getSmallRectImage:@"splus_float_icon_normal"] forState:UIControlStateNormal];
+    });
+    return flaotButton;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -39,6 +61,7 @@
     CGFloat bg_height = 290;
     
     _splusLoginBgView = [[UIView alloc] initWithFrame:CGRectMake(SCREENWIDTH/2 - bg_width/2, SCREENHEIGHT/2 - bg_height/2, bg_width, bg_height)];
+//    _splusLoginBgView.userInteractionEnabled = YES;
     [self.view addSubview:_splusLoginBgView];
     
     _splusLoginBgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 290)];
@@ -99,6 +122,9 @@
     
     _splusForgetPwd = [[UILabel alloc] initWithFrame:CGRectMake(240, 180, 80, 40)];
     _splusForgetPwd.text = @"忘记密码?";
+    _splusForgetPwd.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tapGestureTel = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(forgetPwdEvent:)];
+    [_splusForgetPwd addGestureRecognizer:tapGestureTel];
     _splusForgetPwd.backgroundColor = [UIColor clearColor];
     _splusForgetPwd.font = [UIFont systemFontOfSize:12.0];
     _splusForgetPwd.textColor = [UIColor blueColor];
@@ -121,6 +147,13 @@
     [_splusLoginBgView addSubview:_splusLoginBt];
 }
 
+-(void)forgetPwdEvent:(id)sender
+{
+    AcountWeb *acount = [[AcountWeb alloc] init];
+    acount.payway = 1;
+    [self presentModalViewController:acount animated:YES];
+}
+
 -(void)splusRegisterClick:(id)sender
 {
     Register *splusRegister = [[Register alloc] init];
@@ -137,6 +170,8 @@
 
 -(void)splusLoginClick:(id)sender
 {
+    [self loadAvatarInKeyWindow];
+    
     if (_splusLoginUser.textField.text.length < 5|| _splusLoginUser.textField.text.length > 20) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"用户名输入错误(5-20个字符)" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
         [alert show];
@@ -232,6 +267,9 @@
 
 #pragma mark -VillApper
 -(void)viewWillAppear:(BOOL)animated{
+    [self loadAvatarInKeyWindow];
+    [self _initTabBar];
+    
     _UserArray = [[NSMutableArray alloc] init];
     _PasswordArray = [[NSMutableArray alloc] init];
     
@@ -403,6 +441,148 @@
     [[UIApplication sharedApplication] sendAction:@selector(resignFirstResponder) to:nil from:nil forEvent:nil];
 }
 
+//悬浮图标
+- (void)loadAvatarInKeyWindow {
+    RCDraggableButton *avatar = [Login shareInstance];
+    
+    [avatar setTapBlock:^(RCDraggableButton *avatar) {
+        if(!flag){
+            _tabBarView.hidden = NO;
+            _fullbgView.hidden = NO;
+            [Login shareInstance].hidden = YES;
+            flag = YES;
+        }else{
+            _tabBarView.hidden = YES;
+            _fullbgView.hidden = YES;
+            [Login shareInstance].hidden = NO;
+            flag = NO;
+        }
+    }];
+    
+    [avatar setDraggingBlock:^(RCDraggableButton *avatar) {
+        _tabBarView.hidden = YES;
+        _fullbgView.hidden = YES;
+    }];
+    
+    [avatar setDragDoneBlock:^(RCDraggableButton *avatar) {
+        _tabBarView.hidden = YES;
+        _fullbgView.hidden = YES;
+    }];
+    
+    [avatar setAutoDockingBlock:^(RCDraggableButton *avatar) {
+        _tabBarView.hidden = YES;
+        _fullbgView.hidden = YES;
+    }];
+    
+    [avatar setAutoDockingDoneBlock:^(RCDraggableButton *avatar) {
+        _tabBarView.hidden = YES;
+        _fullbgView.hidden = YES;
+    }];
+}
+
+//初始化tabbar
+-(void)_initTabBar
+{
+    _fullbgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT)];
+    //    _fullbgView.backgroundColor = [UIColor darkGrayColor];
+    //    _fullbgView.alpha = 0.5;
+    
+    _floatWindow = [UIApplication sharedApplication].keyWindow;
+    if (!_floatWindow)
+        _floatWindow = [[UIApplication sharedApplication].windows objectAtIndex:0];
+    [[[_floatWindow subviews] objectAtIndex:0] addSubview:_fullbgView];
+    
+    [_fullbgView setHidden:YES];
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                action:@selector(tapButton:)];
+    [_fullbgView addGestureRecognizer:singleTap];
+    _tabBarView = [[UIView alloc] initWithFrame:CGRectMake(SCREENWIDTH/2 - 140, SCREENHEIGHT/2 - 140, 280 , 280)] ;
+    
+    //view 设置半透明 圆角样式
+    _tabBarView.layer.cornerRadius = 10;//设置圆角的大小
+    _tabBarView.layer.backgroundColor = [[UIColor blackColor] CGColor];
+    //    _tabBarView.alpha = 0.2f;//设置透明
+    //    _tabBarView.layer.masksToBounds = YES;
+    [_fullbgView addSubview:_tabBarView];
+    
+    //循环设置tabbar上的button
+    NSArray *imgNames = [[NSArray alloc]initWithObjects:@"yybbsfloat",@"yygiftfloat",@"yyrecomflaot",@"yyacountfloat", nil];
+    NSArray *imgContent = @[@"游戏论坛",@"活动",@"客服",@"用户中心"];
+    
+    for (int i=0; i<4; i++) {
+        CGRect rect;
+        rect.size.width = 60;
+        rect.size.height = 80;
+        
+        switch (i) {
+            case 0:
+                rect.origin.x = 110;
+                rect.origin.y = 30;
+                break;
+            case 1:
+                rect.origin.x = 190;
+                rect.origin.y = 100;
+                break;
+            case 2:
+                rect.origin.x = 110;
+                rect.origin.y = 170;
+                break;
+            case 3:
+                rect.origin.x = 30;
+                rect.origin.y = 100;
+                break;
+        }
+        
+        //设置每个tabView
+        UIView *tabView = [[UIView alloc] initWithFrame:rect];
+        [_tabBarView addSubview:tabView];
+        
+        //设置tabView的图标
+        HomeButton *tabButton = [[HomeButton alloc] initWithFrame:CGRectMake(0, 0, 60, 80)];
+        tabButton.label.textColor = [UIColor whiteColor];
+        tabButton.label.font = [UIFont systemFontOfSize:14.0];
+        tabButton.label.text = [imgContent objectAtIndex:i];
+        
+        [tabButton.imageBt setBackgroundImage:[GetImage imagesNamedFromCustomBundle:[imgNames objectAtIndex:i]] forState:UIControlStateNormal];
+        [tabButton.imageBt setTag:i];
+        [tabButton.imageBt addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
+        [tabView addSubview:tabButton];
+    }
+    
+    [_tabBarView setHidden:YES];
+}
+
+#pragma mark -Float
+- (void)buttonClicked:(id)sender
+{
+    NSLog(@"%d",[sender tag]);
+    int butttag = [sender tag];
+    _tabBarView.hidden = YES;
+    _fullbgView.hidden = YES;
+    [Login shareInstance].hidden = NO;
+    
+    if (butttag == 0) {
+        [[SplusInterfaceKit sharedInstance] suspendView:1];
+        
+    }else if (butttag == 1){
+        floatpositon = 3;
+        [[SplusInterfaceKit sharedInstance] suspendView:2];
+        
+    }else if (butttag == 2){
+        floatpositon = 1;
+        [[SplusInterfaceKit sharedInstance] suspendView:3];
+        
+    }else if (butttag == 3){
+        floatpositon = 0;
+        [[SplusInterfaceKit sharedInstance] suspendView:4];
+    }
+}
+
+-(void)tapButton:(id)sender{
+    _fullbgView.hidden = YES;
+    _tabBarView.hidden = YES;
+    [Login shareInstance].hidden = NO;
+}
 
 #pragma mark - QCheckBoxDelegate
 - (void)didSelectedCheckBox:(QCheckBox *)checkbox checked:(BOOL)checked {

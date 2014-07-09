@@ -48,7 +48,7 @@
  *
  *  @param context context
  */
--(void)splusLogin;
+-(void)splusLogin:(NSString*) serverid ServerName:(NSString*)serverName Roleld:(NSString*)roleld RoleName:(NSString*)roleName;
 
 /**
  *  个人中心
@@ -89,5 +89,8 @@
  *  @param money      充值金额
  */
 -(void)splusQuotaPay:(NSString*) serverid ServerName:(NSString*)serverName Roleld:(NSString*)roleld RoleName:(NSString*)roleName OutOrderid:(NSString*)outOrderid Ext:(NSString*)pext Type:(NSString*)type Money:(NSString*)money;
+
+
+-(void)suspendView:(int)payway;
 
 @end

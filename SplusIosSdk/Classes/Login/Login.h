@@ -22,6 +22,10 @@
 #import "MBProgressHUD.h"
 #import "UserData.h"
 #import "JSON.h"
+#import "RCDraggableButton.h"
+#import "HomeButton.h"
+#import "SplusInterfaceKit.h"
+#import "AcountWeb.h"
 
 @interface Login : UIViewController<QCheckBoxDelegate,UITextFieldDelegate,qqLoginPositionDelegate>
 
@@ -56,5 +60,14 @@
 @property(nonatomic, retain)NSMutableArray *PasswordArray;
 
 @property(nonatomic,strong)MBProgressHUD *HUD;
+
+@property(nonatomic, strong)UIView *tabBarView;
+
+@property(nonatomic, strong)UIView *fullbgView;
+
+@property(nonatomic, strong)UIView *bgView;
+
+@property(nonatomic, strong)UIWindow* floatWindow;
+
 
 @end

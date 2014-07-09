@@ -182,7 +182,18 @@
     _splusCardPwd.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     [_splusScrollView addSubview:_splusCardPwd];
     
-    _splusCommit = [[UIButton alloc] initWithFrame:CGRectMake(15, 450, SCREENWIDTH - 30, 50)];
+    _splusTip = [[UIImageView alloc] initWithFrame:CGRectMake(SCREENWIDTH - 120, 450, 20, 20)];
+    _splusTip.image = [GetImage getSmallRectImage:@"splus_pay_warning"];
+    [_splusScrollView addSubview:_splusTip];
+    
+    _splusTibPayBt = [[UIButton alloc] initWithFrame:CGRectMake(SCREENWIDTH - 100, 450, 50, 20)];
+    [_splusTibPayBt setTitle:@"充值说明" forState:UIControlStateNormal];
+    [_splusTibPayBt setTitleColor:[UIColor darkTextColor] forState:UIControlStateNormal];
+    _splusTibPayBt.titleLabel.font = [UIFont systemFontOfSize:12.0];
+    [_splusTibPayBt addTarget:self action:@selector(yyPayTipClick:) forControlEvents: UIControlEventTouchUpInside];//处理点击
+    [_splusScrollView addSubview:_splusTibPayBt];
+    
+    _splusCommit = [[UIButton alloc] initWithFrame:CGRectMake(15, 475, SCREENWIDTH - 30, 50)];
     [_splusCommit setBackgroundImage:[GetImage getSmallRectImage:@"splus_login_bt"] forState:UIControlStateNormal];
     [_splusCommit setTitle:@"确定充值" forState:UIControlStateNormal];
     _splusCommit.titleLabel.font = [UIFont systemFontOfSize:14.0];
@@ -227,7 +238,12 @@
     //密码
     [_splusCardPwd setFrame:CGRectMake(15, 290, SCREENWIDTH - 30, 45)];
     
-    [_splusCommit setFrame:CGRectMake(15, 345, SCREENWIDTH - 30, 45)];
+    [_splusTip setFrame:CGRectMake(SCREENWIDTH - 120, 340, 20, 20)];
+    
+    
+    [_splusTibPayBt setFrame:CGRectMake(SCREENWIDTH - 100, 340, 50, 20)];
+    
+    [_splusCommit setFrame:CGRectMake(15, 365, SCREENWIDTH - 30, 45)];
 }
 
 #pragma mark -PoritButton
@@ -301,6 +317,30 @@
             [_splusScrollView addSubview:button];
         }
     }
+}
+
+-(void)yyPayTipClick:(id)sender
+{
+    QutoPayTip *tip = [[QutoPayTip alloc] init];
+    
+    switch (_payway) {
+        case 4:
+            tip.tipString = YIDONG_SERVER;
+            break;
+        case 5:
+            tip.tipString = LIANTONG_SERVER;
+            break;
+            
+        case 6:
+            tip.tipString = SHENGDA_SERVER;
+            break;
+            
+        default:
+            tip.tipString = SHENGDA_SERVER;
+            break;
+    }
+
+    [self presentModalViewController:tip animated:YES];
 }
 
 //back

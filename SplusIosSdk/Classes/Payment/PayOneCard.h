@@ -25,6 +25,7 @@
 #import "UPPayPluginDelegate.h"
 #import "UPPayPlugin.h"
 #import "PayWebView.h"
+#import "QutoPayTip.h"
 
 @interface PayOneCard : UIViewController<UITextFieldDelegate,UIScrollViewDelegate>
 
@@ -92,6 +93,10 @@
 @property(nonatomic, strong)NSString *payUrl;
 
 @property(nonatomic, strong)NSString *payDelegateUrl;
+
+@property(nonatomic, strong)UIImageView *splusTip;
+
+@property(nonatomic, strong)UIButton *splusTibPayBt;
 
 
 

@@ -138,7 +138,7 @@
     cell.textLabel.text = [tableArray objectAtIndex:[indexPath row]];
     cell.textLabel.font = [UIFont systemFontOfSize:16.0f];
     
-    cell.deleteButton.frame= CGRectMake(self.frame.size.width/2 - 15, 5, 30, 30);
+    cell.deleteButton.frame= CGRectMake(self.frame.size.width - 45, 5, 30, 30);
     [cell.deleteButton setBackgroundImage:[GetImage imagesNamedFromCustomBundle:@"splus_close"] forState:UIControlStateNormal];
     cell.deleteButton.tag = [indexPath row];
     [cell.deleteButton addTarget:self action:@selector(celldeleteClick:) forControlEvents: UIControlEventTouchUpInside];//处理点击

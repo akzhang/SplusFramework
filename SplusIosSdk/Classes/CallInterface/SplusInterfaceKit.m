@@ -14,6 +14,7 @@
 #import "QutoPayHome.h"
 #import "OrderInfo.h"
 #import "AcountHome.h"
+#import "AcountWeb.h"
 
 @implementation SplusInterfaceKit
 
@@ -82,13 +83,18 @@ __strong static SplusInterfaceKit *singleton = nil;
 /**
  *  登录接口
  */
--(void)splusLogin
+-(void)splusLogin:(NSString*) serverid ServerName:(NSString*)serverName Roleld:(NSString*)roleld RoleName:(NSString*)roleName
 {
     if ([ActivateInfo sharedSingleton].deviceno == nil) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"请先激活" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
         [alert show];
         return;
     }
+    
+    [OrderInfo sharedSingleton].serverId = serverid;
+    [OrderInfo sharedSingleton].serverName = serverName;
+    [OrderInfo sharedSingleton].roleId = roleld;
+    [OrderInfo sharedSingleton].roleName = roleName;
     
     Login *login = [[Login alloc] init];
     login.delegate = _delegate;
@@ -158,5 +164,29 @@ __strong static SplusInterfaceKit *singleton = nil;
     NSLog(@"alipay back %@", paramURL);
     [[NSNotificationCenter defaultCenter] postNotificationName:@"finish" object:@"0"];
 };
+
+-(void)suspendView:(int)payway
+{
+    if (payway == 4)
+    {
+        AcountHome *acount = [[AcountHome alloc] init];
+        acount.delegate = _delegate;
+        UIViewController *rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;
+        rootViewController.modalPresentationStyle = UIModalPresentationCurrentContext;
+        [rootViewController presentModalViewController:acount animated:YES ];
+    }else
+    {
+        AcountWeb *acount = [[AcountWeb alloc] init];
+        acount.payway = payway;
+        UIViewController *rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;
+        rootViewController.modalPresentationStyle = UIModalPresentationCurrentContext;
+        [rootViewController presentModalViewController:acount animated:YES ];
+    }
+}
+
+
+
+
+
 
 @end
