@@ -127,6 +127,8 @@
 		E2A12683196FB5F100CCB9FF /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E2A1267F196FB5F100CCB9FF /* libssl.a */; };
 		E2A17B7A196F90DF001EC392 /* UPPayPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = E2CC66CC1962CF9300566EA3 /* UPPayPlugin.h */; };
 		E2A17B7E196F97F5001EC392 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2A17B7D196F97F5001EC392 /* SystemConfiguration.framework */; };
+		E2A6D57C1974CDA1007388E6 /* HumanResources.h in Headers */ = {isa = PBXBuildFile; fileRef = E2A6D57A1974CDA1007388E6 /* HumanResources.h */; };
+		E2A6D57D1974CDA1007388E6 /* HumanResources.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A6D57B1974CDA1007388E6 /* HumanResources.m */; };
 		E2ACA0CF196E427000FC5C2E /* LoginOut.h in Headers */ = {isa = PBXBuildFile; fileRef = E2ACA0CD196E427000FC5C2E /* LoginOut.h */; };
 		E2ACA0D0196E427000FC5C2E /* LoginOut.m in Sources */ = {isa = PBXBuildFile; fileRef = E2ACA0CE196E427000FC5C2E /* LoginOut.m */; };
 		E2CC66C919628D8100566EA3 /* OrderInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = E2CC66C719628D8100566EA3 /* OrderInfo.h */; };
@@ -286,6 +288,8 @@
 		E2A1267E196FB5F100CCB9FF /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcrypto.a; sourceTree = "<group>"; };
 		E2A1267F196FB5F100CCB9FF /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libssl.a; sourceTree = "<group>"; };
 		E2A17B7D196F97F5001EC392 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		E2A6D57A1974CDA1007388E6 /* HumanResources.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HumanResources.h; sourceTree = "<group>"; };
+		E2A6D57B1974CDA1007388E6 /* HumanResources.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HumanResources.m; sourceTree = "<group>"; };
 		E2ACA0CD196E427000FC5C2E /* LoginOut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginOut.h; sourceTree = "<group>"; };
 		E2ACA0CE196E427000FC5C2E /* LoginOut.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginOut.m; sourceTree = "<group>"; };
 		E2CC66C719628D8100566EA3 /* OrderInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderInfo.h; sourceTree = "<group>"; };
@@ -635,6 +639,8 @@
 				E22A90F0196BDE97006338C3 /* AcountWeb.m */,
 				E2ACA0CD196E427000FC5C2E /* LoginOut.h */,
 				E2ACA0CE196E427000FC5C2E /* LoginOut.m */,
+				E2A6D57A1974CDA1007388E6 /* HumanResources.h */,
+				E2A6D57B1974CDA1007388E6 /* HumanResources.m */,
 			);
 			path = AcountManage;
 			sourceTree = "<group>";
@@ -752,6 +758,7 @@
 				E2086F83195A65B200523F0E /* PSTGridLayoutSection.h in Headers */,
 				E2086F70195A65B200523F0E /* PSTCollectionViewController.h in Headers */,
 				E2072E1B195D04B6001FA06C /* PayManual.h in Headers */,
+				E2A6D57C1974CDA1007388E6 /* HumanResources.h in Headers */,
 				E2086F6B195A65B200523F0E /* PSTCollectionView.h in Headers */,
 				E2CC66CF1962CF9300566EA3 /* UPPayPluginDelegate.h in Headers */,
 				E24777D1196D182800C01404 /* HomeButton.h in Headers */,
@@ -876,6 +883,7 @@
 				E2086F6E195A65B200523F0E /* PSTCollectionViewCell.m in Sources */,
 				E23C205A19515E7200EC4F37 /* NSData+ASE128.m in Sources */,
 				E23C206E19515E7200EC4F37 /* SplusImage.m in Sources */,
+				E2A6D57D1974CDA1007388E6 /* HumanResources.m in Sources */,
 				E23C206819515E7200EC4F37 /* QCheckBox.m in Sources */,
 				E23C207019515E7200EC4F37 /* UserData.m in Sources */,
 				E22A90F2196BDE97006338C3 /* AcountWeb.m in Sources */,

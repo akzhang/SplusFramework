@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "HttpUrl.h"
 #import "GetImage.h"
+#import "QutoPayTip.h"
 
 @interface PayManual : UIViewController
 

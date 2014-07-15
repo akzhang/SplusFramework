@@ -47,7 +47,7 @@ extern NSString *tipValue;
     [_splusTipBgView addSubview:_splusTipBgImageView];
     
     
-    UILabel *splusTitle = [[UILabel alloc] initWithFrame:CGRectMake(bg_width/2 - 60, 25, 160, 25)];
+    UILabel *splusTitle = [[UILabel alloc] initWithFrame:CGRectMake(bg_width/2 - 80, 25, 160, 25)];
     splusTitle.textColor = UIColorFromRGB(0xFF6600);
     splusTitle.font = [UIFont systemFontOfSize:22.0];
     splusTitle.text = @"提示";
@@ -64,11 +64,14 @@ extern NSString *tipValue;
     
     UIImageView *splusEditFrame = [[UIImageView alloc] initWithFrame:CGRectMake(20, 80, 280, 140)];
     [splusEditFrame setImage:[GetImage getSmallRectImage:@"splus_input_edit"]];
+    splusEditFrame.userInteractionEnabled = YES;
     [_splusTipBgView addSubview:splusEditFrame];
     
     _tipContent = [[UITextView alloc] initWithFrame:CGRectMake(10, 10, 260, 120)];
+    _tipContent.userInteractionEnabled = YES;
     NSAttributedString *attributedString = [[NSAttributedString alloc] initWithData:[tipValue dataUsingEncoding:NSUnicodeStringEncoding] options:@{ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType } documentAttributes:nil error:nil];
     _tipContent.attributedText = attributedString;
+    _tipContent.scrollEnabled = YES;
     [splusEditFrame addSubview:_tipContent];
     
     

@@ -146,8 +146,8 @@
             
         default:
         {
-            LoginOut *splusOut = [[LoginOut alloc] init];
-            [self presentModalViewController:splusOut animated:YES];
+            HumanResources *huMan = [[HumanResources alloc] init];
+            [self presentModalViewController:huMan animated:YES];
 
         }
         break;

@@ -15,6 +15,7 @@
 #import "ModifyPwd.h"
 #import "AcountWeb.h"
 #import "LoginOut.h"
+#import "HumanResources.h"
 
 @interface SafeHome : UIViewController<UITableViewDelegate,UITableViewDataSource>
 

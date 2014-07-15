@@ -156,7 +156,7 @@
     [_splusTibPayBt setTitle:@"充值说明" forState:UIControlStateNormal];
     [_splusTibPayBt setTitleColor:[UIColor darkTextColor] forState:UIControlStateNormal];
     _splusTibPayBt.titleLabel.font = [UIFont systemFontOfSize:12.0];
-    [_splusTibPayBt addTarget:self action:@selector(yyPayBackClick) forControlEvents: UIControlEventTouchUpInside];//处理点击
+    [_splusTibPayBt addTarget:self action:@selector(yyPayTipClick) forControlEvents: UIControlEventTouchUpInside];//处理点击
     [_splusFrameView addSubview:_splusTibPayBt];
     
     
@@ -252,6 +252,13 @@
         default:
             break;
     }
+}
+
+-(void)yyPayTipClick
+{
+    tipValue = REGISTER_SERVER;
+    QutoPayTip *tip = [[QutoPayTip alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT)];
+    [self.view addSubview:tip];
 }
 
 //back

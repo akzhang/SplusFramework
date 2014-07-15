@@ -265,7 +265,8 @@ int floatpositon = 0;
 }
 
 -(void)login_error{
-    if (_HUD != NULL) {
+    if (_HUD != NULL)
+    {
         [_HUD hide:YES];
     }
     
@@ -596,12 +597,6 @@ int floatpositon = 0;
 - (void)didSelectedCheckBox:(QCheckBox *)checkbox checked:(BOOL)checked {
     NSLog(@"did tap on CheckBox:%@ checked:%d", checkbox.titleLabel.text, checked);
 }
-
--(BOOL)shouldAutorotate
-{
-    return NO;
-}
-
 
 //iOS 6.0旋屏支持方向
 -(NSUInteger)supportedInterfaceOrientations
