@@ -328,7 +328,8 @@
         [_FlastSelectbutton setBackgroundImage:[GetImage getSmallRectImage:@"splus_cash_bg"] forState:UIControlStateNormal];
     }
     UIButton *AButton=sender;
-    [AButton setBackgroundImage:[GetImage getSmallRectImage:@"splus_pay_choose"] forState:UIControlStateNormal];
+    [AButton setBackgroundImage:[GetImage getPayRectImage:@"splus_pay_choose"] forState:UIControlStateNormal];
+    [AButton setContentMode:UIViewContentModeScaleAspectFill];
     _FlastSelectbutton=AButton;
     
     //兑换率
@@ -594,6 +595,27 @@
 - (BOOL)prefersStatusBarHidden
 {
     return YES;//隐藏为YES，显示为NO
+}
+
+-(BOOL)shouldAutorotate
+{
+    return NO;
+}
+
+
+//iOS 6.0旋屏支持方向
+-(NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskAll;
+}
+
+
+//iOS 6.0以下旋屏
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    if (UIInterfaceOrientationIsLandscape(interfaceOrientation)) {
+        return YES;
+    }
+    return NO;
 }
 
 /*

@@ -26,6 +26,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(popFinish:) name:@"LoginOut_close" object:nil];
+    
     _splusArray = [NSArray arrayWithObjects:@"账号安全", @"客服中心", @"论坛", @"活动", @"注销账号",nil];
     _splusImageArray = [NSArray arrayWithObjects:@"splus_person_account", @"splus_person_costum", @"splus_person_forum", @"splus_person_announcementspage", @"splus_person_logout", nil];
     [self initAcountHome];
@@ -53,7 +55,7 @@
     
     _custom = [[UIButton alloc] initWithFrame:CGRectMake(SCREENWIDTH - 55, 5, 50, 50)];
     [_custom setImage:[GetImage imagesNamedFromCustomBundle:@"splus_custom"] forState:UIControlStateNormal];
-    [_custom addTarget:self action:@selector(yyAcountBackClick) forControlEvents: UIControlEventTouchUpInside];//处理点击
+    [_custom addTarget:self action:@selector(yyAcountCustomClick) forControlEvents: UIControlEventTouchUpInside];//处理点击
     [self.view addSubview:_custom];
     
     _splusSplitLine = [[UIImageView alloc] initWithFrame:CGRectMake(0, 55, SCREENWIDTH, 1)];
@@ -66,7 +68,7 @@
     [self.view addSubview:_splusTitle];
     
     _splusUserName = [[UILabel alloc] initWithFrame:CGRectMake(SCREENWIDTH/2 - 40, 65, 60, 20)];
-    _splusUserName.text = @"4399_hero";
+    _splusUserName.text = [SplusUser sharedSingleton].username;
     _splusUserName.font = [UIFont systemFontOfSize:12.0];
     _splusUserName.textColor = [UIColor orangeColor];
     [self.view addSubview:_splusUserName];
@@ -95,6 +97,24 @@
     
 }
 
+-(void)popFinish:(id)sender
+{
+    [self dismissViewControllerAnimated:NO completion:nil];
+    [_delegate SplusLoginOutSuccess];//注销回调
+}
+
+-(void)yyAcountBackClick
+{
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+-(void)yyAcountCustomClick
+{
+    AcountWeb *web = [[AcountWeb alloc] init];
+    web.payway = 2;
+    [self presentModalViewController:web animated:YES];
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [_splusArray count];
@@ -108,11 +128,6 @@
     if (cell == nil) {
         cell = [[AcountCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    
-//    if ([indexPath row] == 0) {
-//        cell.headImage.layer.masksToBounds = YES;
-//        cell.headImage.layer.cornerRadius = cell.headImage.frame.size.width / 2;
-//    }
     
     cell.headImage.image = [GetImage imagesNamedFromCustomBundle:[_splusImageArray objectAtIndex:[indexPath row]]];
     cell.labelText.text = [_splusArray objectAtIndex:[indexPath row]];
@@ -158,9 +173,8 @@
             
         case 4:
         {
-            AcountWeb *acountWeb = [[AcountWeb alloc] init];
-            acountWeb.payway = 4;
-            [self presentModalViewController:acountWeb animated:YES];
+            LoginOut *splusOut = [[LoginOut alloc] init];
+            [self presentModalViewController:splusOut animated:YES];
         }
             break;
             
@@ -181,6 +195,26 @@
     return YES;//隐藏为YES，显示为NO
 }
 
+-(BOOL)shouldAutorotate
+{
+    return NO;
+}
+
+
+//iOS 6.0旋屏支持方向
+-(NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskAll;
+}
+
+
+//iOS 6.0以下旋屏
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    if (UIInterfaceOrientationIsLandscape(interfaceOrientation)) {
+        return YES;
+    }
+    return NO;
+}
 
 - (void)didReceiveMemoryWarning
 {

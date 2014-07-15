@@ -71,9 +71,12 @@
     
     //用户名
     _splusLoginUser = [[UITextField alloc] initWithFrame:CGRectMake(20, 70, 280, 50)];
-    UIImageView *userLogoImage=[[UIImageView alloc] initWithImage:[GetImage getSmallRectImage:@"splus_login_user"]];
-    userLogoImage.frame = CGRectMake(50, 0, 25, 25);
-    _splusLoginUser.leftView = userLogoImage;
+    UIView *userleftview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 35, 35)];
+    UIImageView *userLogoImage=[[UIImageView alloc] initWithImage:[GetImage imagesNamedFromCustomBundle:@"splus_login_user"]];
+    userLogoImage.contentMode = UIViewContentModeScaleToFill;
+    userLogoImage.frame = CGRectMake(5, 5, 25, 25);
+    [userleftview addSubview:userLogoImage];
+    _splusLoginUser.leftView = userleftview;
     _splusLoginUser.leftViewMode = UITextFieldViewModeAlways;
     _splusLoginUser.placeholder = @" 账号:手机号/数字字母组合";
     _splusLoginUser.clearButtonMode = UITextFieldViewModeWhileEditing;
@@ -87,9 +90,11 @@
     
     //密码
     _splusLoginPwd = [[UITextField alloc] initWithFrame:CGRectMake(20, 120, 280, 50)];
+    UIView *leftview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 35, 35)];
     UIImageView *passwdLogoImage=[[UIImageView alloc] initWithImage:[GetImage imagesNamedFromCustomBundle:@"splus_input_pwd"]];
-    passwdLogoImage.frame = CGRectMake(50, 0, 25, 25);
-    _splusLoginPwd.leftView = passwdLogoImage;
+    passwdLogoImage.frame = CGRectMake(5, 5, 25, 25);
+    [leftview addSubview:passwdLogoImage];
+    _splusLoginPwd.leftView = leftview;
     _splusLoginPwd.leftViewMode = UITextFieldViewModeAlways;
     _splusLoginPwd.placeholder = @" 密码:6-20位字母、数字、下划线";
     _splusLoginPwd.delegate = self;
@@ -298,6 +303,9 @@
 #pragma mark - QCheckBoxDelegate
 - (void)didSelectedCheckBox:(QCheckBox *)checkbox checked:(BOOL)checked {
     NSLog(@"did tap on CheckBox:%@ checked:%d", checkbox.titleLabel.text, checked);
+    tipValue = REGISTER_SERVER;
+    QutoPayTip *tip = [[QutoPayTip alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT)];
+    [self.view addSubview:tip];
 }
 
 - (BOOL)prefersStatusBarHidden

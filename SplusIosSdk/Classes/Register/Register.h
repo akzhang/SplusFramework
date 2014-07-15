@@ -22,6 +22,7 @@
 #import "checkWifi.h"
 #import "UserData.h"
 #import "JSON.h"
+#import "QutoPayTip.h"
 
 @interface Register : UIViewController<UITextFieldDelegate>
 

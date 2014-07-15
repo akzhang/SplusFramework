@@ -16,20 +16,31 @@
 
 NSInteger bindSeconds = 60;//60秒倒计时
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+//- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+//{
+//    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+//    if (self) {
+//        // Custom initialization
+//    }
+//    return self;
+//}
+//
+//- (void)viewDidLoad
+//{
+//    [super viewDidLoad];
+//    [self initBindPhoneView];
+//    // Do any additional setup after loading the view.
+//}
+
+- (id)initWithFrame:(CGRect)frame
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super initWithFrame:frame];
     if (self) {
-        // Custom initialization
+        // Initialization code
+        self.userInteractionEnabled = YES;
+        [self initBindPhoneView];
     }
     return self;
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    [self initBindPhoneView];
-    // Do any additional setup after loading the view.
 }
 
 -(void)initBindPhoneView
@@ -37,8 +48,13 @@ NSInteger bindSeconds = 60;//60秒倒计时
     CGFloat bg_width = 320;
     CGFloat bg_height = 290;
     
+    UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT)];
+    bgView.backgroundColor = [UIColor darkTextColor];
+    bgView.alpha = 0.5;
+    [self addSubview:bgView];
+    
     _splusBindBgView = [[UIView alloc] initWithFrame:CGRectMake(SCREENWIDTH/2 - bg_width/2, SCREENHEIGHT/2 - bg_height/2, bg_width, bg_height)];
-    [self.view addSubview:_splusBindBgView];
+    [self addSubview:_splusBindBgView];
     
     _splusBindBgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 290)];
     [_splusBindBgImageView setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -54,7 +70,7 @@ NSInteger bindSeconds = 60;//60秒倒计时
     
     _close = [[UIButton alloc] initWithFrame:CGRectMake(bg_width - 60, 15, 45, 45)];
     [_close setImage:[GetImage imagesNamedFromCustomBundle:@"splus_close"] forState:UIControlStateNormal];
-    [_close addTarget:self action:@selector(splusRegisterClick) forControlEvents: UIControlEventTouchUpInside];//处理点击
+    [_close addTarget:self action:@selector(splusCloseClick) forControlEvents: UIControlEventTouchUpInside];//处理点击
     [_splusBindBgView addSubview:_close];
     
     _splusSpliterLine = [[UIImageView alloc] initWithFrame:CGRectMake(14, 60, 292, 1)];
@@ -132,6 +148,11 @@ NSInteger bindSeconds = 60;//60秒倒计时
     }
 }
 
+-(void)splusCloseClick
+{
+    [self removeFromSuperview];
+}
+
 //获取验证码
 -(void)splusGetIdentClick:(id)sender
 {
@@ -146,8 +167,8 @@ NSInteger bindSeconds = 60;//60秒倒计时
     }
     else
     {
-        _HUD = [[MBProgressHUD alloc] initWithView:self.view];
-        [self.view addSubview:_HUD];
+        _HUD = [[MBProgressHUD alloc] initWithView:self];
+        [self addSubview:_HUD];
         _HUD.removeFromSuperViewOnHide = YES;
         [_HUD show: YES];
         
@@ -219,8 +240,8 @@ NSInteger bindSeconds = 60;//60秒倒计时
         [self showMessage:@"验证码不能为空"];
     }else{
         
-        _HUD = [[MBProgressHUD alloc] initWithView:self.view];
-        [self.view addSubview:_HUD];
+        _HUD = [[MBProgressHUD alloc] initWithView:self];
+        [self addSubview:_HUD];
         //HUD.delegate = self;
         _HUD.removeFromSuperViewOnHide = YES;
         _HUD.dimBackground = YES;
@@ -267,15 +288,38 @@ NSInteger bindSeconds = 60;//60秒倒计时
     }
 }
 
+-(BOOL)shouldAutorotate
+{
+    return NO;
+}
+
+
+//iOS 6.0旋屏支持方向
+-(NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskAll;
+}
+
+
+//iOS 6.0以下旋屏
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    if (UIInterfaceOrientationIsLandscape(interfaceOrientation)) {
+        return YES;
+    }
+    return NO;
+}
+
+
 #pragma mark -BindPhone
 -(void)bind_callback:(NSString*)tempResult
 {
-    [self dismissModalViewControllerAnimated:YES];
+//    [self dismissModalViewControllerAnimated:YES];
+    [self removeFromSuperview];
 }
 
 -(void)bind_error
 {
-    
+    [self showMessage:@"连接超时"];
 }
 
 -(void)showMessage:(NSString*)msg
@@ -284,11 +328,11 @@ NSInteger bindSeconds = 60;//60秒倒计时
     [alert show];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+//- (void)didReceiveMemoryWarning
+//{
+//    [super didReceiveMemoryWarning];
+//    // Dispose of any resources that can be recreated.
+//}
 
 /*
 #pragma mark - Navigation

@@ -169,9 +169,6 @@
     }
 }
 
-
-
-
 //iOS 6.0以下旋屏
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     if (UIInterfaceOrientationIsLandscape(interfaceOrientation)) {

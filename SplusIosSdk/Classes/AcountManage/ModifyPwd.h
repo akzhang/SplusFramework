@@ -20,7 +20,7 @@
 #import "ActivateInfo.h"
 #import "AppInfo.h"
 
-@interface ModifyPwd : UIViewController<UITextFieldDelegate>
+@interface ModifyPwd :UIView<UITextFieldDelegate> //UIViewController<UITextFieldDelegate>
 
 @property (strong, nonatomic)UIImageView *splusModifyBgImageView;//设置背景图
 

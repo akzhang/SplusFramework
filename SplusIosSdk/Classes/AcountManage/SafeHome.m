@@ -26,6 +26,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(popFinish:) name:@"LoginOut_close" object:nil];
+    
     _splusArray = [NSArray arrayWithObjects:@"个人资料", @"修改密码", @"绑定手机", nil];
     _splusImageArray = [NSArray arrayWithObjects:@"splus_person_account", @"splus_person_modify_pwd", @"splus_person_binding_phone", nil];
     [self initSafeHome];
@@ -42,7 +44,7 @@
     
     _back = [[UIButton alloc] initWithFrame:CGRectMake(5, 5, 50, 40)];
     [_back setImage:[GetImage imagesNamedFromCustomBundle:@"splus_back"] forState:UIControlStateNormal];
-    [_back addTarget:self action:@selector(yyAcountBackClick) forControlEvents: UIControlEventTouchUpInside];//处理点击
+    [_back addTarget:self action:@selector(yyAcountBackClick:) forControlEvents: UIControlEventTouchUpInside];//处理点击
     [self.view addSubview:_back];
     
     _splusPayText = [[UILabel alloc] initWithFrame:CGRectMake(SCREENWIDTH/2 - 40, 3, 80, 50)];
@@ -53,7 +55,7 @@
     
     _custom = [[UIButton alloc] initWithFrame:CGRectMake(SCREENWIDTH - 55, 5, 50, 50)];
     [_custom setImage:[GetImage imagesNamedFromCustomBundle:@"splus_custom"] forState:UIControlStateNormal];
-    [_custom addTarget:self action:@selector(yyAcountBackClick) forControlEvents: UIControlEventTouchUpInside];//处理点击
+    [_custom addTarget:self action:@selector(yyCustomClick) forControlEvents: UIControlEventTouchUpInside];//处理点击
     [self.view addSubview:_custom];
     
     _splusSplitLine = [[UIImageView alloc] initWithFrame:CGRectMake(0, 55, SCREENWIDTH, 1)];
@@ -95,6 +97,12 @@
     
 }
 
+-(void)popFinish:(id)sender{
+//    [_delegate SplusLoginOutSuccess];
+//    [self dismissViewControllerAnimated:NO completion:nil];
+}
+
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [_splusArray count];
@@ -109,11 +117,6 @@
         cell = [[AcountCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    //    if ([indexPath row] == 0) {
-    //        cell.headImage.layer.masksToBounds = YES;
-    //        cell.headImage.layer.cornerRadius = cell.headImage.frame.size.width / 2;
-    //    }
-    
     cell.headImage.image = [GetImage imagesNamedFromCustomBundle:[_splusImageArray objectAtIndex:[indexPath row]]];
     cell.labelText.text = [_splusArray objectAtIndex:[indexPath row]];
     cell.tailImage.image = [GetImage imagesNamedFromCustomBundle:@"splus_person_arrow"];
@@ -127,19 +130,27 @@
     switch ([indexPath row]) {
         case 2:
         {
-            BindPhone *bind = [[BindPhone alloc] init];
-            [self presentModalViewController:bind animated:YES];
+            BindPhone *bind = [[BindPhone alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT)];
+//            [self presentModalViewController:bind animated:YES];
+            [self.view addSubview:bind];
         }
             break;
         
         case 1:
         {
-            ModifyPwd *modifypwd = [[ModifyPwd alloc] init];
-            [self presentModalViewController:modifypwd animated:YES];
+            ModifyPwd *modifypwd = [[ModifyPwd alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT)];
+//            [self presentModalViewController:modifypwd animated:YES];
+            [self.view addSubview:modifypwd];
         }
+            break;
             
         default:
-            break;
+        {
+            LoginOut *splusOut = [[LoginOut alloc] init];
+            [self presentModalViewController:splusOut animated:YES];
+
+        }
+        break;
     }
 }
 
@@ -155,9 +166,37 @@
     return YES;//隐藏为YES，显示为NO
 }
 
--(void)yyAcountBackClick
+-(BOOL)shouldAutorotate
 {
-    [self dismissModalViewControllerAnimated:YES];
+    return NO;
+}
+
+
+//iOS 6.0旋屏支持方向
+-(NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskAll;
+}
+
+
+//iOS 6.0以下旋屏
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    if (UIInterfaceOrientationIsLandscape(interfaceOrientation)) {
+        return YES;
+    }
+    return NO;
+}
+
+-(void)yyCustomClick
+{
+    AcountWeb *web = [[AcountWeb alloc] init];
+    web.payway = 1;
+    [self presentModalViewController:web animated:YES];
+}
+
+-(void)yyAcountBackClick:(id)sender
+{
+    [self dismissModalViewControllerAnimated:NO];
 }
 
 - (void)didReceiveMemoryWarning

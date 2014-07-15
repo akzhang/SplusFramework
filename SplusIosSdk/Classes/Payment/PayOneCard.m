@@ -81,7 +81,7 @@
     
     _custom = [[UIButton alloc] initWithFrame:CGRectMake(SCREENWIDTH - 55, 5, 50, 30)];
     [_custom setImage:[GetImage imagesNamedFromCustomBundle:@"splus_custom"] forState:UIControlStateNormal];
-    [_custom addTarget:self action:@selector(yyPayBackClick) forControlEvents: UIControlEventTouchUpInside];//处理点击
+    [_custom addTarget:self action:@selector(yyPayBackClick:) forControlEvents: UIControlEventTouchUpInside];//处理点击
     [self.view addSubview:_custom];
     
     _splusSplitLine = [[UIImageView alloc] initWithFrame:CGRectMake(0, 40, SCREENWIDTH, 1)];
@@ -98,7 +98,7 @@
     
     if (_orientation != UIDeviceOrientationPortrait)
     {//横竖屏button布局
-        CGSize newSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height + 100);
+        CGSize newSize = CGSizeMake(SCREENWIDTH, SCREENHEIGHT + 100);
         [_splusScrollView setContentSize:newSize];
     }
     else
@@ -321,30 +321,30 @@
 
 -(void)yyPayTipClick:(id)sender
 {
-    QutoPayTip *tip = [[QutoPayTip alloc] init];
-    
     switch (_payway) {
         case 4:
-            tip.tipString = YIDONG_SERVER;
+            tipValue = YIDONG_SERVER;
             break;
         case 5:
-            tip.tipString = LIANTONG_SERVER;
+            tipValue = LIANTONG_SERVER;
             break;
             
         case 6:
-            tip.tipString = SHENGDA_SERVER;
+            tipValue = SHENGDA_SERVER;
             break;
             
         default:
-            tip.tipString = SHENGDA_SERVER;
+            tipValue = SHENGDA_SERVER;
             break;
     }
-
-    [self presentModalViewController:tip animated:YES];
+    QutoPayTip *tip = [[QutoPayTip alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT)];
+    
+    [self.view addSubview:tip];
+    
 }
 
 //back
--(void)yyPayBackClick
+-(void)yyPayBackClick:(id)sender
 {
     [self dismissViewControllerAnimated:NO completion:nil];//支付取消callback
 }
@@ -355,7 +355,7 @@
         [_FlastSelectbutton setBackgroundImage:[GetImage getSmallRectImage:@"splus_cash_bg"] forState:UIControlStateNormal];
     }
     UIButton *AButton=sender;
-    [AButton setBackgroundImage:[GetImage getSmallRectImage:@"splus_pay_choose"] forState:UIControlStateNormal];
+    [AButton setBackgroundImage:[GetImage getPayRectImage:@"splus_pay_choose"] forState:UIControlStateNormal];
     _FlastSelectbutton=AButton;
     
     //兑换率
@@ -510,6 +510,17 @@
     }
 }
 
+-(void)coin_error
+{
+    if (_HUD != NULL) {
+        [_HUD hide:YES];
+    }
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"网络连接超时" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+    [alert show];
+    return;
+}
+
 -(void)coin_callback:(NSString*)result
 {
     if (_HUD != NULL) {
@@ -525,10 +536,90 @@
     [[CoinRatio sharedSingleton] initWithType:coin_name Ratio:[ratio intValue]];
 }
 
+#pragma -mark UITextField Delegate
+-(void)textFieldDidBeginEditing:(UITextField *)textField{
+    CGRect frame = textField.frame;
+    int offset;
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {//如果机型是iPhone
+        
+        if (_orientation == UIDeviceOrientationPortrait) {//是竖屏
+            offset = frame.origin.y + 200 - (self.view.frame.size.height -216.0);
+        }else{
+            offset = frame.origin.y + 180 - (self.view.frame.size.height -216.0);
+        }
+        
+    }else{//机型是ipad
+        if (_orientation == UIDeviceOrientationPortrait) {//是竖屏
+            offset = frame.origin.y + 100 - (self.view.frame.size.height -216.0);
+        }else{
+            offset = frame.origin.y + 190 - (self.view.frame.size.height -216.0);
+        }
+        
+    }
+    
+    NSTimeInterval animationDuration = 0.30f;
+    [UIView beginAnimations:@"ResizeForKeyboard"context:nil];
+    [UIView setAnimationDuration:animationDuration];
+    
+    //将视图的Y坐标向上移动offset个单位，以使下面腾出地方用于软键盘的显示
+    if(offset > 0)
+        if (_orientation == UIDeviceOrientationPortrait) {//是竖屏
+            self.view.frame =CGRectMake(0.0f, -offset,self.view.frame.size.width,self.view.frame.size.height);//-offset 0.0f
+        }else{
+            self.view.frame =CGRectMake(offset, 0.0f,self.view.frame.size.width,self.view.frame.size.height);//-offset 0.0f
+        }
+    
+    [UIView commitAnimations];
+    
+}
+
+//当用户按下return键或者按回车键，keyboard消失
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+
+//输入框编辑完成以后，将视图恢复到原始状态
+
+-(void)textFieldDidEndEditing:(UITextField *)textField
+{
+    self.view.frame =CGRectMake(0,0, self.view.frame.size.width,self.view.frame.size.height);
+}
+
+//触摸view隐藏键盘——touchDown
+
+- (IBAction)View_TouchDown:(id)sender {
+    // 发送resignFirstResponder.
+    [[UIApplication sharedApplication] sendAction:@selector(resignFirstResponder) to:nil from:nil forEvent:nil];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(BOOL)shouldAutorotate
+{
+    return NO;
+}
+
+
+//iOS 6.0旋屏支持方向
+-(NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskAll;
+}
+
+
+//iOS 6.0以下旋屏
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    if (UIInterfaceOrientationIsLandscape(interfaceOrientation)) {
+        return YES;
+    }
+    return NO;
 }
 
 /*

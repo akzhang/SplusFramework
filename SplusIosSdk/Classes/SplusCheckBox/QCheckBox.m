@@ -24,10 +24,9 @@
         _delegate = delegate;
         
         self.exclusiveTouch = YES;
-//        [self setImage:[UIImage imageNamed:@"checkbox1_unchecked.png"] forState:UIControlStateNormal];
-//        [self setImage:[UIImage imageNamed:@"checkbox1_checked.png"] forState:UIControlStateSelected];
-        [self setImage:[GetImage getSmallRectImage:@"splus_checkbox_choose"] forState:UIControlStateNormal];
-        [self setImage:[GetImage getSmallRectImage:@"splus_checkbox_unchoose"] forState:UIControlStateSelected];
+        [self setImage:[GetImage imagesNamedFromCustomBundle:@"splus_checkbox_choose"] forState:UIControlStateNormal];
+        [self setImage:[GetImage imagesNamedFromCustomBundle:@"splus_checkbox_unchoose"] forState:UIControlStateSelected];
+        [self setContentMode:UIViewContentModeScaleToFill];
         [self addTarget:self action:@selector(checkboxBtnChecked) forControlEvents:UIControlEventTouchUpInside];
     }
     return self;

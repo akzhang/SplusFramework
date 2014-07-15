@@ -24,7 +24,7 @@
         [self.contentView addSubview:_headImage];
         
         _labelText = [[UILabel alloc] initWithFrame:CGRectMake(60, HEIGHT/2 - 15, 80, 30)];
-        _labelText.font = [UIFont systemFontOfSize:11.0];
+        _labelText.font = [UIFont systemFontOfSize:14.0];
          [self.contentView addSubview:_labelText];
         
         _tailImage = [[UIImageView alloc] initWithFrame:CGRectMake(WIDTH - 60, HEIGHT/2 - 15, 30, 30)];

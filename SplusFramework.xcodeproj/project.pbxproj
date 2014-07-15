@@ -49,15 +49,11 @@
 		E2086F84195A65B200523F0E /* PSTGridLayoutSection.m in Sources */ = {isa = PBXBuildFile; fileRef = E2086F68195A65B200523F0E /* PSTGridLayoutSection.m */; };
 		E2086F87195AC39300523F0E /* PayCreditCard.h in Headers */ = {isa = PBXBuildFile; fileRef = E2086F85195AC39300523F0E /* PayCreditCard.h */; };
 		E2086F88195AC39300523F0E /* PayCreditCard.m in Sources */ = {isa = PBXBuildFile; fileRef = E2086F86195AC39300523F0E /* PayCreditCard.m */; };
-		E20C47851963D888009BB61C /* libUPPayPlugin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E20C47841963D888009BB61C /* libUPPayPlugin.a */; };
 		E2185CC2196151C700B4C885 /* CoinRatio.h in Headers */ = {isa = PBXBuildFile; fileRef = E2185CC0196151C700B4C885 /* CoinRatio.h */; };
 		E2185CC3196151C700B4C885 /* CoinRatio.m in Sources */ = {isa = PBXBuildFile; fileRef = E2185CC1196151C700B4C885 /* CoinRatio.m */; };
-		E220FD7419625D7D00A4CBE9 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E220FD7219625D7D00A4CBE9 /* libcrypto.a */; };
-		E220FD7519625D7D00A4CBE9 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E220FD7319625D7D00A4CBE9 /* libssl.a */; };
 		E220FD7A19625DD200A4CBE9 /* AlixPay.h in Headers */ = {isa = PBXBuildFile; fileRef = E220FD7719625DD200A4CBE9 /* AlixPay.h */; };
 		E220FD7B19625DD200A4CBE9 /* AlixPayOrder.h in Headers */ = {isa = PBXBuildFile; fileRef = E220FD7819625DD200A4CBE9 /* AlixPayOrder.h */; };
 		E220FD7C19625DD200A4CBE9 /* AlixPayResult.h in Headers */ = {isa = PBXBuildFile; fileRef = E220FD7919625DD200A4CBE9 /* AlixPayResult.h */; };
-		E220FD7E19625EB600A4CBE9 /* libalixpay.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E220FD7D19625EB600A4CBE9 /* libalixpay.a */; };
 		E2291859196A37EC00422926 /* AcountCell.h in Headers */ = {isa = PBXBuildFile; fileRef = E2291857196A37EC00422926 /* AcountCell.h */; };
 		E229185A196A37EC00422926 /* AcountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E2291858196A37EC00422926 /* AcountCell.m */; };
 		E229185D196A3BC900422926 /* AcountHome.h in Headers */ = {isa = PBXBuildFile; fileRef = E229185B196A3BC900422926 /* AcountHome.h */; };
@@ -126,11 +122,32 @@
 		E25EB1C319541DB000CDBEC8 /* ActivateInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = E25EB1C119541DB000CDBEC8 /* ActivateInfo.h */; };
 		E25EB1C419541DB000CDBEC8 /* ActivateInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = E25EB1C219541DB000CDBEC8 /* ActivateInfo.m */; };
 		E29F82971958303700933607 /* Register.m in Sources */ = {isa = PBXBuildFile; fileRef = E237B4001952C434007E7103 /* Register.m */; };
+		E2A12681196FB5F100CCB9FF /* libalixpay.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E2A1267D196FB5F100CCB9FF /* libalixpay.a */; };
+		E2A12682196FB5F100CCB9FF /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E2A1267E196FB5F100CCB9FF /* libcrypto.a */; };
+		E2A12683196FB5F100CCB9FF /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E2A1267F196FB5F100CCB9FF /* libssl.a */; };
+		E2A17B7A196F90DF001EC392 /* UPPayPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = E2CC66CC1962CF9300566EA3 /* UPPayPlugin.h */; };
+		E2A17B7E196F97F5001EC392 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2A17B7D196F97F5001EC392 /* SystemConfiguration.framework */; };
+		E2ACA0CF196E427000FC5C2E /* LoginOut.h in Headers */ = {isa = PBXBuildFile; fileRef = E2ACA0CD196E427000FC5C2E /* LoginOut.h */; };
+		E2ACA0D0196E427000FC5C2E /* LoginOut.m in Sources */ = {isa = PBXBuildFile; fileRef = E2ACA0CE196E427000FC5C2E /* LoginOut.m */; };
 		E2CC66C919628D8100566EA3 /* OrderInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = E2CC66C719628D8100566EA3 /* OrderInfo.h */; };
 		E2CC66CA19628D8100566EA3 /* OrderInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = E2CC66C819628D8100566EA3 /* OrderInfo.m */; };
-		E2CC66CE1962CF9300566EA3 /* UPPayPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = E2CC66CC1962CF9300566EA3 /* UPPayPlugin.h */; };
 		E2CC66CF1962CF9300566EA3 /* UPPayPluginDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = E2CC66CD1962CF9300566EA3 /* UPPayPluginDelegate.h */; };
 		E2E42CE81948456B00A894ED /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E2E42CE61948456B00A894ED /* InfoPlist.strings */; };
+		E2E719D41973CB7500F07580 /* libUPPayPlugin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E2E719D31973CB7500F07580 /* libUPPayPlugin.a */; };
+		E2E719D71973E8A800F07580 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = E220FD841962630C00A4CBE9 /* NSObject+SBJSON.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E2E719D81973E8A800F07580 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = E220FD861962630C00A4CBE9 /* NSString+SBJSON.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E2E719D91973E8A800F07580 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = E220FD881962630C00A4CBE9 /* SBJsonBase.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E2E719DA1973E8A800F07580 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E220FD8A1962630C00A4CBE9 /* SBJsonParser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E2E719DB1973E8A800F07580 /* SBJsonStreamWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = E220FD8C1962630C00A4CBE9 /* SBJsonStreamWriter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E2E719DC1973E8A800F07580 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = E220FD8E1962630C00A4CBE9 /* SBJsonWriter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E2E719DD1973E8EB00F07580 /* JSON.h in Headers */ = {isa = PBXBuildFile; fileRef = E220FD801962630C00A4CBE9 /* JSON.h */; };
+		E2E719DE1973E8EB00F07580 /* NSObject+SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = E220FD831962630C00A4CBE9 /* NSObject+SBJSON.h */; };
+		E2E719DF1973E8EB00F07580 /* NSString+SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = E220FD851962630C00A4CBE9 /* NSString+SBJSON.h */; };
+		E2E719E01973E8EB00F07580 /* SBJsonBase.h in Headers */ = {isa = PBXBuildFile; fileRef = E220FD871962630C00A4CBE9 /* SBJsonBase.h */; };
+		E2E719E11973E8EB00F07580 /* SBJsonParser.h in Headers */ = {isa = PBXBuildFile; fileRef = E220FD891962630C00A4CBE9 /* SBJsonParser.h */; };
+		E2E719E21973E8EB00F07580 /* SBJsonStreamWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = E220FD8B1962630C00A4CBE9 /* SBJsonStreamWriter.h */; };
+		E2E719E31973E8EB00F07580 /* SBJsonWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = E220FD8D1962630C00A4CBE9 /* SBJsonWriter.h */; };
+		E2E719E41973E8EB00F07580 /* SBProxyForJson.h in Headers */ = {isa = PBXBuildFile; fileRef = E220FD8F1962630C00A4CBE9 /* SBProxyForJson.h */; };
 		E2FEC3A3195BFF7200112989 /* PayOneCard.h in Headers */ = {isa = PBXBuildFile; fileRef = E2FEC3A1195BFF7200112989 /* PayOneCard.h */; };
 		E2FEC3A4195BFF7200112989 /* PayOneCard.m in Sources */ = {isa = PBXBuildFile; fileRef = E2FEC3A2195BFF7200112989 /* PayOneCard.m */; };
 /* End PBXBuildFile section */
@@ -178,15 +195,11 @@
 		E2086F68195A65B200523F0E /* PSTGridLayoutSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSTGridLayoutSection.m; sourceTree = "<group>"; };
 		E2086F85195AC39300523F0E /* PayCreditCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayCreditCard.h; sourceTree = "<group>"; };
 		E2086F86195AC39300523F0E /* PayCreditCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayCreditCard.m; sourceTree = "<group>"; };
-		E20C47841963D888009BB61C /* libUPPayPlugin.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUPPayPlugin.a; sourceTree = "<group>"; };
 		E2185CC0196151C700B4C885 /* CoinRatio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoinRatio.h; sourceTree = "<group>"; };
 		E2185CC1196151C700B4C885 /* CoinRatio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoinRatio.m; sourceTree = "<group>"; };
-		E220FD7219625D7D00A4CBE9 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcrypto.a; sourceTree = "<group>"; };
-		E220FD7319625D7D00A4CBE9 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libssl.a; sourceTree = "<group>"; };
 		E220FD7719625DD200A4CBE9 /* AlixPay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlixPay.h; sourceTree = "<group>"; };
 		E220FD7819625DD200A4CBE9 /* AlixPayOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlixPayOrder.h; sourceTree = "<group>"; };
 		E220FD7919625DD200A4CBE9 /* AlixPayResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlixPayResult.h; sourceTree = "<group>"; };
-		E220FD7D19625EB600A4CBE9 /* libalixpay.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libalixpay.a; sourceTree = "<group>"; };
 		E220FD801962630C00A4CBE9 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
 		E220FD831962630C00A4CBE9 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
 		E220FD841962630C00A4CBE9 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
@@ -269,6 +282,12 @@
 		E24777D4196D3D0F00C01404 /* QutoPayTip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QutoPayTip.m; sourceTree = "<group>"; };
 		E25EB1C119541DB000CDBEC8 /* ActivateInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivateInfo.h; sourceTree = "<group>"; };
 		E25EB1C219541DB000CDBEC8 /* ActivateInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivateInfo.m; sourceTree = "<group>"; };
+		E2A1267D196FB5F100CCB9FF /* libalixpay.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libalixpay.a; sourceTree = "<group>"; };
+		E2A1267E196FB5F100CCB9FF /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcrypto.a; sourceTree = "<group>"; };
+		E2A1267F196FB5F100CCB9FF /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libssl.a; sourceTree = "<group>"; };
+		E2A17B7D196F97F5001EC392 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		E2ACA0CD196E427000FC5C2E /* LoginOut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginOut.h; sourceTree = "<group>"; };
+		E2ACA0CE196E427000FC5C2E /* LoginOut.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginOut.m; sourceTree = "<group>"; };
 		E2CC66C719628D8100566EA3 /* OrderInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderInfo.h; sourceTree = "<group>"; };
 		E2CC66C819628D8100566EA3 /* OrderInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderInfo.m; sourceTree = "<group>"; };
 		E2CC66CC1962CF9300566EA3 /* UPPayPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPPayPlugin.h; sourceTree = "<group>"; };
@@ -279,6 +298,7 @@
 		E2E42CE51948456B00A894ED /* SplusIosSdk-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SplusIosSdk-Info.plist"; sourceTree = "<group>"; };
 		E2E42CE71948456B00A894ED /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E2E42CE91948456B00A894ED /* SplusIosSdk-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SplusIosSdk-Prefix.pch"; sourceTree = "<group>"; };
+		E2E719D31973CB7500F07580 /* libUPPayPlugin.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUPPayPlugin.a; sourceTree = "<group>"; };
 		E2FEC3A1195BFF7200112989 /* PayOneCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayOneCard.h; sourceTree = "<group>"; };
 		E2FEC3A2195BFF7200112989 /* PayOneCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayOneCard.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -288,10 +308,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E20C47851963D888009BB61C /* libUPPayPlugin.a in Frameworks */,
-				E220FD7519625D7D00A4CBE9 /* libssl.a in Frameworks */,
-				E220FD7E19625EB600A4CBE9 /* libalixpay.a in Frameworks */,
-				E220FD7419625D7D00A4CBE9 /* libcrypto.a in Frameworks */,
+				E2A12683196FB5F100CCB9FF /* libssl.a in Frameworks */,
+				E2A12681196FB5F100CCB9FF /* libalixpay.a in Frameworks */,
+				E2E719D41973CB7500F07580 /* libUPPayPlugin.a in Frameworks */,
+				E2A17B7E196F97F5001EC392 /* SystemConfiguration.framework in Frameworks */,
+				E2A12682196FB5F100CCB9FF /* libcrypto.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -612,6 +633,8 @@
 				E2291868196AAB9100422926 /* ModifyPwd.m */,
 				E22A90EF196BDE97006338C3 /* AcountWeb.h */,
 				E22A90F0196BDE97006338C3 /* AcountWeb.m */,
+				E2ACA0CD196E427000FC5C2E /* LoginOut.h */,
+				E2ACA0CE196E427000FC5C2E /* LoginOut.m */,
 			);
 			path = AcountManage;
 			sourceTree = "<group>";
@@ -645,10 +668,11 @@
 		E2E42CB5194844B000A894ED /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E20C47841963D888009BB61C /* libUPPayPlugin.a */,
-				E220FD7D19625EB600A4CBE9 /* libalixpay.a */,
-				E220FD7219625D7D00A4CBE9 /* libcrypto.a */,
-				E220FD7319625D7D00A4CBE9 /* libssl.a */,
+				E2E719D31973CB7500F07580 /* libUPPayPlugin.a */,
+				E2A1267D196FB5F100CCB9FF /* libalixpay.a */,
+				E2A1267E196FB5F100CCB9FF /* libcrypto.a */,
+				E2A1267F196FB5F100CCB9FF /* libssl.a */,
+				E2A17B7D196F97F5001EC392 /* SystemConfiguration.framework */,
 				E2E42CB6194844B000A894ED /* Foundation.framework */,
 				E2E42CE11948456B00A894ED /* CoreFoundation.framework */,
 			);
@@ -683,8 +707,16 @@
 			files = (
 				E202B79919580A14003C70B9 /* SplusUser.h in Headers */,
 				E23C203119515E7200EC4F37 /* SplusInterfaceKit.h in Headers */,
-				E2CC66CE1962CF9300566EA3 /* UPPayPlugin.h in Headers */,
 				E23C205019515E7200EC4F37 /* SplusCallback.h in Headers */,
+				E2E719DD1973E8EB00F07580 /* JSON.h in Headers */,
+				E2E719DE1973E8EB00F07580 /* NSObject+SBJSON.h in Headers */,
+				E2E719DF1973E8EB00F07580 /* NSString+SBJSON.h in Headers */,
+				E2E719E01973E8EB00F07580 /* SBJsonBase.h in Headers */,
+				E2E719E11973E8EB00F07580 /* SBJsonParser.h in Headers */,
+				E2E719E21973E8EB00F07580 /* SBJsonStreamWriter.h in Headers */,
+				E2E719E31973E8EB00F07580 /* SBJsonWriter.h in Headers */,
+				E2E719E41973E8EB00F07580 /* SBProxyForJson.h in Headers */,
+				E2A17B7A196F90DF001EC392 /* UPPayPlugin.h in Headers */,
 				E23C203519515E7200EC4F37 /* qqMac.h in Headers */,
 				E23C203319515E7200EC4F37 /* checkWifi.h in Headers */,
 				E23C202F19515E7200EC4F37 /* AppInfo.h in Headers */,
@@ -710,6 +742,7 @@
 				E2086F69195A65B200523F0E /* NSIndexPath+PSTCollectionViewAdditions.h in Headers */,
 				E2086F7B195A65B200523F0E /* PSTCollectionViewUpdateItem.h in Headers */,
 				E220FD7A19625DD200A4CBE9 /* AlixPay.h in Headers */,
+				E2ACA0CF196E427000FC5C2E /* LoginOut.h in Headers */,
 				E2086F81195A65B200523F0E /* PSTGridLayoutRow.h in Headers */,
 				E205338D19652807007CB4CE /* PayWebView.h in Headers */,
 				E24777CB196CDDDE00C01404 /* Floating.h in Headers */,
@@ -812,6 +845,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2E719D71973E8A800F07580 /* NSObject+SBJSON.m in Sources */,
+				E2E719D81973E8A800F07580 /* NSString+SBJSON.m in Sources */,
+				E2E719D91973E8A800F07580 /* SBJsonBase.m in Sources */,
+				E2E719DA1973E8A800F07580 /* SBJsonParser.m in Sources */,
+				E2E719DB1973E8A800F07580 /* SBJsonStreamWriter.m in Sources */,
+				E2E719DC1973E8A800F07580 /* SBJsonWriter.m in Sources */,
 				E2086F82195A65B200523F0E /* PSTGridLayoutRow.m in Sources */,
 				E2086F80195A65B200523F0E /* PSTGridLayoutItem.m in Sources */,
 				E23C207919516E8500EC4F37 /* GetImage.m in Sources */,
@@ -842,6 +881,7 @@
 				E22A90F2196BDE97006338C3 /* AcountWeb.m in Sources */,
 				E2086F6A195A65B200523F0E /* NSIndexPath+PSTCollectionViewAdditions.m in Sources */,
 				E229185E196A3BC900422926 /* AcountHome.m in Sources */,
+				E2ACA0D0196E427000FC5C2E /* LoginOut.m in Sources */,
 				E2291862196A86FC00422926 /* SafeHome.m in Sources */,
 				E23C206219515E7200EC4F37 /* NSString+dataFromHexString.m in Sources */,
 				E2053396196557D7007CB4CE /* QutoPayHome.m in Sources */,
@@ -958,6 +998,7 @@
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				DEAD_CODE_STRIPPING = NO;
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SplusIosSdk/SplusIosSdk-Prefix.pch";
@@ -967,17 +1008,20 @@
 				);
 				INFOPLIST_FILE = "SplusIosSdk/SplusIosSdk-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				LINK_WITH_STANDARD_LIBRARIES = NO;
-				MACH_O_TYPE = staticlib;
+				MACH_O_TYPE = mh_object;
 				MACOSX_DEPLOYMENT_TARGET = "";
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "arm64 armv7 armv7s";
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Debug;
@@ -988,22 +1032,25 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEAD_CODE_STRIPPING = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SplusIosSdk/SplusIosSdk-Prefix.pch";
 				INFOPLIST_FILE = "SplusIosSdk/SplusIosSdk-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				LINK_WITH_STANDARD_LIBRARIES = NO;
-				MACH_O_TYPE = staticlib;
+				MACH_O_TYPE = mh_object;
 				MACOSX_DEPLOYMENT_TARGET = "";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "arm64 armv7 armv7s";
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Release;

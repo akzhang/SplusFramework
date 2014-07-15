@@ -86,8 +86,10 @@
     [self.view addSubview:_splusMiddleFrame];
     
     NSString *splusCash = @"您充值的金额是:";
+    NSLog(@"money = %@", [OrderInfo sharedSingleton].money);
+    
     splusCash = [splusCash stringByAppendingFormat:@"%@",[OrderInfo sharedSingleton].money];
-    _splusCashValue = [[UILabel alloc] initWithFrame:CGRectMake(SCREENWIDTH/2 - 80, SCREENHEIGHT/2 - 110, 160, 30)];
+    _splusCashValue = [[UILabel alloc] initWithFrame:CGRectMake(SCREENWIDTH/2 - 90, SCREENHEIGHT/2 - 110, 180, 30)];
     _splusCashValue.text = splusCash;
     _splusCashValue.textColor = UIColorFromRGB(0xff6600);
     [_splusMiddleFrame addSubview:_splusCashValue];
@@ -347,6 +349,27 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(BOOL)shouldAutorotate
+{
+    return NO;
+}
+
+
+//iOS 6.0旋屏支持方向
+-(NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskAll;
+}
+
+
+//iOS 6.0以下旋屏
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    if (UIInterfaceOrientationIsLandscape(interfaceOrientation)) {
+        return YES;
+    }
+    return NO;
 }
 
 /*

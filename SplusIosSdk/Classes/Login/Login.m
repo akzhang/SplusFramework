@@ -26,12 +26,12 @@ int floatpositon = 0;
     dispatch_once(&onceToken, ^{
         UIInterfaceOrientation orientationFloat = [UIApplication sharedApplication].statusBarOrientation;
         if (orientationFloat == UIInterfaceOrientationPortrait) {
-            flaotButton=[[RCDraggableButton alloc] initInKeyWindowWithFrame:CGRectMake(0, SCREENHEIGHT/2 - 30, 60, 60)];//40, 300, screenWidth - 120, 44
+            flaotButton=[[RCDraggableButton alloc] initInKeyWindowWithFrame:CGRectMake(0, SCREENHEIGHT/2 - 30, 40, 40)];//40, 300, screenWidth - 120, 44
         }else{
-            flaotButton=[[RCDraggableButton alloc] initInKeyWindowWithFrame:CGRectMake(0, SCREENWIDTH/2 - 30, 60, 60)];//40, 300, screenWidth - 120, 44
+            flaotButton=[[RCDraggableButton alloc] initInKeyWindowWithFrame:CGRectMake(0, SCREENWIDTH/2 - 30, 40, 40)];//40, 300, screenWidth - 120, 44
         }
         
-        [flaotButton setBackgroundImage:[GetImage getSmallRectImage:@"splus_float_icon_normal"] forState:UIControlStateNormal];
+        [flaotButton setBackgroundImage:[GetImage imagesNamedFromCustomBundle:@"splus_float_icon_normal"] forState:UIControlStateNormal];
     });
     return flaotButton;
 }
@@ -78,6 +78,7 @@ int floatpositon = 0;
     
     _close = [[UIButton alloc] initWithFrame:CGRectMake(bg_width - 60, 15, 45, 45)];
     [_close setImage:[GetImage imagesNamedFromCustomBundle:@"splus_close"] forState:UIControlStateNormal];
+    [_close addTarget:self action:@selector(splusCloseClick) forControlEvents: UIControlEventTouchUpInside];//处理点击
     [_splusLoginBgView addSubview:_close];
     
     _splusSpliterLine = [[UIImageView alloc] initWithFrame:CGRectMake(14, 60, 292, 1)];
@@ -101,10 +102,12 @@ int floatpositon = 0;
     
     //密码
     _splusLoginPwd = [[UITextField alloc] initWithFrame:CGRectMake(20, 120, 280, 50)];
-    UIImageView *passwdLogoImage=[[UIImageView alloc] initWithImage:[GetImage imagesNamedFromCustomBundle:@"splus_input_pwd"]];
     
-    passwdLogoImage.frame = CGRectMake(50, 0, 25, 25);
-    _splusLoginPwd.leftView = passwdLogoImage;
+    UIView *leftview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 35, 35)];
+    UIImageView *passwdLogoImage=[[UIImageView alloc] initWithImage:[GetImage imagesNamedFromCustomBundle:@"splus_input_pwd"]];
+    passwdLogoImage.frame = CGRectMake(5, 5, 25, 25);
+    [leftview addSubview:passwdLogoImage];
+    _splusLoginPwd.leftView = leftview;
     _splusLoginPwd.leftViewMode = UITextFieldViewModeAlways;
     _splusLoginPwd.placeholder = @" 请输入密码";
     _splusLoginPwd.delegate = self;
@@ -158,6 +161,11 @@ int floatpositon = 0;
 {
     Register *splusRegister = [[Register alloc] init];
     [self presentModalViewController:splusRegister animated:NO];
+}
+
+-(void)splusCloseClick
+{
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 //注册成功callback
@@ -587,6 +595,27 @@ int floatpositon = 0;
 #pragma mark - QCheckBoxDelegate
 - (void)didSelectedCheckBox:(QCheckBox *)checkbox checked:(BOOL)checked {
     NSLog(@"did tap on CheckBox:%@ checked:%d", checkbox.titleLabel.text, checked);
+}
+
+-(BOOL)shouldAutorotate
+{
+    return NO;
+}
+
+
+//iOS 6.0旋屏支持方向
+-(NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskAll;
+}
+
+
+//iOS 6.0以下旋屏
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    if (UIInterfaceOrientationIsLandscape(interfaceOrientation)) {
+        return YES;
+    }
+    return NO;
 }
 
 - (BOOL)prefersStatusBarHidden

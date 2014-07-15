@@ -10,7 +10,7 @@
 #import "HttpUrl.h"
 #import "GetImage.h"
 
-@interface QutoPayTip : UIViewController
+@interface QutoPayTip :UIView// UIViewController
 
 @property (strong, nonatomic) IBOutlet UIView *splusTipBgView;//设置背景图
 

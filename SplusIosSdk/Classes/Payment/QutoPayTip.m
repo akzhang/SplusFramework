@@ -14,35 +14,32 @@
 
 @implementation QutoPayTip
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+extern NSString *tipValue;
+
+- (id)initWithFrame:(CGRect)frame
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super initWithFrame:frame];
     if (self) {
-        // Custom initialization
+        // Initialization code
+        self.userInteractionEnabled = YES;
+        [self initLoginView];
     }
     return self;
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    _orientation = [UIApplication sharedApplication].statusBarOrientation;
-    self.view.backgroundColor = [UIColor clearColor];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(back) name:@"backback" object:nil];
-    [self initLoginView];
-    
-    // Do any additional setup after loading the view.
 }
 
 -(void)initLoginView
 {
     CGFloat bg_width = 320;
     CGFloat bg_height = 290;
+ 
+    UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT)];
+    bgView.backgroundColor = [UIColor darkTextColor];
+    bgView.alpha = 0.5;
+    [self addSubview:bgView];
     
     _splusTipBgView = [[UIView alloc] initWithFrame:CGRectMake(SCREENWIDTH/2 - bg_width/2, SCREENHEIGHT/2 - bg_height/2, bg_width, bg_height)];
     //    _splusLoginBgView.userInteractionEnabled = YES;
-    [self.view addSubview:_splusTipBgView];
+    [self addSubview:_splusTipBgView];
     
     _splusTipBgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 290)];
     [_splusTipBgImageView setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -50,44 +47,72 @@
     [_splusTipBgView addSubview:_splusTipBgImageView];
     
     
-    UILabel *splusTitle = [[UILabel alloc] initWithFrame:CGRectMake(bg_width/2 - 80, 25, 160, 25)];
+    UILabel *splusTitle = [[UILabel alloc] initWithFrame:CGRectMake(bg_width/2 - 60, 25, 160, 25)];
     splusTitle.textColor = UIColorFromRGB(0xFF6600);
     splusTitle.font = [UIFont systemFontOfSize:22.0];
-    splusTitle.text = @"充值提示";
+    splusTitle.text = @"提示";
     [_splusTipBgView addSubview:splusTitle];
     
     _close = [[UIButton alloc] initWithFrame:CGRectMake(bg_width - 60, 15, 45, 45)];
     [_close setImage:[GetImage imagesNamedFromCustomBundle:@"splus_close"] forState:UIControlStateNormal];
+    [_close addTarget:self action:@selector(splusTipClick:) forControlEvents: UIControlEventTouchUpInside];//处理点击
     [_splusTipBgView addSubview:_close];
     
     _splusSpliterLine = [[UIImageView alloc] initWithFrame:CGRectMake(14, 60, 292, 1)];
     [_splusSpliterLine setImage:[GetImage imagesNamedFromCustomBundle:@"splus_split_line"]];
     [_splusTipBgView addSubview:_splusSpliterLine];
     
-    UIImageView *splusEditFrame = [[UIImageView alloc] initWithFrame:CGRectMake(20, 70, 280, 100)];
+    UIImageView *splusEditFrame = [[UIImageView alloc] initWithFrame:CGRectMake(20, 80, 280, 140)];
     [splusEditFrame setImage:[GetImage getSmallRectImage:@"splus_input_edit"]];
     [_splusTipBgView addSubview:splusEditFrame];
     
-    _tipContent = [[UITextView alloc] initWithFrame:CGRectMake(25, 70, 270, 90)];
-    _tipContent.text = _tipString;
-    [_splusTipBgView addSubview:_tipContent];
+    _tipContent = [[UITextView alloc] initWithFrame:CGRectMake(10, 10, 260, 120)];
+    NSAttributedString *attributedString = [[NSAttributedString alloc] initWithData:[tipValue dataUsingEncoding:NSUnicodeStringEncoding] options:@{ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType } documentAttributes:nil error:nil];
+    _tipContent.attributedText = attributedString;
+    [splusEditFrame addSubview:_tipContent];
     
     
     //立即登陆
-    _splusTipBt = [[UIButton alloc] initWithFrame:CGRectMake(165, 230, 135, 35)];
+    _splusTipBt = [[UIButton alloc] initWithFrame:CGRectMake(20, 230, 280, 35)];
     [_splusTipBt setBackgroundImage:[GetImage getSmallRectImage:@"splus_login_bt"] forState:UIControlStateNormal];
     [_splusTipBt setTitle:@"确定" forState:UIControlStateNormal];
     _splusTipBt.titleLabel.font = [UIFont systemFontOfSize:14.0];
-    [_splusTipBt addTarget:self action:@selector(splusLoginClick:) forControlEvents: UIControlEventTouchUpInside];//处理点击
+    [_splusTipBt addTarget:self action:@selector(splusTipClick:) forControlEvents: UIControlEventTouchUpInside];//处理点击
     [_splusTipBgView addSubview:_splusTipBt];
 }
 
-
-- (void)didReceiveMemoryWarning
+-(void)splusTipClick:(id)sender
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [self removeFromSuperview];
 }
+
+
+-(BOOL)shouldAutorotate
+{
+    return NO;
+}
+
+
+//iOS 6.0旋屏支持方向
+-(NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskAll;
+}
+
+
+//iOS 6.0以下旋屏
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    if (UIInterfaceOrientationIsLandscape(interfaceOrientation)) {
+        return YES;
+    }
+    return NO;
+}
+
+//- (void)didReceiveMemoryWarning
+//{
+//    [super didReceiveMemoryWarning];
+//    // Dispose of any resources that can be recreated.
+//}
 
 /*
 #pragma mark - Navigation

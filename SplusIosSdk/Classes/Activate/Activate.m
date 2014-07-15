@@ -70,9 +70,21 @@
     httpRequest *_request = [[httpRequest alloc] init];
     _request.dlegate = self;
     _request.success = @selector(active_callback:);
+    _request.error = @selector(active_error_callback);
     [_request post:API_URL_ACTIVATE argData:postData];
     
     // Do any additional setup after loading the view from its nib.
+}
+
+-(void)active_error_callback
+{
+    if (_HUD != NULL) {
+        [_HUD hide:YES];
+    }
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"网络连接超时" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+    [alert show];
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning

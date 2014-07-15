@@ -13,6 +13,8 @@
 #import "BindPhone.h"
 #import "SplusCallback.h"
 #import "ModifyPwd.h"
+#import "AcountWeb.h"
+#import "LoginOut.h"
 
 @interface SafeHome : UIViewController<UITableViewDelegate,UITableViewDataSource>
 

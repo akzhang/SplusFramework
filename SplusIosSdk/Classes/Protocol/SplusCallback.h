@@ -17,4 +17,6 @@
 
 -(void)SplusPayOnSuccess;
 
+-(void)SplusLoginOutSuccess;
+
 @end

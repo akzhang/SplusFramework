@@ -226,10 +226,10 @@
 -(void)splusBankClick:(id)sender
 {
     if (_FlastSelectbutton) {//是否最后一次选中
-        
+        [_FlastSelectbutton setBackgroundImage:[GetImage getSmallRectImage:@"splus_cash_bg"] forState:UIControlStateNormal];
     }
     UIButton *AButton=sender;
-    [AButton setBackgroundImage:[GetImage getSmallRectImage:@"splus_pay_choose"] forState:UIControlStateNormal];
+    [AButton setBackgroundImage:[GetImage getPayRectImage:@"splus_pay_choose"] forState:UIControlStateNormal];
     _FlastSelectbutton=AButton;
     
     switch (_FlastSelectbutton.tag) {
@@ -269,6 +269,27 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(BOOL)shouldAutorotate
+{
+    return NO;
+}
+
+
+//iOS 6.0旋屏支持方向
+-(NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskAll;
+}
+
+
+//iOS 6.0以下旋屏
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    if (UIInterfaceOrientationIsLandscape(interfaceOrientation)) {
+        return YES;
+    }
+    return NO;
 }
 
 /*

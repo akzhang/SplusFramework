@@ -7,19 +7,23 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "JSON.h"
 #import "NSData+ASE128.h"
 #import "NSData+hexRepresentationWithSpaces_AS.h"
 #import "NSString+dataFromHexString.h"
-#import "JSON.h"
 
-@interface UserData : NSObject
+@interface UserData : NSObject{
+//    NSString *username;
+//    NSString *uid;
+//    NSString *token;
+}
 
 + (UserData *)sharedSingleton;
 
 @property(strong, nonatomic)NSString *username;
-//@property(strong, nonatomic)NSString *uid;
-//@property(strong, nonatomic)NSString *token;
-//@property(nonatomic, retain)NSString *amount;
+@property(strong, nonatomic)NSString *uid;
+@property(strong, nonatomic)NSString *token;
+@property(nonatomic, retain)NSString *amount;
 
 +(void)push:(NSString*)username password:(NSString*)argPassword;
 +(NSDictionary *)get;

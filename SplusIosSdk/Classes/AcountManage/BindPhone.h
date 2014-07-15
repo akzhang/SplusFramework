@@ -19,7 +19,7 @@
 #import "JSON.h"
 #import "NSDictionary+QueryBuilder.h"
 
-@interface BindPhone : UIViewController<UITextFieldDelegate>
+@interface BindPhone :UIView<UITextFieldDelegate> //UIViewController<UITextFieldDelegate>
 
 @property(nonatomic, retain)id<SplusCallback> delegate;
 

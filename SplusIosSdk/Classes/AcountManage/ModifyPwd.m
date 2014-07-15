@@ -14,21 +14,32 @@
 
 @implementation ModifyPwd
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+//- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+//{
+//    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+//    if (self) {
+//        // Custom initialization
+//    }
+//    return self;
+//}
+//
+//- (void)viewDidLoad
+//{
+//    [super viewDidLoad];
+//    _orientation = [UIApplication sharedApplication].statusBarOrientation;
+//    [self initModifyView];
+//    // Do any additional setup after loading the view.
+//}
+
+- (id)initWithFrame:(CGRect)frame
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super initWithFrame:frame];
     if (self) {
-        // Custom initialization
+        // Initialization code
+        self.userInteractionEnabled = YES;
+        [self initModifyView];
     }
     return self;
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    _orientation = [UIApplication sharedApplication].statusBarOrientation;
-    [self initModifyView];
-    // Do any additional setup after loading the view.
 }
 
 -(void)initModifyView
@@ -36,8 +47,13 @@
     CGFloat bg_width = 320;
     CGFloat bg_height = 290;
     
+    UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT)];
+    bgView.backgroundColor = [UIColor darkTextColor];
+    bgView.alpha = 0.5;
+    [self addSubview:bgView];
+    
     _splusModifyBgView = [[UIView alloc] initWithFrame:CGRectMake(SCREENWIDTH/2 - bg_width/2, SCREENHEIGHT/2 - bg_height/2, bg_width, bg_height)];
-    [self.view addSubview:_splusModifyBgView];
+    [self addSubview:_splusModifyBgView];
     
     _splusModifyBgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 290)];
     [_splusModifyBgImageView setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -132,8 +148,8 @@
         return;
     }
     
-    _HUD = [[MBProgressHUD alloc] initWithView:self.view];
-    [self.view addSubview:_HUD];
+    _HUD = [[MBProgressHUD alloc] initWithView:self];
+    [self addSubview:_HUD];
     _HUD.removeFromSuperViewOnHide = YES;
     _HUD.labelText = @"加载中，请稍后...";
     [_HUD show: YES];
@@ -189,7 +205,8 @@
     if ([code intValue] == 1)
     {
         //登录成功，callback
-        [self dismissModalViewControllerAnimated:YES];//修改成功callback
+//        [self dismissModalViewControllerAnimated:YES];//修改成功callback
+        [self removeFromSuperview];
     }
     else
     {
@@ -208,7 +225,8 @@
 
 -(void)splusCloseClick
 {
-    [self dismissModalViewControllerAnimated:YES];
+//    [self dismissModalViewControllerAnimated:YES];
+    [self removeFromSuperview];
 }
 
 -(void)showMessage:(NSString*)msg
@@ -225,16 +243,16 @@
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {//如果机型是iPhone
         
         if (_orientation == UIDeviceOrientationPortrait) {//是竖屏
-            offset = frame.origin.y + 200 - (self.view.frame.size.height -216.0);
+            offset = frame.origin.y + 200 - (self.frame.size.height -216.0);
         }else{
-            offset = frame.origin.y + 180 - (self.view.frame.size.height -216.0);
+            offset = frame.origin.y + 180 - (self.frame.size.height -216.0);
         }
         
     }else{//机型是ipad
         if (_orientation == UIDeviceOrientationPortrait) {//是竖屏
-            offset = frame.origin.y + 100 - (self.view.frame.size.height -216.0);
+            offset = frame.origin.y + 100 - (self.frame.size.height -216.0);
         }else{
-            offset = frame.origin.y + 190 - (self.view.frame.size.height -216.0);
+            offset = frame.origin.y + 190 - (self.frame.size.height -216.0);
         }
         
     }
@@ -246,9 +264,9 @@
     //将视图的Y坐标向上移动offset个单位，以使下面腾出地方用于软键盘的显示
     if(offset > 0)
         if (_orientation == UIDeviceOrientationPortrait) {//是竖屏
-            self.view.frame =CGRectMake(0.0f, -offset,self.view.frame.size.width,self.view.frame.size.height);//-offset 0.0f
+            self.frame =CGRectMake(0.0f, -offset,self.frame.size.width,self.frame.size.height);//-offset 0.0f
         }else{
-            self.view.frame =CGRectMake(offset, 0.0f,self.view.frame.size.width,self.view.frame.size.height);//-offset 0.0f
+            self.frame =CGRectMake(offset, 0.0f,self.frame.size.width,self.frame.size.height);//-offset 0.0f
         }
     
     [UIView commitAnimations];
@@ -266,7 +284,7 @@
 
 -(void)textFieldDidEndEditing:(UITextField *)textField
 {
-    self.view.frame =CGRectMake(0,0, self.view.frame.size.width,self.view.frame.size.height);
+    self.frame =CGRectMake(0,0, self.frame.size.width,self.frame.size.height);
 }
 
 //触摸view隐藏键盘——touchDown
@@ -276,11 +294,32 @@
     [[UIApplication sharedApplication] sendAction:@selector(resignFirstResponder) to:nil from:nil forEvent:nil];
 }
 
-- (void)didReceiveMemoryWarning
+-(BOOL)shouldAutorotate
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    return NO;
 }
+
+
+//iOS 6.0旋屏支持方向
+-(NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskAll;
+}
+
+
+//iOS 6.0以下旋屏
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    if (UIInterfaceOrientationIsLandscape(interfaceOrientation)) {
+        return YES;
+    }
+    return NO;
+}
+
+//- (void)didReceiveMemoryWarning
+//{
+//    [super didReceiveMemoryWarning];
+//    // Dispose of any resources that can be recreated.
+//}
 
 /*
 #pragma mark - Navigation

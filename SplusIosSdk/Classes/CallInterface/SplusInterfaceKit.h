@@ -48,26 +48,18 @@
  *
  *  @param context context
  */
--(void)splusLogin:(NSString*) serverid ServerName:(NSString*)serverName Roleld:(NSString*)roleld RoleName:(NSString*)roleName;
+-(void)splusLogin;
 
 /**
  *  个人中心
  */
--(void)splusAcountManage:(NSString*) serverid ServerName:(NSString*)serverName Roleld:(NSString*)roleld RoleName:(NSString*)roleName;
+-(void)splusAcountManage;
 
 
 /**
- *  非定额支付
- *
- *  @param serverid   服务id
- *  @param serverName 游戏区
- *  @param roleld     游戏角色id
- *  @param roleName   游戏角色名
- *  @param outOrderid 外部订单号ID
- *  @param pext       扩展信息
- *  @param type       0//0 表示非定额支付，1表示定额支付
+ *  不定额充值
  */
--(void)splusPay:(NSString*) serverid ServerName:(NSString*)serverName Roleld:(NSString*)roleld RoleName:(NSString*)roleName OutOrderid:(NSString*)outOrderid Ext:(NSString*)pext Type:(NSString*)type;
+-(void)splusPay:(NSString*)type;
 
 /**
  *  支付宝
@@ -78,19 +70,13 @@
 
 /**
  *  定额支付
- *
- *  @param serverid   服务id
- *  @param serverName 游戏区
- *  @param roleld     游戏角色id
- *  @param roleName   游戏角色名
- *  @param outOrderid 外部订单号ID
- *  @param pext       扩展信息
- *  @param type       0//0 表示非定额支付，1表示定额支付
  *  @param money      充值金额
  */
--(void)splusQuotaPay:(NSString*) serverid ServerName:(NSString*)serverName Roleld:(NSString*)roleld RoleName:(NSString*)roleName OutOrderid:(NSString*)outOrderid Ext:(NSString*)pext Type:(NSString*)type Money:(NSString*)money;
+-(void)splusQuotaPay:(NSString*)money Type:(NSString*)mType;
 
 
 -(void)suspendView:(int)payway;
+
+-(void)setPlayerInfo:(NSString*)serverid serverName:(NSString*)serverName RoleId:(NSString*)roleld RoleName:(NSString*)roleName OutOrderId:(NSString*)mOutOrderid Pext:(NSString*)mPext;
 
 @end

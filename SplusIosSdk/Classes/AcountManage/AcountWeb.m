@@ -200,8 +200,6 @@
 }
 
 -(void)yyPayBackClick:(id)sender{
-    //    [[NSNotificationCenter defaultCenter] postNotificationName:@"finish" object:@"0"];
-    //    [_webView stringByEvaluatingJavaScriptFromString:@"window.history.go(-1)"];
     if (_webView.canGoBack)
     {
         [_webView goBack];
@@ -211,6 +209,20 @@
     }
 }
 
+//iOS 6.0旋屏支持方向
+-(NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskAll;
+}
+
+
+//iOS 6.0以下旋屏
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    if (UIInterfaceOrientationIsLandscape(interfaceOrientation)) {
+        return YES;
+    }
+    return NO;
+}
 
 - (void)didReceiveMemoryWarning
 {

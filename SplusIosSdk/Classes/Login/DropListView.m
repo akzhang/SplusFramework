@@ -53,9 +53,12 @@
         textField.textAlignment = NSTextAlignmentLeft; //水平左对齐
         textField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;  //垂直居中
         //最左侧加图片是以下代码
+        
+        UIView *leftview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 35, 60)];
         UIImageView *userLogoImage=[[UIImageView alloc] initWithImage:[GetImage getSmallRectImage:@"splus_login_user"]];
-//        userLogoImage.frame = CGRectMake(10, 0, 25, 25);
-        textField.leftView = userLogoImage;
+        userLogoImage.frame = CGRectMake(7, 17, 25, 25);
+        [leftview addSubview:userLogoImage];
+        textField.leftView = leftview;
         textField.leftViewMode = UITextFieldViewModeAlways;
         
         [self addSubview:textField];

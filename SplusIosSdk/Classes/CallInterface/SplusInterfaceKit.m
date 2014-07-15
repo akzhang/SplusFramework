@@ -69,6 +69,17 @@ __strong static SplusInterfaceKit *singleton = nil;
     [AppInfo sharedSingleton].sourceID = argSourceId;
 }
 
+-(void)setPlayerInfo:(NSString*)serverid serverName:(NSString*)serverName RoleId:(NSString*)roleld RoleName:(NSString*)roleName OutOrderId:(NSString*)mOutOrderid Pext:(NSString*)mPext
+{
+    [OrderInfo sharedSingleton].serverId = serverid;
+    [OrderInfo sharedSingleton].serverName = serverName;
+    [OrderInfo sharedSingleton].roleId = roleld;
+    [OrderInfo sharedSingleton].roleName = roleName;
+    [OrderInfo sharedSingleton].outOrderid = mOutOrderid;
+    [OrderInfo sharedSingleton].pext = mPext;
+}
+
+
 /**
  *  激活接口
  */
@@ -83,7 +94,7 @@ __strong static SplusInterfaceKit *singleton = nil;
 /**
  *  登录接口
  */
--(void)splusLogin:(NSString*) serverid ServerName:(NSString*)serverName Roleld:(NSString*)roleld RoleName:(NSString*)roleName
+-(void)splusLogin
 {
     if ([ActivateInfo sharedSingleton].deviceno == nil) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"请先激活" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
@@ -91,27 +102,17 @@ __strong static SplusInterfaceKit *singleton = nil;
         return;
     }
     
-    [OrderInfo sharedSingleton].serverId = serverid;
-    [OrderInfo sharedSingleton].serverName = serverName;
-    [OrderInfo sharedSingleton].roleId = roleld;
-    [OrderInfo sharedSingleton].roleName = roleName;
-    
     Login *login = [[Login alloc] init];
     login.delegate = _delegate;
     UIViewController *rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;
     rootViewController.modalPresentationStyle = UIModalPresentationCurrentContext;
-    [rootViewController presentModalViewController:login animated:YES ];
+    [rootViewController presentModalViewController:login animated:NO];
     
 }
 
 
--(void)splusAcountManage:(NSString*) serverid ServerName:(NSString*)serverName Roleld:(NSString*)roleld RoleName:(NSString*)roleName
+-(void)splusAcountManage
 {
-    [OrderInfo sharedSingleton].serverId = serverid;
-    [OrderInfo sharedSingleton].serverName = serverName;
-    [OrderInfo sharedSingleton].roleId = roleld;
-    [OrderInfo sharedSingleton].roleName = roleName;
-    
     AcountHome *acount = [[AcountHome alloc] init];
     acount.delegate = _delegate;
     UIViewController *rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;
@@ -122,16 +123,15 @@ __strong static SplusInterfaceKit *singleton = nil;
 /**
  *  支付
  */
--(void)splusPay:(NSString*) serverid ServerName:(NSString*)serverName Roleld:(NSString*)roleld RoleName:(NSString*)roleName OutOrderid:(NSString*)outOrderid Ext:(NSString*)pext Type:(NSString*)type
+-(void)splusPay:(NSString*)type
 {
-//    if ([ActivateInfo sharedSingleton].deviceno == nil) {
-//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"请先激活" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
-//        [alert show];
-//        return;
-//    }
+    if ([ActivateInfo sharedSingleton].deviceno == nil) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"请先激活" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
     
-    //初始化订单信息
-    [[OrderInfo sharedSingleton] initWithType:serverid serverName:serverName RoleId:roleld RoleName:roleName OutOrderId:outOrderid Pext:pext Money:0 Type:type];
+    [OrderInfo sharedSingleton].type = type;
     
     PayHome *pay = [[PayHome alloc] init];
     pay.delegate = _delegate;
@@ -146,11 +146,10 @@ __strong static SplusInterfaceKit *singleton = nil;
  *
  *  @return 定额支付
  */
--(void)splusQuotaPay:(NSString*) serverid ServerName:(NSString*)serverName Roleld:(NSString*)roleld RoleName:(NSString*)roleName OutOrderid:(NSString*)outOrderid Ext:(NSString*)pext Type:(NSString*)type Money:(NSString*)money;
+-(void)splusQuotaPay:(NSString*)money Type:(NSString*)mType
 {
-    //初始化订单信息
-    [[OrderInfo sharedSingleton] initWithType:serverid serverName:serverName RoleId:roleld RoleName:roleName OutOrderId:outOrderid Pext:pext Money:money Type:type];
-    
+    [OrderInfo sharedSingleton].type = mType;
+    [OrderInfo sharedSingleton].money = money;
     QutoPayHome *pay = [[QutoPayHome alloc] init];
     pay.delegate = _delegate;
     UIViewController *rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;

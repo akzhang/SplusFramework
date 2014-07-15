@@ -36,6 +36,12 @@
     return tempImage;
 }
 
++(UIImage *)getPayRectImage:(NSString *)imagName{
+    UIEdgeInsets frameinsets = UIEdgeInsetsMake(10, 10, 35, 30);
+    UIImage *tempImage = [[GetImage imagesNamedFromCustomBundle:imagName] resizableImageWithCapInsets:frameinsets resizingMode:UIImageResizingModeStretch];
+    return tempImage;
+}
+
 +(UIImage *)getSmallRectImage:(NSString *)imagName{
     UIEdgeInsets frameinsets = UIEdgeInsetsMake(10, 10, 10, 10);
     UIImage *tempImage = [[GetImage imagesNamedFromCustomBundle:imagName] resizableImageWithCapInsets:frameinsets resizingMode:UIImageResizingModeStretch];
