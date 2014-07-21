@@ -149,7 +149,7 @@
 - (void)collectionView:(PSTCollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     QutoPayWay *value = [[QutoPayWay alloc] init];
-    value.payway = [indexPath row];
+    value.payway = (int)[indexPath row];
     [self presentModalViewController:value animated:YES];
 }
 

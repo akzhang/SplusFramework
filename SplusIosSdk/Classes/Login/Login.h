@@ -61,7 +61,7 @@
 
 @property(nonatomic,strong)MBProgressHUD *HUD;
 
-@property(nonatomic, strong)UIView *tabBarView;
+@property(nonatomic, strong)UIImageView *tabBarView;
 
 @property(nonatomic, strong)UIView *fullbgView;
 

@@ -28,4 +28,6 @@
 
 @property(nonatomic, strong)NSString *tipString;
 
+@property(nonatomic, strong)IBOutlet UIButton *back;
+
 @end

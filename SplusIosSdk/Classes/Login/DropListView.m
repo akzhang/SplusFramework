@@ -38,25 +38,26 @@
     self=[super initWithFrame:frame];
     if(self){
         showList = NO; //默认不显示下拉框
-        tv = [[UITableView alloc] initWithFrame:CGRectMake(0, 60, frame.size.width, 0)];
+        tv = [[UITableView alloc] initWithFrame:CGRectMake(0, 50, frame.size.width - 2, 0)];
         tv.delegate = self;
         tv.dataSource = self;
+        [tv setSeparatorStyle:UITableViewCellSeparatorStyleNone];
         tv.backgroundColor = [UIColor whiteColor];
         tv.separatorColor = [UIColor darkGrayColor];
         tv.hidden = YES;
         [self addSubview:tv];
         
         //文本框
-        textField = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, frame.size.width + 80, 60)];
+        textField = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, 50)];
 //        textField.font = [UIFont systemFontOfSize:8.0f];
         textField.placeholder = @" 用户名";
         textField.textAlignment = NSTextAlignmentLeft; //水平左对齐
         textField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;  //垂直居中
         //最左侧加图片是以下代码
         
-        UIView *leftview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 35, 60)];
+        UIView *leftview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 35, 50)];
         UIImageView *userLogoImage=[[UIImageView alloc] initWithImage:[GetImage getSmallRectImage:@"splus_login_user"]];
-        userLogoImage.frame = CGRectMake(7, 17, 25, 25);
+        userLogoImage.frame = CGRectMake(7, 12, 25, 25);
         [leftview addSubview:userLogoImage];
         textField.leftView = leftview;
         textField.leftViewMode = UITextFieldViewModeAlways;
@@ -64,7 +65,7 @@
         [self addSubview:textField];
         
         textBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        textBtn.frame= CGRectMake(frame.size.width - 40, 15, 33, 23);
+        textBtn.frame= CGRectMake(frame.size.width - 40, 10, 33, 30);
         [textBtn setBackgroundImage:[GetImage imagesNamedFromCustomBundle:@"splus_spinner"] forState:UIControlStateNormal];
         [textBtn addTarget:self action:@selector(dropdown) forControlEvents: UIControlEventTouchUpInside];//处理点击
         [self addSubview:textBtn];
@@ -138,15 +139,24 @@
     if (cell == nil) {
         cell = [[[DropCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
+    if ([indexPath row]%2 == 0) {
+        cell.backgroundColor = UIColorFromRGB(0xf6f6f6);
+    }
+    else
+    {
+        cell.backgroundColor = UIColorFromRGB(0xffffff);
+    }
+    
     cell.textLabel.text = [tableArray objectAtIndex:[indexPath row]];
     cell.textLabel.font = [UIFont systemFontOfSize:16.0f];
     
-    cell.deleteButton.frame= CGRectMake(self.frame.size.width - 45, 5, 30, 30);
+    cell.deleteButton.frame= CGRectMake(self.frame.size.width - 40, 5, 33, 40);
+    cell.deleteButton.contentMode = UIViewContentModeScaleToFill;
     [cell.deleteButton setBackgroundImage:[GetImage imagesNamedFromCustomBundle:@"splus_close"] forState:UIControlStateNormal];
     cell.deleteButton.tag = [indexPath row];
     [cell.deleteButton addTarget:self action:@selector(celldeleteClick:) forControlEvents: UIControlEventTouchUpInside];//处理点击
-    cell.accessoryType = UITableViewCellAccessoryNone;
-    cell.selectionStyle = UITableViewCellSelectionStyleGray;
+//    cell.accessoryType = UITableViewCellAccessoryNone;
+//    cell.selectionStyle = UITableViewCellSelectionStyleGray;
     return cell;
     
 }
@@ -163,7 +173,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 35;
+    return 50;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

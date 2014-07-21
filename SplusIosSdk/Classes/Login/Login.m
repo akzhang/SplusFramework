@@ -103,9 +103,9 @@ int floatpositon = 0;
     //密码
     _splusLoginPwd = [[UITextField alloc] initWithFrame:CGRectMake(20, 120, 280, 50)];
     
-    UIView *leftview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 35, 35)];
+    UIView *leftview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 35, 50)];
     UIImageView *passwdLogoImage=[[UIImageView alloc] initWithImage:[GetImage imagesNamedFromCustomBundle:@"splus_input_pwd"]];
-    passwdLogoImage.frame = CGRectMake(5, 5, 25, 25);
+    passwdLogoImage.frame = CGRectMake(7, 12, 25, 25);
     [leftview addSubview:passwdLogoImage];
     _splusLoginPwd.leftView = leftview;
     _splusLoginPwd.leftViewMode = UITextFieldViewModeAlways;
@@ -123,7 +123,7 @@ int floatpositon = 0;
     [_splusRemPwd.titleLabel setFont:[UIFont boldSystemFontOfSize:13.0f]];
     [_splusLoginBgView addSubview:_splusRemPwd];
     
-    _splusForgetPwd = [[UILabel alloc] initWithFrame:CGRectMake(240, 180, 80, 40)];
+    _splusForgetPwd = [[UILabel alloc] initWithFrame:CGRectMake(240, 180, 80, 50)];
     _splusForgetPwd.text = @"忘记密码?";
     _splusForgetPwd.userInteractionEnabled = YES;
     UITapGestureRecognizer *tapGestureTel = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(forgetPwdEvent:)];
@@ -153,7 +153,7 @@ int floatpositon = 0;
 -(void)forgetPwdEvent:(id)sender
 {
     AcountWeb *acount = [[AcountWeb alloc] init];
-    acount.payway = 1;
+    acount.payway = 0;
     [self presentModalViewController:acount animated:YES];
 }
 
@@ -179,6 +179,7 @@ int floatpositon = 0;
 -(void)splusLoginClick:(id)sender
 {
     [self loadAvatarInKeyWindow];
+//    [self _initTabBar];
     
     if (_splusLoginUser.textField.text.length < 5|| _splusLoginUser.textField.text.length > 20) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"用户名输入错误(5-20个字符)" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
@@ -276,8 +277,8 @@ int floatpositon = 0;
 
 #pragma mark -VillApper
 -(void)viewWillAppear:(BOOL)animated{
-    [self loadAvatarInKeyWindow];
-    [self _initTabBar];
+//    [self loadAvatarInKeyWindow];
+//    [self _initTabBar];
     
     _UserArray = [[NSMutableArray alloc] init];
     _PasswordArray = [[NSMutableArray alloc] init];
@@ -453,17 +454,19 @@ int floatpositon = 0;
 //悬浮图标
 - (void)loadAvatarInKeyWindow {
     RCDraggableButton *avatar = [Login shareInstance];
-    
     [avatar setTapBlock:^(RCDraggableButton *avatar) {
         if(!flag){
+            [self _initTabBar];
+            
             _tabBarView.hidden = NO;
             _fullbgView.hidden = NO;
-            [Login shareInstance].hidden = YES;
+            
+//            [Login shareInstance].hidden = YES;
             flag = YES;
         }else{
             _tabBarView.hidden = YES;
             _fullbgView.hidden = YES;
-            [Login shareInstance].hidden = NO;
+//            [Login shareInstance].hidden = NO;
             flag = NO;
         }
     }];
@@ -505,57 +508,66 @@ int floatpositon = 0;
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                                 action:@selector(tapButton:)];
     [_fullbgView addGestureRecognizer:singleTap];
-    _tabBarView = [[UIView alloc] initWithFrame:CGRectMake(SCREENWIDTH/2 - 140, SCREENHEIGHT/2 - 140, 280 , 280)] ;
     
-    //view 设置半透明 圆角样式
-    _tabBarView.layer.cornerRadius = 10;//设置圆角的大小
-    _tabBarView.layer.backgroundColor = [[UIColor blackColor] CGColor];
+    CGFloat originX = [Login shareInstance].frame.origin.x;
+    CGFloat originY = [Login shareInstance].frame.origin.y;
+    
+    if ([Login shareInstance].frame.origin.x != 0.00000)
+    {
+        _tabBarView = [[UIImageView alloc] initWithFrame:CGRectMake(originX - 180, originY, 180, 40)];
+        _tabBarView.image = [GetImage getFloatRectImage:@"splus_float_r_bg"];
+    }
+    else
+    {
+        _tabBarView = [[UIImageView alloc] initWithFrame:CGRectMake(originX + 40, originY, 180, 40)];
+        _tabBarView.image = [GetImage getFloatRectImage:@"splus_float_l_bg"];
+    }
+    _tabBarView.userInteractionEnabled = YES;
+    _tabBarView.contentMode = UIViewContentModeScaleToFill;
+    //    _tabBarView.backgroundColor = [UIColor darkGrayColor];
     //    _tabBarView.alpha = 0.2f;//设置透明
     //    _tabBarView.layer.masksToBounds = YES;
     [_fullbgView addSubview:_tabBarView];
-    
-    //循环设置tabbar上的button
-    NSArray *imgNames = [[NSArray alloc]initWithObjects:@"yybbsfloat",@"yygiftfloat",@"yyrecomflaot",@"yyacountfloat", nil];
-    NSArray *imgContent = @[@"游戏论坛",@"活动",@"客服",@"用户中心"];
-    
+
+//    //循环设置tabbar上的button
+    NSArray *imgNames = [[NSArray alloc]initWithObjects:@"splus_float_forum_normal",@"splus_float_announcement_normal",@"splus_float_help_normal",@"splus_float_account_normal", nil];
+//    NSArray *imgContent = @[@"游戏论坛",@"活动",@"客服",@"用户中心"];
+//    
     for (int i=0; i<4; i++) {
         CGRect rect;
-        rect.size.width = 60;
-        rect.size.height = 80;
+        rect.size.width = 30;
+        rect.size.height = 30;
         
         switch (i) {
             case 0:
-                rect.origin.x = 110;
-                rect.origin.y = 30;
+                rect.origin.x = 10;
+                rect.origin.y = 5;
                 break;
             case 1:
-                rect.origin.x = 190;
-                rect.origin.y = 100;
+                rect.origin.x = 45;
+                rect.origin.y = 5;
                 break;
             case 2:
-                rect.origin.x = 110;
-                rect.origin.y = 170;
+                rect.origin.x = 85;
+                rect.origin.y = 5;
                 break;
             case 3:
-                rect.origin.x = 30;
-                rect.origin.y = 100;
+                rect.origin.x = 125;
+                rect.origin.y = 5;
                 break;
         }
         
         //设置每个tabView
-        UIView *tabView = [[UIView alloc] initWithFrame:rect];
-        [_tabBarView addSubview:tabView];
+//        UIView *tabView = [[UIView alloc] initWithFrame:rect];
+//        [_tabBarView addSubview:tabView];
         
         //设置tabView的图标
-        HomeButton *tabButton = [[HomeButton alloc] initWithFrame:CGRectMake(0, 0, 60, 80)];
-        tabButton.label.textColor = [UIColor whiteColor];
-        tabButton.label.font = [UIFont systemFontOfSize:14.0];
-        tabButton.label.text = [imgContent objectAtIndex:i];
-        
-        [tabButton.imageBt setBackgroundImage:[GetImage imagesNamedFromCustomBundle:[imgNames objectAtIndex:i]] forState:UIControlStateNormal];
-        [tabButton.imageBt setTag:i];
-        [tabButton.imageBt addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
-        [tabView addSubview:tabButton];
+        UIButton *tabButton = [[UIButton alloc] initWithFrame:rect];
+        [tabButton setBackgroundImage:[GetImage imagesNamedFromCustomBundle:[imgNames objectAtIndex:i]] forState:UIControlStateNormal];
+        [tabButton setContentMode:UIViewContentModeScaleToFill];
+        [tabButton setTag:i];
+        [tabButton addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
+        [_tabBarView addSubview:tabButton];
     }
     
     [_tabBarView setHidden:YES];
@@ -571,15 +583,15 @@ int floatpositon = 0;
     [Login shareInstance].hidden = NO;
     
     if (butttag == 0) {
-        [[SplusInterfaceKit sharedInstance] suspendView:1];
+        [[SplusInterfaceKit sharedInstance] suspendView:2];
         
     }else if (butttag == 1){
         floatpositon = 3;
-        [[SplusInterfaceKit sharedInstance] suspendView:2];
+        [[SplusInterfaceKit sharedInstance] suspendView:3];
         
     }else if (butttag == 2){
         floatpositon = 1;
-        [[SplusInterfaceKit sharedInstance] suspendView:3];
+        [[SplusInterfaceKit sharedInstance] suspendView:1];
         
     }else if (butttag == 3){
         floatpositon = 0;

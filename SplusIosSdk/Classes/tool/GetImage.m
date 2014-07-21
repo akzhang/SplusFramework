@@ -48,6 +48,12 @@
     return tempImage;
 }
 
++(UIImage *)getFloatRectImage:(NSString *)imagName{
+    UIEdgeInsets frameinsets = UIEdgeInsetsMake(0, 22, 0, 22);
+    UIImage *tempImage = [[GetImage imagesNamedFromCustomBundle:imagName] resizableImageWithCapInsets:frameinsets resizingMode:UIImageResizingModeStretch];
+    return tempImage;
+}
+
 +(void)getLoading:(UIView*)tempController Indicator:(UIActivityIndicatorView*)tempIndicatorView{
 //    tempIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     [tempIndicatorView setFrame:CGRectMake(tempController.frame.size.width*3/8, tempController.frame.size.height*3/8, tempController.frame.size.width/2, tempController.frame.size.height/2)];

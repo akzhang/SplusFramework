@@ -23,6 +23,8 @@
 
 +(UIImage *)getPayRectImage:(NSString *)imagName;
 
++(UIImage *)getFloatRectImage:(NSString *)imagName;
+
 +(void)getLoading:(UIView*)tempController Indicator:(UIActivityIndicatorView*)tempIndicatorView;
 
 +(CGSize) screenSize;

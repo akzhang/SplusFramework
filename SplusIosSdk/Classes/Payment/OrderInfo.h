@@ -12,11 +12,11 @@
 
 + (OrderInfo *)sharedSingleton;
 
-@property(nonatomic, assign)NSString *serverId;
+@property(nonatomic, strong)NSString *serverId;
 
 @property(nonatomic, strong)NSString *serverName;
 
-@property(nonatomic, assign)NSString *roleId;
+@property(nonatomic, strong)NSString *roleId;
 
 @property(nonatomic, strong)NSString *roleName;
 
@@ -24,9 +24,9 @@
 
 @property(nonatomic, strong)NSString *pext;
 
-@property(nonatomic, assign)NSString *money;
+@property(nonatomic, strong)NSString *money;
 
-@property(nonatomic, assign)NSString *type;
+@property(nonatomic, strong)NSString *type;
 
 @property(nonatomic, strong)NSString *transNum;
 

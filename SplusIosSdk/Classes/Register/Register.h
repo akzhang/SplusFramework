@@ -54,4 +54,6 @@
 
 @property(nonatomic, assign)UIInterfaceOrientation orientation;
 
+@property(nonatomic, strong)UIButton *back;
+
 @end

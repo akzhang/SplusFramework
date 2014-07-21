@@ -132,7 +132,7 @@
     cell.headImage.image = [GetImage imagesNamedFromCustomBundle:[_splusImageArray objectAtIndex:[indexPath row]]];
     cell.labelText.text = [_splusArray objectAtIndex:[indexPath row]];
     cell.tailImage.image = [GetImage imagesNamedFromCustomBundle:@"splus_person_arrow"];
-    
+//    cell.backgroundColor = [UIColor blueColor];
     return cell;
     
 }

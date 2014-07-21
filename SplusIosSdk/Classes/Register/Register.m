@@ -56,6 +56,11 @@
     splusTitle.text = @"账号注册";
     [_splusLoginBgView addSubview:splusTitle];
     
+    _back = [[UIButton alloc] initWithFrame:CGRectMake(10, 15, 45, 45)];
+    [_back setImage:[GetImage imagesNamedFromCustomBundle:@"splus_back"] forState:UIControlStateNormal];
+    [_back addTarget:self action:@selector(splusTipClick:) forControlEvents: UIControlEventTouchUpInside];//处理点击
+    [_splusLoginBgView addSubview:_back];
+    
     _close = [[UIButton alloc] initWithFrame:CGRectMake(bg_width - 60, 15, 45, 45)];
     [_close setImage:[GetImage imagesNamedFromCustomBundle:@"splus_close"] forState:UIControlStateNormal];
     [_close addTarget:self action:@selector(splusRegisterClick) forControlEvents: UIControlEventTouchUpInside];//处理点击
@@ -71,10 +76,10 @@
     
     //用户名
     _splusLoginUser = [[UITextField alloc] initWithFrame:CGRectMake(20, 70, 280, 50)];
-    UIView *userleftview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 35, 35)];
+    UIView *userleftview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 35, 50)];
     UIImageView *userLogoImage=[[UIImageView alloc] initWithImage:[GetImage imagesNamedFromCustomBundle:@"splus_login_user"]];
     userLogoImage.contentMode = UIViewContentModeScaleToFill;
-    userLogoImage.frame = CGRectMake(5, 5, 25, 25);
+    userLogoImage.frame = CGRectMake(7, 12, 25, 25);
     [userleftview addSubview:userLogoImage];
     _splusLoginUser.leftView = userleftview;
     _splusLoginUser.leftViewMode = UITextFieldViewModeAlways;
@@ -82,6 +87,7 @@
     _splusLoginUser.clearButtonMode = UITextFieldViewModeWhileEditing;
     _splusLoginUser.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     _splusLoginUser.delegate = self;
+    _splusLoginUser.font = [UIFont systemFontOfSize:12.0];
     [_splusLoginBgView addSubview:_splusLoginUser];
     
     UIImageView* inputSpliterLine = [[UIImageView alloc] initWithFrame:CGRectMake(20, 120, 278, 1)];
@@ -90,15 +96,16 @@
     
     //密码
     _splusLoginPwd = [[UITextField alloc] initWithFrame:CGRectMake(20, 120, 280, 50)];
-    UIView *leftview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 35, 35)];
+    UIView *leftview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 35, 50)];
     UIImageView *passwdLogoImage=[[UIImageView alloc] initWithImage:[GetImage imagesNamedFromCustomBundle:@"splus_input_pwd"]];
-    passwdLogoImage.frame = CGRectMake(5, 5, 25, 25);
+    passwdLogoImage.frame = CGRectMake(7, 12, 25, 25);
     [leftview addSubview:passwdLogoImage];
     _splusLoginPwd.leftView = leftview;
     _splusLoginPwd.leftViewMode = UITextFieldViewModeAlways;
     _splusLoginPwd.placeholder = @" 密码:6-20位字母、数字、下划线";
     _splusLoginPwd.delegate = self;
     [_splusLoginPwd setSecureTextEntry:TRUE];
+    _splusLoginPwd.font = [UIFont systemFontOfSize:12.0];
     _splusLoginPwd.clearButtonMode = UITextFieldViewModeWhileEditing;
     _splusLoginPwd.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     [_splusLoginBgView addSubview:_splusLoginPwd];
@@ -131,6 +138,11 @@
     
 }
 
+-(void)splusTipClick:(id)sender
+{
+    [self dismissModalViewControllerAnimated:NO];
+}
+
 -(void)splusRegisterClick
 {
     [self dismissModalViewControllerAnimated:NO];
@@ -150,6 +162,12 @@
     }
     if(![checkWifi connectedToNetWork]){//|| ![checkWifi IsEnable3G] || ![checkWifi IsEnableWIFI]
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"网络连接错误，请检查网络是否正常" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
+    
+    if (_splusRemPwd.checked == YES) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请同意灿和用户协议" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
         [alert show];
         return;
     }
@@ -250,7 +268,7 @@
         if (_orientation == UIDeviceOrientationPortrait) {//是竖屏
             offset = frame.origin.y + 200 - (self.view.frame.size.height -216.0);
         }else{
-            offset = frame.origin.y + 180 - (self.view.frame.size.height -216.0);
+            offset = frame.origin.y + 200 - (self.view.frame.size.height -216.0);
         }
         
     }else{//机型是ipad
@@ -271,7 +289,7 @@
         if (_orientation == UIDeviceOrientationPortrait) {//是竖屏
             self.view.frame =CGRectMake(0.0f, -offset,self.view.frame.size.width,self.view.frame.size.height);//-offset 0.0f
         }else{
-            self.view.frame =CGRectMake(offset, 0.0f,self.view.frame.size.width,self.view.frame.size.height);//-offset 0.0f
+            self.view.frame =CGRectMake(0, 0.0f,self.view.frame.size.width,self.view.frame.size.height);//-offset 0.0f
         }
     
     [UIView commitAnimations];

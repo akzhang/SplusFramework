@@ -86,7 +86,7 @@
     [self.view addSubview:_splusMiddleFrame];
     
     NSString *splusCash = @"您充值的金额是:";
-    NSLog(@"money = %@", [OrderInfo sharedSingleton].money);
+    NSLog(@"money SSSSSS= %@", [OrderInfo sharedSingleton].money);
     
     splusCash = [splusCash stringByAppendingFormat:@"%@",[OrderInfo sharedSingleton].money];
     _splusCashValue = [[UILabel alloc] initWithFrame:CGRectMake(SCREENWIDTH/2 - 90, SCREENHEIGHT/2 - 110, 180, 30)];
@@ -356,13 +356,16 @@
     return NO;
 }
 
-
 //iOS 6.0旋屏支持方向
 -(NSUInteger)supportedInterfaceOrientations
 {
     return UIInterfaceOrientationMaskAll;
 }
 
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;//隐藏为YES，显示为NO
+}
 
 //iOS 6.0以下旋屏
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {

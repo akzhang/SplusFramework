@@ -37,6 +37,11 @@ extern NSString *tipValue;
     bgView.alpha = 0.5;
     [self addSubview:bgView];
     
+    _back = [[UIButton alloc] initWithFrame:CGRectMake(20, 15, 45, 45)];
+    [_back setImage:[GetImage imagesNamedFromCustomBundle:@"splus_back"] forState:UIControlStateNormal];
+    [_back addTarget:self action:@selector(splusTipClick:) forControlEvents: UIControlEventTouchUpInside];//处理点击
+    [_splusTipBgView addSubview:_back];
+    
     _splusTipBgView = [[UIView alloc] initWithFrame:CGRectMake(SCREENWIDTH/2 - bg_width/2, SCREENHEIGHT/2 - bg_height/2, bg_width, bg_height)];
     //    _splusLoginBgView.userInteractionEnabled = YES;
     [self addSubview:_splusTipBgView];
@@ -47,10 +52,10 @@ extern NSString *tipValue;
     [_splusTipBgView addSubview:_splusTipBgImageView];
     
     
-    UILabel *splusTitle = [[UILabel alloc] initWithFrame:CGRectMake(bg_width/2 - 80, 25, 160, 25)];
+    UILabel *splusTitle = [[UILabel alloc] initWithFrame:CGRectMake(SCREENWIDTH/2 - 25, 25, 100, 25)];
     splusTitle.textColor = UIColorFromRGB(0xFF6600);
     splusTitle.font = [UIFont systemFontOfSize:22.0];
-    splusTitle.text = @"提示";
+    splusTitle.text = @"提  示";
     [_splusTipBgView addSubview:splusTitle];
     
     _close = [[UIButton alloc] initWithFrame:CGRectMake(bg_width - 60, 15, 45, 45)];
@@ -72,6 +77,7 @@ extern NSString *tipValue;
     NSAttributedString *attributedString = [[NSAttributedString alloc] initWithData:[tipValue dataUsingEncoding:NSUnicodeStringEncoding] options:@{ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType } documentAttributes:nil error:nil];
     _tipContent.attributedText = attributedString;
     _tipContent.scrollEnabled = YES;
+    _tipContent.editable = NO;
     [splusEditFrame addSubview:_tipContent];
     
     

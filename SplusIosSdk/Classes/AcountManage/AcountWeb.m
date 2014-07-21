@@ -41,19 +41,19 @@
    
     switch (_payway)
     {
-        case 0:
+        case 1:
             _splusPayText.text = @"客服中心";
             break;
-        case 1:
+        case 2:
             _splusPayText.text = @"论坛";
             break;
             
-        case 2:
+        case 3:
             _splusPayText.text = @"活动";
             break;
             
         default:
-            _splusPayText.text = @"注册账号";
+            _splusPayText.text = @"活动";
             break;
     }
     
@@ -193,7 +193,9 @@
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
+    [_HUD hide:YES afterDelay:1];
     if ([error code] == NSURLErrorCancelled) {
+        [_HUD hide:YES afterDelay:1];
         //show error alert, etc.
         return;
     }

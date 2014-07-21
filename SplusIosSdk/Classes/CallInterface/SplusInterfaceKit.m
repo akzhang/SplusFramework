@@ -150,6 +150,8 @@ __strong static SplusInterfaceKit *singleton = nil;
 {
     [OrderInfo sharedSingleton].type = mType;
     [OrderInfo sharedSingleton].money = money;
+    NSLog(@"moneyllllllllll=%@",[OrderInfo sharedSingleton].money);
+    
     QutoPayHome *pay = [[QutoPayHome alloc] init];
     pay.delegate = _delegate;
     UIViewController *rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;

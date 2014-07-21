@@ -141,6 +141,7 @@
     _splusMan = [[QCheckBox alloc] initWithDelegate:self];
     _splusMan.frame = CGRectMake(60, 0, 80, 50);
     _splusMan.tag = 1;
+    [_splusMan setChecked:YES];
     [_splusMan setTitle:@"男" forState:UIControlStateNormal];
     [_splusMan setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
     [_splusMan.titleLabel setFont:[UIFont boldSystemFontOfSize:13.0f]];
@@ -149,6 +150,7 @@
     _splusWoMan = [[QCheckBox alloc] initWithDelegate:self];
     _splusWoMan.frame = CGRectMake(140, 0, 80, 50);
     _splusWoMan.tag = 2;
+    [_splusWoMan setChecked:YES];
     [_splusWoMan setTitle:@"女" forState:UIControlStateNormal];
     [_splusWoMan setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
     [_splusWoMan.titleLabel setFont:[UIFont boldSystemFontOfSize:13.0f]];
@@ -158,6 +160,7 @@
     _splusSecret = [[QCheckBox alloc] initWithDelegate:self];
     _splusSecret.frame = CGRectMake(220, 0, 80, 50);
     _splusSecret.tag = 3;
+    [_splusSecret setChecked:YES];
     [_splusSecret setTitle:@"保密" forState:UIControlStateNormal];
     [_splusSecret setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
     [_splusSecret.titleLabel setFont:[UIFont boldSystemFontOfSize:13.0f]];
@@ -379,11 +382,15 @@
 - (void)didSelectedCheckBox:(QCheckBox *)checkbox checked:(BOOL)checked {
     
     if (_lastCheckBox) {//是否最后一次选中
-        _lastCheckBox.checked = NO;
+        [_lastCheckBox setChecked:YES];
     }
     
     QCheckBox *chooseBox = checkbox;
-    chooseBox.checked = YES;
+//    [chooseBox setChecked:NO];
+    _lastCheckBox = chooseBox;
+    
+    NSLog(@"%@",checked?@"YES":@"NO");
+    
     switch (chooseBox.tag) {
         case 1://男
             _sexType = @"1";
